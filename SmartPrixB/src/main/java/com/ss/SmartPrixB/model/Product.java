@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
+import com.ss.SmartPrixB.model.Brand;
 
 @Component
 @Entity
@@ -13,32 +16,47 @@ public class Product {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private String ProductID;
-	private String ProductName;
-	private String ProductDesc;
-	private String ProductCost;
-	public String getProductID() {
-		return ProductID;
+	private int productID;
+	private String productName;
+	private String productDesc;
+	private String productCost;
+	
+	@ManyToOne
+	@JoinColumn(name="brandID",insertable=false,updatable=false)
+	private Brand brand;
+
+	public Brand getBrand() {
+		return brand;
 	}
-	public void setProductID(String productID) {
-		ProductID = productID;
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	
+	public int getProductID() {
+		return productID;
+	}
+	public void setProductID(int productID) {
+		this.productID = productID;
 	}
 	public String getProductName() {
-		return ProductName;
+		return productName;
 	}
 	public void setProductName(String productName) {
-		ProductName = productName;
+		this.productName = productName;
 	}
 	public String getProductDesc() {
-		return ProductDesc;
+		return productDesc;
 	}
 	public void setProductDesc(String productDesc) {
-		ProductDesc = productDesc;
+		this.productDesc = productDesc;
 	}
 	public String getProductCost() {
-		return ProductCost;
+		return productCost;
 	}
 	public void setProductCost(String productCost) {
-		ProductCost = productCost;
+		this.productCost = productCost;
 	}
+	
+
 }

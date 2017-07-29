@@ -22,8 +22,7 @@
 <br>
 <br>
 <br>
-<sp:form action="
-/addCategory" method="POST" modelAttribute="category">
+<sp:form action="${pageContext.request.contextPath }/addCategory" method="POST" modelAttribute="category">
 <c:if test="${not empty category.categoryName}">
 Category ID    <sp:input path="categoryID" readOnly="true" disabled="true"/>
 <sp:hidden path="categoryID"/>

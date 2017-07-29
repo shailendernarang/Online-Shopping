@@ -22,11 +22,21 @@
 <br>
 <br>
 <br>
-<sp:form action="addCategory" method="POST" modelAttribute="category">
+<sp:form action="
+/addCategory" method="POST" modelAttribute="category">
+<c:if test="${not empty category.categoryName}">
 Category ID    <sp:input path="categoryID" readOnly="true" disabled="true"/>
+<sp:hidden path="categoryID"/>
+</c:if>
 Category Name  <sp:input path="categoryName"/>
 Category Desc  <sp:input path="categoryDesc"/>
-<sp:button value="submit">Add</sp:button>
+ <c:if test="${empty category.categoryName}">
+        <sp:button class="btn btn-success" value="submit">Register</sp:button>
+    </c:if>
+    <c:if test="${not empty category.categoryName}">
+        <sp:button class="btn btn-success" value="submit">Update</sp:button>
+    </c:if>
+  
 </sp:form>
 <br>
 <br>
@@ -39,9 +49,11 @@ Category Desc  <sp:input path="categoryDesc"/>
 </tr>
 <tr>
 <c:forEach items="${categoryList}" var="c">
-<td>${c.categoryID}</td>
+<tr><td>${c.categoryID}</td>
 <td>${c.categoryName}</td>
 <td>${c.categoryDesc}</td>
+<td><a href="<c:url value='updateCategory/${c.categoryID}'/>">Edit</a>
+<td><a href="<c:url value='deleteCategory/${c.categoryID}'/>">Delete</a></tr>
 
 </c:forEach>
 </tr>

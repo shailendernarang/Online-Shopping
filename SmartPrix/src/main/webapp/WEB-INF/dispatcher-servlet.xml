@@ -15,8 +15,10 @@
       <property name = "suffix" value = ".jsp" />
    </bean>
       <mvc:resources mapping="/resources/** " location="/resources/"  cache-period="10000"/>
-      <mvc:default-servlet-handler/><mvc:annotation-driven/>
-          <bean 
-class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+      <mvc:default-servlet-handler/>
+      <mvc:annotation-driven/>
+          <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
    </beans>
+   
    

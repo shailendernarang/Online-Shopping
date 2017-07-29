@@ -21,7 +21,7 @@ public class CategoryController {
 	
 	@RequestMapping(value="/addCategory",method=RequestMethod.POST)
 
-	public String addCategory(@ModelAttribute("category")Category c,Model model)
+	public String addCategory(@ModelAttribute("category")Category c)
 	{
 		if(c.getCategoryID()==0)
 		{

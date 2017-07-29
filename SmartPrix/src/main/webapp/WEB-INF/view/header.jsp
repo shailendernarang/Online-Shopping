@@ -36,6 +36,8 @@
             <li><a >Accessories</a></li>
             <li><a href="Register">Register</a></li>
                <li><a href="Category">Category</a></li>
+               <li><a href="Product">Product</a></li>
+               <li><a href="Brand">Brand</a></li>
          </ul>   
          
          
