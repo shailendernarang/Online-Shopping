@@ -53,5 +53,5 @@ public class CategoryDaoImpl implements CategoryDao {
 	    Category cat = (Category)q.getSingleResult();
 	    return cat;
 	}
-
+	  
 }

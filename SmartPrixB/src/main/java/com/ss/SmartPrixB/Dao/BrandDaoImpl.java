@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
+import com.ss.SmartPrixB.model.Product;
 @Repository("brandDao")
 @Transactional
 public class BrandDaoImpl implements BrandDao {

@@ -2,7 +2,7 @@ package com.ss.SmartPrixB.Dao;
 
 import java.util.List;
 
-
+import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Product;
 
 public interface ProductDao {
@@ -12,4 +12,6 @@ public interface ProductDao {
 	public boolean updateProduct(Product p);
 	List<Product> getAllProducts();
 	Product getProductByID(int productID);
+	
+
 }

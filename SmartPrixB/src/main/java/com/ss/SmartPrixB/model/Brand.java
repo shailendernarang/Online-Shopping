@@ -1,5 +1,7 @@
 package com.ss.SmartPrixB.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,14 +36,13 @@ public class Brand {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
 	@OneToMany(mappedBy="brand",fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
-	private Set<Product> p= new HashSet<Product>();
+	private Collection<Product> p= new ArrayList<Product>();
 	
-	public Set<Product> getP() {
+	public Collection<Product> getP() {
 		return p;
 	}
-	public void setP(Set<Product> p) {
+	public void setP(Collection<Product> p) {
 		this.p = p;
 	}
 	public int getBrandID() {

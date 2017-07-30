@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.model.Brand;
+import com.ss.SmartPrixB.model.Product;
 @Controller
 public class BrandController {
 
@@ -20,8 +21,6 @@ public class BrandController {
 	
 	public String addBrand(@ModelAttribute("brand")Brand p)
 	{
-		
-
 		if(p.getBrandID()==0)
 		{
 			brandDao.addBrand(p);

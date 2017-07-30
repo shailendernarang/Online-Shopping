@@ -1,5 +1,7 @@
 package com.ss.SmartPrixB.model;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +23,13 @@ public class Product {
 	private String productDesc;
 	private String productCost;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="brandID",insertable=false,updatable=false)
 	private Brand brand;
 
+	
+	
 	public Brand getBrand() {
 		return brand;
 	}
@@ -32,7 +37,7 @@ public class Product {
 		this.brand = brand;
 	}
 
-	
+
 	public int getProductID() {
 		return productID;
 	}

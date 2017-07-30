@@ -26,6 +26,7 @@ public class Category {
 	private int categoryID;
 	private String categoryName;
 	private String categoryDesc;
+
 	@OneToMany(mappedBy="category",fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
 	private Set<Brand> p= new HashSet<Brand>();
 	

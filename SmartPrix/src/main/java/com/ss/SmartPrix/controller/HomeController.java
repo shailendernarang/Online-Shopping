@@ -55,6 +55,7 @@ public class HomeController {
 	public String Product(Model model1)
 	{
 		model1.addAttribute("productList",productDao.getAllProducts());
+		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("product",new Product());
 		return "Product";
 		
