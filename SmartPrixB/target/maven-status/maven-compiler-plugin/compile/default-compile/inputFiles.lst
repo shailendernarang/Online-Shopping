@@ -1,11 +1,14 @@
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\model\User.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\model\Product.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\config\HibernateConfig.java
-C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\ProductDaoImpl.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\UserDaoImpl.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\CategoryDaoImpl.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\UserDao.java
-C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\model\Category.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\CategoryDao.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\ProductDao.java
+C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\model\Brand.java
+C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\BrandDao.java
+C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\BrandDaoImpl.java
+C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\Dao\ProductDaoImpl.java
+C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\model\Category.java
 C:\Users\Sunny\Desktop\workspace\SmartPrixB\src\main\java\com\ss\SmartPrixB\App.java

@@ -30,6 +30,14 @@ Brand ID    <sp:input path="brandID" readOnly="true" disabled="true"/>
 Brand Name  <sp:input path="brandName"/>
 Brand Desc  <sp:input path="brandDesc"/>
 Brand Rating <sp:input path="brandRating"/>
+<sp:select path="categoryID">
+<c:forEach items ="${categoryList}" var="c">
+
+<sp:option value="${ c.categoryID}">${c.categoryID}</sp:option>
+
+</c:forEach>
+</sp:select>
+
 
  <c:if test="${empty brand.brandName}">
         <sp:button class="btn btn-success" value="submit">Register</sp:button>
@@ -46,7 +54,7 @@ Brand Rating <sp:input path="brandRating"/>
 <c:if test="${not empty brandList}">
 <table width="50%" border="1">
 <tr>
-<th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>Action</th>
+<th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>CategoryID</th><th>Action</th>
 </tr>
 <tr>
 <c:forEach items="${brandList}" var="c">
@@ -54,6 +62,7 @@ Brand Rating <sp:input path="brandRating"/>
 <td>${c.brandName}</td>
 <td>${c.brandDesc}</td>
 <td>${c.brandRating}</td>
+<td>${c.categoryID}</td>
 <td><a href="<c:url value='updateBrand/${c.brandID}'/>">Edit/<a href="<c:url value='deleteBrand/${c.brandID}'/>">Delete</a></a>
 </tr>
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
+import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Product;
 @Controller
@@ -16,7 +17,8 @@ public class BrandController {
 
 	@Autowired
 	BrandDao brandDao;
-	
+	@Autowired
+	CategoryDao categoryDao;
 	@RequestMapping(value="/addBrand",method=RequestMethod.POST)
 	
 	public String addBrand(@ModelAttribute("brand")Brand p)
@@ -38,6 +40,7 @@ public class BrandController {
 	public String updateBrand(@PathVariable("brandID")Integer brID,Model model)
 	{
 	    model.addAttribute("brand",brandDao.getBrandByID(brID));
+	    model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList", brandDao.getAllBrands());
 		return "Brand";
 	}

@@ -22,7 +22,7 @@
 <br>
 <br>
 <br>
-<sp:form action="${pageContext.request.contextPath }/addProduct" method="POST" modelAttribute="product">
+<sp:form action="${pageContext.request.contextPath }/addProduct" method="POST" modelAttribute="product" enctype="Multipart/form-data">
 <c:if test="${not empty product.productName}">
 Product ID    <sp:input path="productID" readOnly="true" disabled="true"/>
 <sp:hidden path="productID"/>
@@ -30,44 +30,14 @@ Product ID    <sp:input path="productID" readOnly="true" disabled="true"/>
 Product Name  <sp:input path="productName"/>
 Product Desc  <sp:input path="productDesc"/>
 Product Cost <sp:input path="productCost"/>
+Choose Image <sp:input type="file" path="image" />
+<sp:select path="brandID">
+<c:forEach items ="${brandList}" var="c">
 
-<%! String driverName = "org.h2.Driver";%>
-<%!String url = "jdbc:h2:tcp://localhost/~/SmartPrix";%>
-<%!String user = "sunny";%>
-<%!String psw = "";%>
-<%
-Connection con = null;
-PreparedStatement ps = null;
-try
-{
-Class.forName(driverName);
-con = DriverManager.getConnection(url,user,psw);
-String sql = "SELECT * FROM Brand";
-ps = con.prepareStatement(sql);
-ResultSet rs = ps.executeQuery(); 
-%>
-<p>Select Brand :
-<sp:select path="brand">
-<%
-while(rs.next())
-{
-String fname = rs.getString("brandName"); 
-%>
-<option value="<%=fname %>"><%=fname %></option>
-<%
-}
-%>
+<sp:option value="${ c.brandID}">${c.brandName}</sp:option>
+
+</c:forEach>
 </sp:select>
-</p>
-<%
-}
-catch(SQLException sqe)
-{ 
-out.println(sqe);
-}
-%>
-
-
 
 
 
@@ -95,8 +65,8 @@ out.println(sqe);
 <td>${c.productName}</td>
 <td>${c.productDesc}</td>
 <td>${c.productCost}</td>
-<td>${c.brand}</td>
-<td><a href="<c:url value='updateProduct/${c.productID}'/>">Edit/<a href="<c:url value='deleteProduct/${c.productID}'/>">Delete</a></a>
+<td>${c.brandID}</td>
+<td><a href="<c:url value='updateProduct/${c.productID}'/>">Edit<a href="<c:url value='deleteProduct/${c.productID}'/>">Delete</a></a>
 </tr>
 
 </c:forEach>

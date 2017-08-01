@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Product;
 @SuppressWarnings("deprecation")
 @Repository("productDao")
@@ -19,9 +18,9 @@ public class ProductDaoImpl implements ProductDao {
 	SessionFactory sessionFactory;	
 	public boolean addProduct(Product p) {
 		Session s1=sessionFactory.getCurrentSession();
-		Brand b = new Brand();
 		
 		s1.persist(p);
+		
 		return true;
 	}
 	public boolean deleteProduct(int p) {
@@ -32,7 +31,6 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	public boolean updateProduct(Product p) {
         Session s1 =sessionFactory.getCurrentSession();
-		
 		s1.update(p);
 		return true;
 	}

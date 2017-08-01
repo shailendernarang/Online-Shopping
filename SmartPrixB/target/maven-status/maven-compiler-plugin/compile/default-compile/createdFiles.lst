@@ -1,0 +1,14 @@
+com\ss\SmartPrixB\Dao\CategoryDaoImpl.class
+com\ss\SmartPrixB\Dao\BrandDaoImpl.class
+com\ss\SmartPrixB\config\HibernateConfig.class
+com\ss\SmartPrixB\Dao\ProductDao.class
+com\ss\SmartPrixB\Dao\BrandDao.class
+com\ss\SmartPrixB\Dao\CategoryDao.class
+com\ss\SmartPrixB\model\User.class
+com\ss\SmartPrixB\model\Product.class
+com\ss\SmartPrixB\Dao\UserDao.class
+com\ss\SmartPrixB\model\Brand.class
+com\ss\SmartPrixB\Dao\ProductDaoImpl.class
+com\ss\SmartPrixB\App.class
+com\ss\SmartPrixB\Dao\UserDaoImpl.class
+com\ss\SmartPrixB\model\Category.class

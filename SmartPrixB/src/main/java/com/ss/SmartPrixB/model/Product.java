@@ -2,19 +2,24 @@ package com.ss.SmartPrixB.model;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.ss.SmartPrixB.model.Brand;
 
 @Component
 @Entity
-public class Product {
+public class Product implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,14 +27,20 @@ public class Product {
 	private String productName;
 	private String productDesc;
 	private String productCost;
-	
+	private String brandID;
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	@Transient
+	MultipartFile image;
 	
 	@ManyToOne
-	@JoinColumn(name="brandID",insertable=false,updatable=false)
+	@JoinColumn(name="brandID",insertable=false,updatable=false,nullable=false)
 	private Brand brand;
 
-	
-	
 	public Brand getBrand() {
 		return brand;
 	}
@@ -46,6 +57,15 @@ public class Product {
 	}
 	public String getProductName() {
 		return productName;
+	}
+	
+	
+	
+	public String getBrandID() {
+		return brandID;
+	}
+	public void setBrandID(String brandID) {
+		this.brandID = brandID;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;

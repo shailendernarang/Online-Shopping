@@ -1,9 +1,8 @@
 package com.ss.SmartPrixB.model;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,6 +26,15 @@ public class Brand {
 	private String brandName;
 	private String brandRating;
 	private String brandDesc;
+	private String categoryID;
+	
+
+	public String getCategoryID() {
+		return categoryID;
+	}
+	public void setCategoryID(String categoryID) {
+		this.categoryID = categoryID;
+	}
 	@ManyToOne
 	@JoinColumn(name="categoryID",insertable=false,updatable=false)
 	private Category category;
@@ -37,7 +45,7 @@ public class Brand {
 		this.category = category;
 	}
 	@OneToMany(mappedBy="brand",fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
-	private Collection<Product> p= new ArrayList<Product>();
+	private Collection<Product> p= new TreeSet<Product>();
 	
 	public Collection<Product> getP() {
 		return p;

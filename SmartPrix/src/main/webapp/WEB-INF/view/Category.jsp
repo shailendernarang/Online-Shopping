@@ -51,7 +51,7 @@ Category Desc  <sp:input path="categoryDesc"/>
 <tr><td>${c.categoryID}</td>
 <td>${c.categoryName}</td>
 <td>${c.categoryDesc}</td>
-<td><a href="<c:url value='updateCategory/${c.categoryID}'/>">Edit</a>
+<td><a href="<c:url value='updateCategory/catid=?${c.categoryID}'/>">Edit</a>
 <td><a href="<c:url value='deleteCategory/${c.categoryID}'/>">Delete</a></tr>
 
 </c:forEach>
