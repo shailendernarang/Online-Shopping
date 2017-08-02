@@ -38,6 +38,9 @@
                <li><a href="${pageContext.request.contextPath }/Category">Category</a></li>
                <li><a href="${pageContext.request.contextPath }/Product">Product</a></li>
                <li><a href="${pageContext.request.contextPath }/Brand">Brand</a></li>
+               <li><a href="${pageContext.request.contextPath }/Panel">Add</a></li>
+               
+
          </ul>   
          
          

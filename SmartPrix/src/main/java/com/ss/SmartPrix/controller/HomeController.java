@@ -46,6 +46,7 @@ public class HomeController {
 	public String Category(Model model1)
 	{
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+		
 		model1.addAttribute("category",new Category());
 		return "Category";
 		
@@ -69,4 +70,14 @@ public class HomeController {
 		return "Brand";
 		
 	}
+	@RequestMapping("/Panel")
+	public String Panel()
+	{
+	/*	model1.addAttribute("brandList",brandDao.getAllBrands());
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+		model1.addAttribute("brand",new Brand());
+		*/return "Panel";
+		
+	}
+	
 }

@@ -82,7 +82,7 @@ public String deleteProduct(@PathVariable("productID")Integer proID,Model model)
 	model.addAttribute("product",productDao.getProductByID(proID));
 	productDao.deleteProduct(proID);
 		model.addAttribute("productList",productDao.getAllProducts());
-	return "Product";
+	return "redirect:/Product";
 }
 
 	

@@ -1,6 +1,6 @@
 <%@include file="header.jsp"%>
 <%@ page import="java.sql.*" %>
-<%ResultSet resultset =null;%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
@@ -14,9 +14,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+  
    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 <br>
@@ -57,7 +56,7 @@ Choose Image <sp:input type="file" path="image" />
 <c:if test="${not empty productList}">
 <table width="50%" border="1">
 <tr>
-<th>ID</th><th>Product Name</th><th>Product Description</th><th>Product Cost</th><th>Brand ID</th><th>Action</th>
+<th>ID</th><th>Product Name</th><th>Product Description</th><th>Product Cost</th><th>Brand ID</th><th>Image</th><th>Action</th>
 </tr>
 <tr>
 <c:forEach items="${productList}" var="c">
@@ -66,13 +65,15 @@ Choose Image <sp:input type="file" path="image" />
 <td>${c.productDesc}</td>
 <td>${c.productCost}</td>
 <td>${c.brandID}</td>
-<td><a href="<c:url value='updateProduct/${c.productID}'/>">Edit<a href="<c:url value='deleteProduct/${c.productID}'/>">Delete</a></a>
+<td><img src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg" style="height:120px;width:150px;"/></td>
+<td><a href="<c:url value='updateProduct/${c.productID}'/>">Edit/<a href="<c:url value='deleteProduct/${c.productID}'/>">Delete</a></a>
 </tr>
 
 </c:forEach>
 </tr>
 </table>
 </c:if>
+
 
 </body>
 </html>

@@ -34,8 +34,12 @@
             <li><a href="#contact">Tablets</a></li>
             <li><a >Laptops</a></li>
             <li><a >Accessories</a></li>
-            <li><a href="Register">Register</a></li>
-               <li><a href="Category">Category</a></li>
+            <li><a href="${pageContext.request.contextPath }/Register">Register</a></li>
+               <li><a href="${pageContext.request.contextPath }/Category">Category</a></li>
+               <li><a href="${pageContext.request.contextPath }/Product">Product</a></li>
+               <li><a href="${pageContext.request.contextPath }/Brand">Brand</a></li>
+               
+
          </ul>   
          
          

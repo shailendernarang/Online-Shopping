@@ -22,8 +22,7 @@
 <br>
 <br>
 <br>
-<sp:form action="
-/addCategory" method="POST" modelAttribute="category">
+<sp:form action="${pageContext.request.contextPath }/addCategory" method="POST" modelAttribute="category">
 <c:if test="${not empty category.categoryName}">
 Category ID    <sp:input path="categoryID" readOnly="true" disabled="true"/>
 <sp:hidden path="categoryID"/>
@@ -52,7 +51,7 @@ Category Desc  <sp:input path="categoryDesc"/>
 <tr><td>${c.categoryID}</td>
 <td>${c.categoryName}</td>
 <td>${c.categoryDesc}</td>
-<td><a href="<c:url value='updateCategory/${c.categoryID}'/>">Edit</a>
+<td><a href="<c:url value='updateCategory/catid=?${c.categoryID}'/>">Edit</a>
 <td><a href="<c:url value='deleteCategory/${c.categoryID}'/>">Delete</a></tr>
 
 </c:forEach>

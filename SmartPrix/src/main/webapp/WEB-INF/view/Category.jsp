@@ -44,15 +44,18 @@ Category Desc  <sp:input path="categoryDesc"/>
 <c:if test="${not empty categoryList}">
 <table width="50%" border="1">
 <tr>
-<th>ID</th><th>Category Name</th><th>Category Description</th>
+<th>ID</th><th>Category Name</th><th>Category Description</th><th>Action</th>
 </tr>
 <tr>
 <c:forEach items="${categoryList}" var="c">
 <tr><td>${c.categoryID}</td>
 <td>${c.categoryName}</td>
 <td>${c.categoryDesc}</td>
-<td><a href="<c:url value='updateCategory/catid=?${c.categoryID}'/>">Edit</a>
-<td><a href="<c:url value='deleteCategory/${c.categoryID}'/>">Delete</a></tr>
+<td><a href="<c:url value='updateCategory/${c.categoryID}'/>">Edit/</a>
+<a href="<c:url value='deleteCategory/${c.categoryID}'/>">Delete</a></td>
+
+
+</tr>
 
 </c:forEach>
 </tr>
