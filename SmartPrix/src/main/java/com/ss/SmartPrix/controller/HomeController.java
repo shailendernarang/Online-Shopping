@@ -13,6 +13,8 @@ import com.ss.SmartPrixB.Dao.UserDao;
 import com.ss.SmartPrixB.model.User;
 import com.ss.SmartPrixB.model.Category;
 import  com.ss.SmartPrixB.model.Product;
+import com.ss.SmartPrixB.model.ShippingDetails;
+import com.ss.SmartPrixB.model.BillingDetails;
 import  com.ss.SmartPrixB.model.Brand;
 
 @Controller
@@ -26,8 +28,9 @@ public class HomeController {
 	@Autowired
 	BrandDao brandDao;
 	@RequestMapping("/")
-	public String home()
+	public String home(Model model1)
 	{
+		model1.addAttribute("productList",productDao.getAllProducts());
 		
 		return "index";
 		
@@ -36,13 +39,18 @@ public class HomeController {
 	@RequestMapping("/Register")
 	public String Register(Model model)
 	{
-		model.addAttribute("userList",userDao.getAllUser());
+		ShippingDetails shippingDetails = new ShippingDetails();
+		BillingDetails billingDetails = new BillingDetails();
+		User user=new User();
+		user.setShippingDetails(shippingDetails);
+		user.setBillingDetails(billingDetails);
+		 
 		model.addAttribute("user",new User());
 		return "Register";
 		
 	}
 
-	@RequestMapping("/Category")
+	@RequestMapping("/admin/Category")
 	public String Category(Model model1)
 	{
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
@@ -52,7 +60,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping("/Product")
+	@RequestMapping("/admin/Product")
 	public String Product(Model model1)
 	{
 		model1.addAttribute("productList",productDao.getAllProducts());
@@ -61,7 +69,7 @@ public class HomeController {
 		return "Product";
 		
 	}
-	@RequestMapping("/Brand")
+	@RequestMapping("/admin/Brand")
 	public String Brand(Model model1)
 	{
 		model1.addAttribute("brandList",brandDao.getAllBrands());
@@ -70,14 +78,16 @@ public class HomeController {
 		return "Brand";
 		
 	}
-	@RequestMapping("/Panel")
-	public String Panel()
+	@RequestMapping("/Login")
+	public String Login()
 	{
-	/*	model1.addAttribute("brandList",brandDao.getAllBrands());
-		model1.addAttribute("categoryList",categoryDao.getAllCategory());
-		model1.addAttribute("brand",new Brand());
-		*/return "Panel";
-		
+		return "Login";
 	}
+	@RequestMapping("/Logout")
+	public String Logout()
+	{
+		return "Logout";
+	}
+	
 	
 }

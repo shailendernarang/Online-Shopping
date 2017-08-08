@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@include file="/WEB-INF/view/header.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
@@ -31,9 +31,10 @@ Brand Name  <sp:input path="brandName"/>
 Brand Desc  <sp:input path="brandDesc"/>
 Brand Rating <sp:input path="brandRating"/>
 <sp:select path="categoryID">
+<sp:option value="select">----SELECT---</sp:option>
 <c:forEach items ="${categoryList}" var="c">
 
-<sp:option value="${ c.categoryID}">${c.categoryID}</sp:option>
+<sp:option value="${ c.categoryID}">${c.categoryName}</sp:option>
 
 </c:forEach>
 </sp:select>

@@ -1,54 +1,115 @@
+
+<%@ page isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Bootstrap Navbar and Slider Overlay Text - Bootsnipp.com</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <title>Bootstrap Navbar Cart Dropdown - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
-    </style>
+<style>
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  width: 100px;
+}
+.navbar {
+  height:50px;
+}
+
+.nav.navbar-left{
+  bottom: 0;
+  left: 0;
+  position:absolute;
+}
+
+.nav.navbar-right{
+  bottom: 0;
+  right: 0;
+  position:absolute;
+}
+
+</style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="navbar-wrapper">
-  <div class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+           <img class="navbar-brand" src="https://s3.amazonaws.com/owler-image/logo/smartprix_owler_20160226_213849_original.png" height="50"/>
       
-        <div class="navbar-header">
-        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </a>
-        <img class="navbar-brand" src="https://s3.amazonaws.com/owler-image/logo/smartprix_owler_20160226_213849_original.png" height="50"/>
-        
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="${pageContext.request.contextPath }/">Home</a></li>
-            <li><a href="http://www.bootply.com" target="ext">Mobile</a></li>
-            <li><a href="#contact">Tablets</a></li>
-            <li><a >Laptops</a></li>
-            <li><a >Accessories</a></li>
-            <li><a href="${pageContext.request.contextPath }/Register">Register</a></li>
-               <li><a href="${pageContext.request.contextPath }/Category">Category</a></li>
-               <li><a href="${pageContext.request.contextPath }/Product">Product</a></li>
-               <li><a href="${pageContext.request.contextPath }/Brand">Brand</a></li>
-               <li><a href="${pageContext.request.contextPath }/Panel">Add</a></li>
-               
-
-         </ul>   
-         
-         
-     
-        </div>
-
     </div>
-  </div><!-- /container -->
-</div><!-- /navbar wrapper -->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><a href="${pageContext.request.contextPath }/">Home </a></li>
+<c:if test="${pageContext.request.userPrincipal!=null }">
+        <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
+               <li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
+    </c:if>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      <c:if test="${pageContext.request.userPrincipal==null }">
+              <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
+                 <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
+   </c:if>
+         <c:if test="${pageContext.request.userPrincipal!=null }">
+                       <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/Logout">Logout <span class="sr-only">(current)</span></a></li>
+                       
+         </c:if>
+         
+   
+       </ul>
+    
+    </div>
+  </div>
+</nav>
+<script type="text/javascript">
+(function() {
+
+  'use strict';
+
+  document.querySelector('.material-design-hamburger__icon').addEventListener(
+    'click',
+    function() {      
+      var child;
+      
+      document.body.classList.toggle('background--blur');
+      this.parentNode.nextElementSibling.classList.toggle('menu--on');
+
+      child = this.childNodes[1].classList;
+
+      if (child.contains('material-design-hamburger__icon--to-arrow')) {
+        child.remove('material-design-hamburger__icon--to-arrow');
+        child.add('material-design-hamburger__icon--from-arrow');
+      } else {
+        child.remove('material-design-hamburger__icon--from-arrow');
+        child.add('material-design-hamburger__icon--to-arrow');
+      }
+
+    });
+
+})();
+</script> 
+</body>
+</html>
 
 

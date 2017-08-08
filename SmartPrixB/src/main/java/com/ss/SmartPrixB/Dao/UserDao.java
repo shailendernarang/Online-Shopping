@@ -7,8 +7,9 @@ import com.ss.SmartPrixB.model.User;
 public interface UserDao {
 
 	public boolean addUser(User u);
-	public boolean deleteUser(User u);
+/*	public boolean deleteUser(User u);
 	public boolean updateUser(User u);
 	List<User> getAllUser();
-	User getUserByID(Integer userID);
+	User getUserByID(Integer userID);*/
+	public boolean save(User u);
 }

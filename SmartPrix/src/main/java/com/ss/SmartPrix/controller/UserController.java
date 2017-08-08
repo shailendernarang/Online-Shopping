@@ -18,22 +18,30 @@ public class UserController {
 	UserDao userDao;
 	User u=new User();
 	
-	@RequestMapping(value="/addUser",method=RequestMethod.POST)
+	@RequestMapping(value="/save",method=RequestMethod.POST)
 	
 	public String addUser(@ModelAttribute("user")User c)
 	{
 	
-		if(c.getUserID()==0) {
-		userDao.addUser(c);
-		}
-		else 
-		{
+	//	if(c.getUserID()==0) {
+		userDao.save(c);
+		//}
+		//else 
+		/*{
 			userDao.updateUser(c);
-		}
+		}*/
 	
 		return "index";
 	}
-@RequestMapping(value="/updateUser/{userID}")
+	@RequestMapping("/logg")
+	public String logg()
+	
+	{
+		return "/";
+		
+	}
+	
+/*@RequestMapping(value="/updateUser/{userID}")
 	
 	public String updateUser(@PathVariable("userID")Integer userID,Model model)
 	{
@@ -52,7 +60,7 @@ public String deleteUser(@PathVariable("userID")Integer userID,Model model)
 	userDao.deleteUser(u);
 	model.addAttribute("userList", userDao.getAllUser());
 	return "Register";
-}
+}*/
 
 
 }

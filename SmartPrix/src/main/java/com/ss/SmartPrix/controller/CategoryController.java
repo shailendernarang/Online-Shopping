@@ -31,7 +31,7 @@ public class CategoryController {
 		{
 			categoryDao.updateCategory(c);
 		}
-		return "redirect:/Category";
+		return "redirect:/admin/Category";
 		
 	}
 @RequestMapping(value="/updateCategory/{categoryID}")
@@ -40,7 +40,7 @@ public class CategoryController {
 	{
 	    model.addAttribute("category",categoryDao.getCategoryByID(catID));
 		model.addAttribute("categoryList", categoryDao.getAllCategory());
-		return "Category";
+		return "/admin/Category";
 	}
 @RequestMapping(value="/deleteCategory/{categoryID}")
 
@@ -51,7 +51,7 @@ public String deleteUser(@PathVariable("categoryID")Integer catID,Model model)
 	categoryDao.deleteCategory(catID);
 	
 	model.addAttribute("categoryList", categoryDao.getAllCategory());
-	return "Category";
+	return "redirect:/admin/Category";
 }
 
 }

@@ -1,8 +1,5 @@
 package com.ss.SmartPrixB.model;
 
-
-
-
 import java.util.HashSet;
 import java.util.Set;
 

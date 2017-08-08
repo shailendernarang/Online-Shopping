@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@include file="/WEB-INF/view/header.jsp"%>
 <%@ page import="java.sql.*" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

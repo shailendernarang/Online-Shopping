@@ -9,98 +9,95 @@
 <%@ page isELIgnored="false" %>
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Register to SmartPrix</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 <br>
 <br>
 <br>
-<sp:form class="form-horizontal" action='addUser' method="POST" modelAttribute="user">
-  <fieldset>
-<c:if test="${empty user.userName}">
- <div class="control-group">
-      <!-- ID -->
-      <label class="control-label"  for="id">ID</label>
-      <div class="controls">
-        <sp:input path="userID" type="text"  class="input-xlarge" disabled="true" readonly="true"/>
-  
-        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+
+
+<sp:form class="form-horizontal" action='${pageContext.request.contextPath }/save' method="POST" modelAttribute="user">
+ <p class="h5 text-center mb-4">Sign up</p>
  
-      </div>
+     <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-name" class="form-control" path="userName"/>
+        <label for="orangeForm-name">Your name</label>
     </div>
-    </c:if>
-    <div class="control-group">
-      <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
-      <div class="controls">
-        <sp:input path="userName" type="text"  class="input-xlarge"/>
-  
-        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
- 
-      </div>
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-mail" class="form-control" path="userEmail"/>
+        <label for="orangeForm-email">Your Email</label>
     </div>
- 
-    <div class="control-group">
-      <!-- E-mail -->
-      <label class="control-label" for="email">E-mail</label>
-      <div class="controls">
-        <sp:input type="text" path="userEmail"  class="input-xlarge"></sp:input>
-        <p class="help-block">Please provide your E-mail</p>
-      </div>
+
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <sp:input type="password" id="orangeForm-pass" class="form-control" path="userPass"/>
+        <label for="orangeForm-pass">Password</label>
     </div>
-     
-    <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-        <sp:input type="password" path="userPass" class="input-xlarge"></sp:input>
-        <p class="help-block">Password should be at least 4 characters</p>
-      </div>
+     <div class="md-form">
+        <i class="fa fa-phone prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-phone" class="form-control" path="userPhone"/>
+        <label for="orangeForm-phone">Number Along With Country Code</label>
     </div>
- 
-   
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-      <c:if test="${empty user.userName}">
-        <sp:button class="btn btn-success" value="submit">Register</sp:button>
+    <div class="md-form">
+        <i class="fa fa-location-arrow prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location" class="form-control" path="shippingDetails.shippingAddress"/>
+        <label for="orangeForm-location">Street Address</label>
+    </div>
+     <div class="md-form">
+        <i class="fa fa-map-marker prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location1" class="form-control" path="shippingDetails.shippingStreet"/>
+        <label for="orangeForm-location">Landmark</label>
+    </div> <div class="md-form">
+        <i class="fa fa-map-marker prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location2" class="form-control" path="shippingDetails.shippingPinCode"/>
+        <label for="orangeForm-location">Pin Code</label>
+       
+    </div>
+     <input type="checkbox" id="name" onclick="copyValue(this)"  > Above Address same As Billing Address?
     
-    </c:if>
-    <c:if test="${not empty user.userName}">
-        <sp:button class="btn btn-success" value="submit">Update</sp:button>
-    
-    </c:if>
-    
-      </div>
+         <div class="md-form">
+        <i class="fa fa-location-arrow prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location3" class="form-control" path="billingDetails.billingAddress"/>
+        <label for="orangeForm-location">Street Address</label>
+    </div> <div class="md-form">
+        <i class="fa fa-map-marker prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location4" class="form-control" path="billingDetails.billingStreet"/>
+        <label for="orangeForm-location">Landmark</label>
+    </div> <div class="md-form">
+        <i class="fa fa-map-marker prefix grey-text"></i>
+        <sp:input type="text" id="orangeForm-location5" class="form-control" path="billingDetails.billingPinCode"/>
+        <label for="orangeForm-location">Pin Code</label>
     </div>
-      
-      
-  
-  </fieldset>
+     <div class="text-center">
+   			 <sp:button class="btn btn-deep-orange" value="submit">Register</sp:button>
+    </div>
 </sp:form>
-<c:if test="${not empty userList}">
-<table width="50%" border="1">
-<th>ID</th><th>Email</th><th>Password</th><th>Edit</th><th>DELETE</th>
-<tr>
-<c:forEach items="${userList}" var="u">
-<td>${u.userID}</td>
-<td>${u.userEmail}</td>
-<td>${u.userPass}</td>
-<td><a href="<c:url value='updateUser/${u.userID}'/>">Edit</a>
-<td><a href="deleteUser/${u.userID}">Delete</a>
-</tr>
-</c:forEach>
-</table>
-</c:if>
+<script>
+$(function(){
+
+    $('#name').change(function(){
+    var newVal=$("#orangeForm-location").val();
+    var newVall=$("#orangeForm-location1").val();
+    var newValll=$("#orangeForm-location2").val();
+
+       if (this.checked) {
+        $("#orangeForm-location3").val(newVal);
+        $("#orangeForm-location4").val(newVall);
+        $("#orangeForm-location5").val(newValll);
+    }
+    });
+});
+
+</script>
 </body>
 </html>

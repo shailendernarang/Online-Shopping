@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ss.SmartPrixB.model.Authorise;
 import com.ss.SmartPrixB.model.User;
 @Repository("userDao")
 @Transactional
@@ -19,12 +20,30 @@ User user = new User();
 @Autowired
 UserDao userDao;
 	public boolean addUser(User u) {
-		Session s1=sessionFactory.getCurrentSession();
+	/*	Session s1=sessionFactory.getCurrentSession();
 		s1.persist(u);
+		return true;*/
+		return false;
+	}
+	public boolean save(User u) {
+		Session session=sessionFactory.getCurrentSession();
+		u.getBillingDetails().setUsr(u);
+		u.getShippingDetails().setUser(u);
+		session.persist(u);
+		session.persist(u.getBillingDetails());
+		session.persist(u.getShippingDetails());
+		
+		Authorise auth = new Authorise();
+		auth.setROLE("ROLE_USER");
+		auth.setUsername(u.getUserName());
+		session.persist(auth);
+
+		User users = new User();
+		users.setActive(true);
 		return true;
 	}
 
-	public boolean deleteUser(User u) {
+/*	public boolean deleteUser(User u) {
 		Session s1 =sessionFactory.getCurrentSession();
 		Query<User> query=s1.createQuery("delete from User where userID= "+u.getUserID());    
 		query.executeUpdate();  
@@ -54,6 +73,6 @@ UserDao userDao;
 		Query<User> q = s1.createQuery("from User where userID="+userID);
 	User	user = (User)q.getSingleResult();
 	return user;
-	}
+	}*/
 
 }

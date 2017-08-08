@@ -67,7 +67,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1primary"></div>
+                        <div class="tab-pane fade in active" id="tab1primary">
+                        <a href="Brand"></a>
+                        </div>
                         <div class="tab-pane fade" id="tab2primary">Primary 2</div>
                         <div class="tab-pane fade" id="tab3primary">Primary 3</div>
                         <div class="tab-pane fade" id="tab4primary">Primary 4</div>
