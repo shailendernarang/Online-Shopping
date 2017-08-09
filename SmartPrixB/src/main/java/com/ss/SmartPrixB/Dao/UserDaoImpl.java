@@ -1,8 +1,7 @@
 package com.ss.SmartPrixB.Dao;
 
-import java.util.List;
 
-import org.hibernate.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +28,7 @@ UserDao userDao;
 		Session session=sessionFactory.getCurrentSession();
 		u.getBillingDetails().setUsr(u);
 		u.getShippingDetails().setUser(u);
+		u.setActive(true);
 		session.persist(u);
 		session.persist(u.getBillingDetails());
 		session.persist(u.getShippingDetails());
@@ -37,9 +37,6 @@ UserDao userDao;
 		auth.setROLE("ROLE_USER");
 		auth.setUsername(u.getUserName());
 		session.persist(auth);
-
-		User users = new User();
-		users.setActive(true);
 		return true;
 	}
 

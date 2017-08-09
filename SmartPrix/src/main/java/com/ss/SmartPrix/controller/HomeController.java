@@ -83,10 +83,10 @@ public class HomeController {
 	{
 		return "Login";
 	}
-	@RequestMapping("/Logout")
+	@RequestMapping("/LogOut")
 	public String Logout()
 	{
-		return "Logout";
+		return "redirect:/index";
 	}
 	
 	

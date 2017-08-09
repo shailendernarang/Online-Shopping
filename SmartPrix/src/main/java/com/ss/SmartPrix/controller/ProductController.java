@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
-import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Product;
 
 
@@ -60,7 +57,7 @@ public class ProductController {
 		{
 			productDao.updateProduct(p);
 		}
-		return "redirect:/Product";
+		return "redirect:/admin/Product";
 	
 		
 		
@@ -82,7 +79,7 @@ public String deleteProduct(@PathVariable("productID")Integer proID,Model model)
 	model.addAttribute("product",productDao.getProductByID(proID));
 	productDao.deleteProduct(proID);
 		model.addAttribute("productList",productDao.getAllProducts());
-	return "redirect:/Product";
+		return "redirect:/admin/Product";
 }
 
 	

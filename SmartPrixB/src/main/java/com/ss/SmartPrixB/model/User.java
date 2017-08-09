@@ -1,8 +1,5 @@
 package com.ss.SmartPrixB.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -36,6 +36,7 @@ public class User {
 	public void setShippingDetails(ShippingDetails shippingDetails) {
 		this.shippingDetails = shippingDetails;
 	}
+	@Size(min=2, max=30) 
 	private String userName;
 	public int getUserID() {
 		return userID;
@@ -43,6 +44,8 @@ public class User {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
+	@Email(message="Enter Correct Email")
+	@NotNull
 	private String userEmail;
 	private String userPass;
 	private long userPhone;

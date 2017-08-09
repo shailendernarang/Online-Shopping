@@ -1,10 +1,11 @@
 package com.ss.SmartPrix.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,9 +21,12 @@ public class UserController {
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	
-	public String addUser(@ModelAttribute("user")User c)
+	public String addUser(@Valid @ModelAttribute("user")User c,BindingResult br)
 	{
-	
+	if(br.hasErrors()) {
+		
+		return "Register";
+	}else {
 	//	if(c.getUserID()==0) {
 		userDao.save(c);
 		//}
@@ -30,7 +34,7 @@ public class UserController {
 		/*{
 			userDao.updateUser(c);
 		}*/
-	
+	}
 		return "index";
 	}
 	@RequestMapping("/logg")

@@ -15,12 +15,14 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ss.SmartPrixB.model.Brand;
-
 @Component
 @Entity
 public class Product implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int productID;

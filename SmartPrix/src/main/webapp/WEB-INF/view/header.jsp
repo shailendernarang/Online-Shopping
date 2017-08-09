@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Bootstrap Navbar Cart Dropdown - Bootsnipp.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -58,23 +57,33 @@
       <ul class="nav navbar-nav">
 
         <li><a href="${pageContext.request.contextPath }/">Home </a></li>
-<c:if test="${pageContext.request.userPrincipal!=null }">
+         <sec:authorize access="hasRole('ROLE_ADMIN')">
         <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
             <li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
                <li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
-    </c:if>
+ 
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_USER')">
+        <li><a href="${pageContext.request.contextPath }/0/Mobiles">Mobiles</a></li>
+            <li><a href="${pageContext.request.contextPath }/0/DSLR"	>DSLR</a></li>
+               <li><a href="${pageContext.request.contextPath }/0/MobileAccessories">Mobile Accessories</a></li>
+                       <li><a href="${pageContext.request.contextPath }/0/DSLRAccessories">DSLR Accessories</a></li>
+               
+ 
+    </sec:authorize>         
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      <c:if test="${pageContext.request.userPrincipal==null }">
+        <sec:authorize access="isAnonymous()">
               <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
                  <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
-   </c:if>
-         <c:if test="${pageContext.request.userPrincipal!=null }">
+   </sec:authorize>
+          <sec:authorize access="isAuthenticated()"> 
                        <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
-                                        <li><a href="${pageContext.request.contextPath }/Logout">Logout <span class="sr-only">(current)</span></a></li>
-                       
-         </c:if>
+                                        <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
+         </sec:authorize>     
+         
+         
          
    
        </ul>

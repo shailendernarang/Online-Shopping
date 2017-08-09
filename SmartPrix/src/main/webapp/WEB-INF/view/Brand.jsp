@@ -53,7 +53,7 @@ Brand Rating <sp:input path="brandRating"/>
 <br>
 
 <c:if test="${not empty brandList}">
-<table width="50%" border="1">
+<table style="width=50%;" border="1">
 <tr>
 <th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>CategoryID</th><th>Action</th>
 </tr>
@@ -64,7 +64,7 @@ Brand Rating <sp:input path="brandRating"/>
 <td>${c.brandDesc}</td>
 <td>${c.brandRating}</td>
 <td>${c.categoryID}</td>
-<td><a href="<c:url value='updateBrand/${c.brandID}'/>">Edit/<a href="<c:url value='deleteBrand/${c.brandID}'/>">Delete</a></a>
+<td><a href="<c:url value='/updateBrand/${c.brandID}'/>">Edit/<a href="<c:url value='/deleteBrand/${c.brandID}'/>">Delete</a></a>
 </tr>
 
 </c:forEach>

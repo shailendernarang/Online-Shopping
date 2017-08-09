@@ -10,8 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.SmartPrixB.model.Brand;
-import com.ss.SmartPrixB.model.Category;
-import com.ss.SmartPrixB.model.Product;
+@SuppressWarnings("deprecation")
 @Repository("brandDao")
 @Transactional
 public class BrandDaoImpl implements BrandDao {
@@ -45,6 +44,7 @@ public class BrandDaoImpl implements BrandDao {
 
 	public Brand getBrandByID(int brandID) {
 		Session s1 =sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
 		Query<Brand> q = s1.createQuery("from Brand where brandID="+brandID);
 	    Brand b = (Brand)q.getSingleResult();
 	    return b;

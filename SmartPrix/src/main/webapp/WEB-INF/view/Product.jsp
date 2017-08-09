@@ -66,7 +66,7 @@ Choose Image <sp:input type="file" path="image" />
 <td>${c.productCost}</td>
 <td>${c.brandID}</td>
 <td><img src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg" style="height:120px;width:150px;"/></td>
-<td><a href="<c:url value='updateProduct/${c.productID}'/>">Edit/<a href="<c:url value='deleteProduct/${c.productID}'/>">Delete</a></a>
+<td><a href="<c:url value='/updateProduct/${c.productID}'/>">Edit/<a href="<c:url value='/deleteProduct/${c.productID}'/>">Delete</a></a>
 </tr>
 
 </c:forEach>

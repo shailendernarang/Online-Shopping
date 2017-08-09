@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.SmartPrixB.model.Category;
-import com.ss.SmartPrixB.model.User;
+@SuppressWarnings("deprecation")
 @Repository("categoryDao")
 @Transactional
 public class CategoryDaoImpl implements CategoryDao {
@@ -30,7 +30,6 @@ public class CategoryDaoImpl implements CategoryDao {
 	return true;
 	}
 
-	@SuppressWarnings("deprecation")
 	public boolean updateCategory(Category c) {
 		Session s1 =sessionFactory.getCurrentSession();
 		

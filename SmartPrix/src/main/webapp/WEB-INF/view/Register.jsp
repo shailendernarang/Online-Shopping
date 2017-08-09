@@ -30,6 +30,7 @@
      <div class="md-form">
         <i class="fa fa-user prefix grey-text"></i>
         <sp:input type="text" id="orangeForm-name" class="form-control" path="userName"/>
+  		<sp:errors path="userName"/>
         <label for="orangeForm-name">Your name</label>
     </div>
     <div class="md-form">

@@ -124,15 +124,17 @@
                     <li data-target="#Carousel" data-slide-to="1"></li>
                     <li data-target="#Carousel" data-slide-to="2"></li>
                 </ol>
-                 
+                   <div class="carousel slide" id="myCarousel">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                     
                 <div class="item active">
                 	<div class="row">
                 	<c:forEach items="${productList}" var="c">
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img data-src="holder.js/300x200" src="${pageContext.request.contextPath}/resources/images/${c.productID}.jpg" style="height:120px;width:150px;"/></a></div>
+                	  <div class="col-md-2"><a href="#" class="thumbnail"><img data-src="holder.js/300x200" src="${pageContext.request.contextPath}/resources/images/${c.productID}.jpg" style="height:120px;width:150px;"/></a></div>
+                	
                 	 </c:forEach>
+                </div>
                 </div>
                 </div>
                 </div>

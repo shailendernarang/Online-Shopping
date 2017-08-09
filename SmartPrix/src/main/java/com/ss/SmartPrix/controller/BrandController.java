@@ -1,3 +1,4 @@
+
 package com.ss.SmartPrix.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.model.Brand;
-import com.ss.SmartPrixB.model.Product;
 @Controller
 public class BrandController {
 
@@ -31,7 +31,7 @@ public class BrandController {
 		{
 			brandDao.updateBrand(p);
 		}
-		return "redirect:/Brand";
+		return "redirect:/admin/Brand";
 		
 		
 	}
@@ -53,6 +53,6 @@ public String deleteProduct(@PathVariable("brandID")Integer brID,Model model)
 	brandDao.deleteBrand(brID);
 	
 	model.addAttribute("brandList",brandDao.getAllBrands());
-	return "Brand";
+	return "redirect:/admin/Brand";
 }
 }

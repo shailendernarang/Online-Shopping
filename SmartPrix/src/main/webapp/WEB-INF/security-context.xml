@@ -8,10 +8,10 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-	<intercept-url pattern="/Cart/**"
+	<!-- <intercept-url pattern="/Cart/**"
 			access="hasRole('ROLE_USER')" />
-			
-	<intercept-url pattern="/myCart/**"
+		-->	
+	<intercept-url pattern="/0**"
 			access="hasRole('ROLE_USER')" />
 				<!-- 	<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />

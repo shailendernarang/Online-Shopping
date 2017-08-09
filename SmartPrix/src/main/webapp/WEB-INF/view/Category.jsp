@@ -84,8 +84,8 @@
                                            
                           <tr>
                             <td align="center">
-                              <a href="<c:url value='/admin/updateCategory/${c.categoryID}'/>" class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                              <a href="<c:url value='/admin/deleteCategory/${c.categoryID}'/>" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                              <a href="<c:url value='/updateCategory/${c.categoryID}'/>" class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                              <a href="<c:url value='/deleteCategory/${c.categoryID}'/>" class="btn btn-danger"><em class="fa fa-trash"></em></a>
                             </td>
                            
              	              <td>${c.categoryID}</td>
