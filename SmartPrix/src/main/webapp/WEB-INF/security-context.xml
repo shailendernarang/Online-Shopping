@@ -11,12 +11,12 @@
 	<!-- <intercept-url pattern="/Cart/**"
 			access="hasRole('ROLE_USER')" />
 		-->	
-	<intercept-url pattern="/0**"
-			access="hasRole('ROLE_USER')" />
+	<!-- <intercept-url pattern="/0/*"
+			access="hasRole('ROLE_USER')" />-->
 				<!-- 	<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />
 	 -->	
-	 <intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
+	 <intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/Login"
 		 username-parameter="name" password-parameter="password" 
 		 login-processing-url="/logg"

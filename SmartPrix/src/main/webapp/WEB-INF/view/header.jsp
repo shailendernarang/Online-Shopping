@@ -11,6 +11,44 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: none;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #00000}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 .navbar-brand {
   transform: translateX(-50%);
   left: 50%;
@@ -18,7 +56,7 @@
   width: 100px;
 }
 .navbar {
-  height:50px;
+  min-height:50px;
 }
 
 .nav.navbar-left{
@@ -42,7 +80,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" >
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -57,20 +95,26 @@
       <ul class="nav navbar-nav">
 
         <li><a href="${pageContext.request.contextPath }/">Home </a></li>
+        <li class="dropdown"><a href="${pageContext.request.contextPath }/0/Mobiles" class="dropbtn">Mobiles</a>
+        <div class="dropdown-content"  style="width:500px;">
+   
+<c:forEach items ="${categoryList}" var="c">
+
+<a href="" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+
+</c:forEach>
+    </div>
+        </li>
+            <li><a href="${pageContext.request.contextPath }/BrandCard"	>DSLR</a></li>
+               <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
+                       <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
+               
          <sec:authorize access="hasRole('ROLE_ADMIN')">
         <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
             <li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
                <li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
  
     </sec:authorize>
-    <sec:authorize access="hasRole('ROLE_USER')">
-        <li><a href="${pageContext.request.contextPath }/0/Mobiles">Mobiles</a></li>
-            <li><a href="${pageContext.request.contextPath }/0/DSLR"	>DSLR</a></li>
-               <li><a href="${pageContext.request.contextPath }/0/MobileAccessories">Mobile Accessories</a></li>
-                       <li><a href="${pageContext.request.contextPath }/0/DSLRAccessories">DSLR Accessories</a></li>
-               
- 
-    </sec:authorize>         
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

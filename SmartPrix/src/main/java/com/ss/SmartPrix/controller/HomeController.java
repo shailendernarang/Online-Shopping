@@ -30,6 +30,8 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Model model1)
 	{
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+		model1.addAttribute("brandLIst",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getAllProducts());
 		
 		return "index";
@@ -88,6 +90,12 @@ public class HomeController {
 	{
 		return "redirect:/index";
 	}
-	
+	@RequestMapping("/BrandCard")
+	public String BrandCard(Model model1)
+	{
+		model1.addAttribute("brandList",brandDao.getAllBrands());
+
+		return "BrandCard";
+	}
 	
 }

@@ -44,7 +44,8 @@ public class UserController {
 		return "/";
 		
 	}
-	
+
+
 /*@RequestMapping(value="/updateUser/{userID}")
 	
 	public String updateUser(@PathVariable("userID")Integer userID,Model model)

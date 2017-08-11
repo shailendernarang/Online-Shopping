@@ -29,7 +29,7 @@ UserDao userDao;
 		u.getBillingDetails().setUsr(u);
 		u.getShippingDetails().setUser(u);
 		u.setActive(true);
-		session.persist(u);
+		session.persist(u); 
 		session.persist(u.getBillingDetails());
 		session.persist(u.getShippingDetails());
 		

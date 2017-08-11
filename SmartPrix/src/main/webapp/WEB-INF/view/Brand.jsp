@@ -22,7 +22,7 @@
 <br>
 <br>
 <br>
-<sp:form action="${pageContext.request.contextPath }/addBrand" method="POST" modelAttribute="brand">
+<sp:form action="${pageContext.request.contextPath }/addBrand" method="POST" modelAttribute="brand" enctype="Multipart/form-data">
 <c:if test="${not empty brand.brandName}">
 Brand ID    <sp:input path="brandID" readOnly="true" disabled="true"/>
 <sp:hidden path="brandID"/>
@@ -30,6 +30,8 @@ Brand ID    <sp:input path="brandID" readOnly="true" disabled="true"/>
 Brand Name  <sp:input path="brandName"/>
 Brand Desc  <sp:input path="brandDesc"/>
 Brand Rating <sp:input path="brandRating"/>
+Choose Image <sp:input type="file" path="image" />
+
 <sp:select path="categoryID">
 <sp:option value="select">----SELECT---</sp:option>
 <c:forEach items ="${categoryList}" var="c">
@@ -55,7 +57,7 @@ Brand Rating <sp:input path="brandRating"/>
 <c:if test="${not empty brandList}">
 <table style="width=50%;" border="1">
 <tr>
-<th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>CategoryID</th><th>Action</th>
+<th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>CategoryID</th><th>Image</th><th>Action</th>
 </tr>
 <tr>
 <c:forEach items="${brandList}" var="c">
@@ -64,6 +66,8 @@ Brand Rating <sp:input path="brandRating"/>
 <td>${c.brandDesc}</td>
 <td>${c.brandRating}</td>
 <td>${c.categoryID}</td>
+<td><img src="${pageContext.request.contextPath}/resources/images/${c.brandID}.jpg" style="height:120px;width:150px;"/></td>
+
 <td><a href="<c:url value='/updateBrand/${c.brandID}'/>">Edit/<a href="<c:url value='/deleteBrand/${c.brandID}'/>">Delete</a></a>
 </tr>
 
