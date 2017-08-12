@@ -32,13 +32,13 @@ public class ProductController {
 	
 	public String addProduct(@ModelAttribute("product")Product p,HttpSession s)
 	{
-		
+		MultipartFile m=p.getImage();
 
 		if(p.getProductID()==0)
 		{
 		
 			productDao.addProduct(p);
-			MultipartFile m=p.getImage();
+
 			System.out.println(m.getOriginalFilename());
 			ServletContext context=s.getServletContext();
 			String filelocation=context.getRealPath("/resources/images");
@@ -55,6 +55,19 @@ public class ProductController {
 		}
 		else
 		{
+			System.out.println(m.getOriginalFilename());
+			ServletContext context=s.getServletContext();
+			String filelocation=context.getRealPath("/resources/images");
+			System.out.println(filelocation);
+			String filename=filelocation+"\\"+p.getProductID()+".jpg";
+			System.out.println(filename);
+			try{
+				byte b[]=m.getBytes();
+			FileOutputStream fos=new FileOutputStream(filename);
+			fos.write(b);
+			fos.close();
+			}
+			catch(Exception e){}
 			productDao.updateProduct(p);
 		}
 		return "redirect:/admin/Product";

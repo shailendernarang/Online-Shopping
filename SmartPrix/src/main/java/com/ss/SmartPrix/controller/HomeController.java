@@ -4,6 +4,7 @@ package com.ss.SmartPrix.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
@@ -31,9 +32,8 @@ public class HomeController {
 	public String home(Model model1)
 	{
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
-		model1.addAttribute("brandLIst",brandDao.getAllBrands());
+		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getAllProducts());
-		
 		return "index";
 		
 	}
@@ -90,10 +90,11 @@ public class HomeController {
 	{
 		return "redirect:/index";
 	}
-	@RequestMapping("/BrandCard")
-	public String BrandCard(Model model1)
-	{
-		model1.addAttribute("brandList",brandDao.getAllBrands());
+	@RequestMapping("/BrandCard/{catID}")
+	public String BrandCard(@PathVariable("catID")Integer cat,Model model1)
+	{System.out.println("is going to reterieve brands corresponding to categoryid");
+		model1.addAttribute("brandList",brandDao.getBrandByCategoryID(cat));
+		//model1.addAttribute("brandList",brandDao.getAllBrands());
 
 		return "BrandCard";
 	}

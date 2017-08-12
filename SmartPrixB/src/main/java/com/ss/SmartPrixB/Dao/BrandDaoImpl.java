@@ -50,4 +50,16 @@ public class BrandDaoImpl implements BrandDao {
 	    return b;
 	}
 
+	public List<Brand> getBrandByCategoryID(int categoryID) {
+		Session s1 =sessionFactory.getCurrentSession();
+		Query query=s1.createQuery("from Brand where categoryID=?");
+		query.setInteger(0,categoryID);
+		List<Brand> listCatBrand=(List<Brand>)query.getResultList();
+		return listCatBrand;
+	    
+		
+	}
+
+
+
 }

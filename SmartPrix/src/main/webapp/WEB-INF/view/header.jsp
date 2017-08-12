@@ -95,12 +95,36 @@ li.dropdown {
       <ul class="nav navbar-nav">
 
         <li><a href="${pageContext.request.contextPath }/">Home </a></li>
-        <li class="dropdown"><a href="${pageContext.request.contextPath }/0/Mobiles" class="dropbtn">Mobiles</a>
+        <sec:authorize access="hasRole('ROLE_USER')">
+         <li class="dropdown"><a href="${pageContext.request.contextPath }/0/Mobiles" class="dropbtn">Mobiles</a>
         <div class="dropdown-content"  style="width:500px;">
    
 <c:forEach items ="${categoryList}" var="c">
 
-<a href="" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+
+</c:forEach>
+    </div>
+        </li>
+            <li><a href=""	>DSLR</a></li>
+               <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
+                       <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
+               
+        
+        </sec:authorize>
+         <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
+               <li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
+ 
+    </sec:authorize>
+<sec:authorize access="isAnonymous()">
+ <li class="dropdown"><a href="${pageContext.request.contextPath }/0/Mobiles" class="dropbtn">Mobiles</a>
+        <div class="dropdown-content"  style="width:500px;">
+   
+<c:forEach items ="${categoryList}" var="c">
+
+<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
 
 </c:forEach>
     </div>
@@ -109,18 +133,14 @@ li.dropdown {
                <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
                        <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
                
-         <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
-            <li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
-               <li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
- 
-    </sec:authorize>
+</sec:authorize>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <sec:authorize access="isAnonymous()">
               <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
                  <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
+ 
    </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
                        <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>

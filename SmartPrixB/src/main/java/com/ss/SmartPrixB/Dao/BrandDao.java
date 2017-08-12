@@ -10,5 +10,5 @@ public interface BrandDao {
 	public boolean updateBrand(Brand b);
 	List<Brand> getAllBrands();
 	Brand getBrandByID(int brandID);
-	
+	List<Brand> getBrandByCategoryID(int categoryID);
 }

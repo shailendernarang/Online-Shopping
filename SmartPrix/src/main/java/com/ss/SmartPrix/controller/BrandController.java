@@ -49,6 +49,20 @@ public class BrandController {
 		}
 		else
 		{
+			MultipartFile m=p.getImage();
+
+			System.out.println(m.getOriginalFilename());
+			ServletContext context=s.getServletContext();
+			String filelocation=context.getRealPath("/resources/images");
+			System.out.println(filelocation);
+			String filename=filelocation+"\\"+p.getBrandID()+".jpg";
+			System.out.println(filename);
+			try{
+				byte b[]=m.getBytes();
+			FileOutputStream fos=new FileOutputStream(filename);
+			fos.write(b);
+			fos.close();
+			}catch(Exception e){}
 			brandDao.updateBrand(p);
 		}
 		return "redirect:/admin/Brand";

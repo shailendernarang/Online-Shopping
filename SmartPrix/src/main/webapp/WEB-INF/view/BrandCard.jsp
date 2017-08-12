@@ -177,6 +177,7 @@ progress::-moz-progress-bar {
        <div class="row" style="margin:50px;">
             
            <c:forEach items="${brandList}" var="c">
+           
        			     <div class=" col-md-3" style="margin:20px;">
                     		<div class="card w3-animate-opacity" >
                     			<img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg">
