@@ -5,69 +5,22 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Bootstrap Navbar and Slider Overlay Text - Bootsnipp.com</title>
+    <title>SmartPrix</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    
-    <style type="text/css">
-#loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
-}
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
-
-#myDiv {
-  display: none;
-  text-align: center;
-}
-   </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
+ <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+   
+  
 </head>
 <br>
 <br>
 <br>
+
 <body  onload="myFunction()" style="margin:0;">
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
@@ -113,35 +66,6 @@
   </a>  
 </div>
 </div>
-
-<div class="container animate-bottom" id="another" style="padding-top: 200px;position: fixed;" >
-    <div class="row">
-		<div class="col-md-12">
-                <div id="Carousel" class="carousel slide">
-                 
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                   <div class="carousel slide" id="myCarousel">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item active">
-                	<div class="row">
-                	<c:forEach items="${productList}" var="c">
-                	  <div class="col-md-2"><a href="#" class="thumbnail"><img data-src="holder.js/300x200" src="${pageContext.request.contextPath}/resources/images/${c.productID}.jpg" style="height:120px;width:150px;"/></a></div>
-                	
-                	 </c:forEach>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
 <script>
 var myVar;
 
@@ -156,5 +80,66 @@ function showPage() {
 }
 </script>
 
-</body>
+ <div class="container">
+    <div class="row animate-bottom">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                   Trending Android Products</h3>
+            </div>
+            <div class="col-md-3">
+              
+                <div class="controls pull-right hidden-xs">
+                    <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+                        data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example" data-slide="next"></a>
+                </div>
+            </div>
+        </div>
+        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+            <div class="carousel-inner">
+      
+                <div class="item active">
+                    <div class="row">
+                      <c:forEach items="${productList}" var="c">
+                        <div class="col-sm-3">
+                        
+                            <div class="col-item">
+                                <div class="photo"  style="width:auto;height:200px">
+                                    <img src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg" class="img-responsive" alt="${c.productName}" style="width:auto;height:150px" />
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-9">
+                                            <h5>
+                                               ${c.productName }</h5>
+                                            <h5 class="price-text-color">
+                                              &#8377;  ${c.productCost }</h5>
+                                        </div>
+                                        <div class="rating hidden-sm col-md-6">
+                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+                                        <p class="btn-details">
+                                            <i class="fa fa-list"></i><a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="hidden-sm">More details</a></p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                              </c:forEach>
+                         </div>
+                      </div>
+                   
+                  </div>
+               </div>
+             </div>
+        </div>
+      
+   </body>
 </html>

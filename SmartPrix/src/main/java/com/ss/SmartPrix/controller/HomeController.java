@@ -46,7 +46,8 @@ public class HomeController {
 		User user=new User();
 		user.setShippingDetails(shippingDetails);
 		user.setBillingDetails(billingDetails);
-		 
+		model.addAttribute("categoryList",categoryDao.getAllCategory());
+		model.addAttribute("brandList",brandDao.getAllBrands());	 
 		model.addAttribute("user",new User());
 		return "Register";
 		
@@ -81,8 +82,10 @@ public class HomeController {
 		
 	}
 	@RequestMapping("/Login")
-	public String Login()
+	public String Login(Model model)
 	{
+		model.addAttribute("categoryList",categoryDao.getAllCategory());
+		model.addAttribute("brandList",brandDao.getAllBrands());
 		return "Login";
 	}
 	@RequestMapping("/LogOut")
@@ -93,10 +96,28 @@ public class HomeController {
 	@RequestMapping("/BrandCard/{catID}")
 	public String BrandCard(@PathVariable("catID")Integer cat,Model model1)
 	{System.out.println("is going to reterieve brands corresponding to categoryid");
-		model1.addAttribute("brandList",brandDao.getBrandByCategoryID(cat));
+	model1.addAttribute("categoryList",categoryDao.getAllCategory());
+	model1.addAttribute("brandList",brandDao.getAllBrands());
+	model1.addAttribute("brandList",brandDao.getBrandByCategoryID(cat));
 		//model1.addAttribute("brandList",brandDao.getAllBrands());
 
 		return "BrandCard";
 	}
-	
+	@RequestMapping("/ProductDetail/{proID}")
+	public String ProductDetail(@PathVariable("proID")Integer pro,Model model1)
+	{
+		model1.addAttribute("brand",brandDao.getAllBrands());
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+
+		model1.addAttribute("productList",productDao.getProductByID(pro));
+		return "ProductDetail";
+	}
+	@RequestMapping("/ProductCard/{proID}")
+	public String product(@PathVariable("proID")Integer pro,Model model1)
+	{
+		model1.addAttribute("brandList",brandDao.getAllBrands());
+		model1.addAttribute("productList",productDao.getAllProducts());
+		model1.addAttribute("productList",productDao.getProductByBrandID(pro));
+		return "ProductCard";
+	}
 }

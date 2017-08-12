@@ -49,6 +49,13 @@ public class ProductDaoImpl implements ProductDao {
 	    Product pro = (Product)q.getSingleResult();
 	    return pro;
 	}
+	public List<Product> getProductByBrandID(int brID) {
+		Session s1 =sessionFactory.getCurrentSession();
+		Query q = s1.createQuery("from Product where brandID=?");
+		q.setInteger(0,brID);
+	    List<Product> pro = (List<Product>)q.getResultList();
+	    return pro;
+	}
 	
 
 

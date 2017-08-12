@@ -12,7 +12,7 @@ public interface ProductDao {
 	public boolean updateProduct(Product p);
 	List<Product> getAllProducts();
 	Product getProductByID(int productID);
-	
+	List<Product> getProductByBrandID(int brID);
 	
 	
 

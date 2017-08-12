@@ -1,10 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -172,19 +168,25 @@ progress::-moz-progress-bar {
 <progress value="0" id="progressBar"></progress>
 <%@include file="/WEB-INF/view/header.jsp"%>
 
+</head>
+<body>
 <div class="container">
        
        <div class="row" style="margin:50px;">
             
-           <c:forEach items="${brandList}" var="c">
+           <c:forEach items="${productList}" var="c">
            
        			     <div class=" col-md-3" style="margin:20px;">
-                    		<div class="card w3-animate-opacity" >
-                    			<a href="${pageContext.request.contextPath }/ProductCard/${c.brandID }" value="${ c.categoryID}" style="display:block;"><img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg"></a>
+                    <div class="card w3-animate-opacity" >
+                    	<a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="hidden-sm">	
+                    	
+                    		 <img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg">
                     				<div class="card-block">
-                        				<h5 class="text-bold w3-animate-opacity">${c.brandName}</h5>
+                        				<h5 class="text-bold w3-animate-opacity">${c.productName}</h5>
                 					</div>
+                		</a>
                             </div>
+
                      </div>
            </c:forEach>
        </div>

@@ -28,11 +28,11 @@ public class BrandController {
 	@RequestMapping(value="/addBrand",method=RequestMethod.POST)
 	
 	public String addBrand(@ModelAttribute("brand")Brand p,HttpSession s)
-	{
+	{ 	MultipartFile m=p.getImage();
 		if(p.getBrandID()==0)
 		{
 			brandDao.addBrand(p);
-			MultipartFile m=p.getImage();
+			
 			System.out.println(m.getOriginalFilename());
 			ServletContext context=s.getServletContext();
 			String filelocation=context.getRealPath("/resources/images");
@@ -49,8 +49,6 @@ public class BrandController {
 		}
 		else
 		{
-			MultipartFile m=p.getImage();
-
 			System.out.println(m.getOriginalFilename());
 			ServletContext context=s.getServletContext();
 			String filelocation=context.getRealPath("/resources/images");
