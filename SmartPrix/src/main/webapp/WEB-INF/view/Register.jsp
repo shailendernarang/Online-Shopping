@@ -13,77 +13,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style type="text/css">
-   </style>
+<link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     
 </head>
 <body>
-<br>
-<br>
-<br>
 
-
-<sp:form class="form-horizontal" action='${pageContext.request.contextPath }/save' method="POST" modelAttribute="user">
- <p class="h5 text-center mb-4">Sign up</p>
- 
-     <div class="md-form">
-        <i class="fa fa-user prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-name" class="form-control" path="userName"/>
-  		<sp:errors path="userName"/>
-        <label for="orangeForm-name">Your name</label>
-    </div>
-    <div class="md-form">
-        <i class="fa fa-envelope prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-mail" class="form-control" path="userEmail"/>
-        <label for="orangeForm-email">Your Email</label>
-    </div>
-
-    <div class="md-form">
-        <i class="fa fa-lock prefix grey-text"></i>
-        <sp:input type="password" id="orangeForm-pass" class="form-control" path="userPass"/>
-        <label for="orangeForm-pass">Password</label>
-    </div>
-     <div class="md-form">
-        <i class="fa fa-phone prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-phone" class="form-control" path="userPhone"/>
-        <label for="orangeForm-phone">Number Along With Country Code</label>
-    </div>
-    <div class="md-form">
-        <i class="fa fa-location-arrow prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location" class="form-control" path="shippingDetails.shippingAddress"/>
-        <label for="orangeForm-location">Street Address</label>
-    </div>
-     <div class="md-form">
-        <i class="fa fa-map-marker prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location1" class="form-control" path="shippingDetails.shippingStreet"/>
-        <label for="orangeForm-location">Landmark</label>
-    </div> <div class="md-form">
-        <i class="fa fa-map-marker prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location2" class="form-control" path="shippingDetails.shippingPinCode"/>
-        <label for="orangeForm-location">Pin Code</label>
+ <div class="container">
+    <div class="col-md-10">
+   		 <div id="logbox">
+     		 <sp:form id="signup" method="post" action="${pageContext.request.contextPath }/save" modelAttribute="user">
+        <h1>Create An Account</h1>
+        <sp:input path="userName" type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus"  class="input pass"/>
+       	<sp:errors path="userName"/>
+        <sp:input path="userPass" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+        <sp:input path="userEmail" type="email" placeholder="Email address" required="required" class="input pass"/>
+        <sp:input path="userPhone" type="phone" placeholder="Phone Number" required="required"  class="input pass"/>
+        <sp:input path="shippingDetails.shippingAddress" id="orangeForm-location" type="text" placeholder="Address" required="required"  class="input pass"/>
+        <sp:input path="shippingDetails.shippingStreet"  id="orangeForm-location1" type="text" placeholder="Street" required="required"  class="input pass"/>
+        <sp:input path="shippingDetails.shippingPinCode" id="orangeForm-location2" type="text" placeholder="Pin Code" required="required" class="input pass"/>
+      	  <input type="checkbox" id="name" onclick="copyValue(this)"  > Same Address?Just Click Me    
+      	<sp:input path="billingDetails.billingAddress" id="orangeForm-location3" type="text" placeholder="Address" required="required" class="input pass"/>
+        <sp:input path="billingDetails.billingStreet"  id="orangeForm-location4" type="text" placeholder="Street" required="required" class="input pass"/>
+        <sp:input path="billingDetails.billingPinCode" id="orangeForm-location5" type="text" placeholder="Pin Code" required="required" class="input pass"/>
        
+       
+       
+       
+       
+        <sp:button type="submit" value="Sign me up!" class="inputButton">Sign Me Up!</sp:button>
+        <div class="text-center">
+            already have an account? <a href="${pageContext.request.contextPath }/Login" id="login_id">login</a>
+        </div>
+      </sp:form>
     </div>
-     <input type="checkbox" id="name" onclick="copyValue(this)"  > Above Address same As Billing Address?
-    
-         <div class="md-form">
-        <i class="fa fa-location-arrow prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location3" class="form-control" path="billingDetails.billingAddress"/>
-        <label for="orangeForm-location">Street Address</label>
-    </div> <div class="md-form">
-        <i class="fa fa-map-marker prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location4" class="form-control" path="billingDetails.billingStreet"/>
-        <label for="orangeForm-location">Landmark</label>
-    </div> <div class="md-form">
-        <i class="fa fa-map-marker prefix grey-text"></i>
-        <sp:input type="text" id="orangeForm-location5" class="form-control" path="billingDetails.billingPinCode"/>
-        <label for="orangeForm-location">Pin Code</label>
-    </div>
-     <div class="text-center">
-   			 <sp:button class="btn btn-deep-orange" value="submit">Register</sp:button>
-    </div>
-</sp:form>
-<script>
+   </div>
+   </div>
+   <script>
 $(function(){
 
     $('#name').change(function(){
@@ -102,3 +68,4 @@ $(function(){
 </script>
 </body>
 </html>
+

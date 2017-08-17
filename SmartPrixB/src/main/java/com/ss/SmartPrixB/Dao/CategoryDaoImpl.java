@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
 @SuppressWarnings("deprecation")
 @Repository("categoryDao")
@@ -52,5 +53,6 @@ public class CategoryDaoImpl implements CategoryDao {
 	    Category cat = (Category)q.getSingleResult();
 	    return cat;
 	}
-	  
+
+		  
 }

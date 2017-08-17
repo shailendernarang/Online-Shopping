@@ -43,6 +43,7 @@
 					<div class="form-group">
 						<sp:input type="text" class="form-control" path="categoryDesc" placeholder="Category Description"/>
 					</div>
+					
 					 <c:if test="${empty category.categoryName}">
        					 <sp:button class="btn btn-primary pull-right " value="submit">Add</sp:button>
    					
@@ -91,7 +92,8 @@
              	              <td>${c.categoryID}</td>
 								<td>${c.categoryName}</td>
 								   <td>${c.categoryDesc}</td>
-								   </tr>
+								       
+						   </tr>
                             </c:forEach>
                           
                         </tbody>

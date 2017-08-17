@@ -37,10 +37,12 @@ public class UserController {
 	}
 		return "index";
 	}
-	@RequestMapping("/logg")
+	@RequestMapping(value="/logg")
 	public String logg()
 	
 	{
+	
+		
 		return "/";
 		
 	}

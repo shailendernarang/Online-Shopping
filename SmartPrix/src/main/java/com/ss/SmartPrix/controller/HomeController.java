@@ -26,6 +26,7 @@ public class HomeController {
 	CategoryDao categoryDao;
 	@Autowired
 	ProductDao productDao;
+	
 	@Autowired
 	BrandDao brandDao;
 	@RequestMapping("/")
@@ -37,6 +38,7 @@ public class HomeController {
 		return "index";
 		
 	}
+	
 	
 	@RequestMapping("/Register")
 	public String Register(Model model)
@@ -57,7 +59,6 @@ public class HomeController {
 	public String Category(Model model1)
 	{
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
-		
 		model1.addAttribute("category",new Category());
 		return "Category";
 		
@@ -103,6 +104,14 @@ public class HomeController {
 
 		return "BrandCard";
 	}
+	@RequestMapping("/BrandCard")
+		
+		public String BrandCardAgain(Model model1)
+		{
+		model1.addAttribute("brandList",brandDao.getAllBrands());
+		return "BrandCard";
+		}		
+	
 	@RequestMapping("/ProductDetail/{proID}")
 	public String ProductDetail(@PathVariable("proID")Integer pro,Model model1)
 	{

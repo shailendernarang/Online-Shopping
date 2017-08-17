@@ -33,10 +33,9 @@
       <ul class="nav navbar-nav">
 
         <li><a href="${pageContext.request.contextPath }/">Home </a></li>
+        
         <sec:authorize access="hasRole('ROLE_USER')">
-        <c:forEach items ="${categoryList}" var="c">
          <li class="dropdown"><a href="${pageContext.request.contextPath }/BrandCard/" class="dropbtn">Mobiles</a>
-         </c:forEach>
         <div class="dropdown-content"  style="width:500px;">
    
 			<c:forEach items ="${categoryList}" var="c">
@@ -45,12 +44,13 @@
 
 			</c:forEach>
     	</div>
+      
  
-            <li><a href="">DSLR</a></li>
+         <!--   <li ><a href="">DSLR</a></li>
                <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
                     <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
                
-        
+        -->
         </sec:authorize>
          		<sec:authorize access="hasRole('ROLE_ADMIN')">
        				 <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
@@ -59,20 +59,21 @@
  
     			</sec:authorize>
 				<sec:authorize access="isAnonymous()">
- 						<li class="dropdown"><a href="${pageContext.request.contextPath }/BrandCard/${c.categoryID}" class="dropbtn">Mobiles</a>
-        					<div class="dropdown-content"  style="width:500px;">
+         <li class="dropdown"><a href="${pageContext.request.contextPath }/BrandCard/" class="dropbtn">Mobiles</a>
+        <div class="dropdown-content"  style="width:500px;">
    
-								<c:forEach items ="${categoryList}" var="c">
+			<c:forEach items ="${categoryList}" var="c">
 
-										<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+				<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
 
-								</c:forEach>
-    						</div>
-        				</li>
-            <li><a href="${pageContext.request.contextPath }/BrandCard"	>DSLR</a></li>
+			</c:forEach>
+    	</div>
+      
+        				
+           <!--  <li><a href="${pageContext.request.contextPath }/BrandCard"	>DSLR</a></li>
                <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
                        <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
-               
+            -->
 </sec:authorize>
       </ul>
 
