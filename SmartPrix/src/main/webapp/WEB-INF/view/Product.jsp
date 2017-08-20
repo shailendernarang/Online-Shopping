@@ -69,6 +69,9 @@
     <c:if test="${not empty product.productName}">
         <sp:button class="btn btn-success" value="submit">Update</sp:button>
     </c:if>
+  	<c:if test="${not empty success }">
+		<div class="alert alert-success">${success}</div>
+	</c:if>
 </sp:form>
   </div>
      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>

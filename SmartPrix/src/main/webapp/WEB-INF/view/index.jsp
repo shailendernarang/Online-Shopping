@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,73 +11,179 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-   
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
 </head>
 <br>
 <br>
 <br>
 
-<body  onload="myFunction()" style="margin:0;">
-<div id="loader"></div>
-<div style="display:none;" id="myDiv" class="animate-bottom">
-<div id="myCarousel" class="carousel slide" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="https://rukminim1.flixcart.com/flap/1500/500/image/66864a.jpg?q=50" class="img-responsive">
-      <div class="container">
-        <div class="carousel-caption">
-          </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="https://rukminim1.flixcart.com/flap/1500/500/image/cec044.jpg?q=50" class="img-responsive">
-      <div class="container">
-        <div class="carousel-caption">
-          
+<body>
+<div class="navbar-wrapper animate-top">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      
+        <div class="navbar-header">
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+        <a class="navbar-logo" href="${pageContext.request.contextPath }/"><img style="margin-top:7px;margin-left:0px;" src="https://data3.smartprix.com/img/sprite/logo.png"/></a>
         </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="https://rukminim1.flixcart.com/flap/1500/500/image/886334.jpg?q=50" class="img-responsive">
-      <div class="container">
-        <div class="carousel-caption">
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="${pageContext.request.contextPath }/">Home</a></li>
+          <sec:authorize access="hasRole('ROLE_USER')">
+            <li class="dropdown">
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <c:forEach items ="${categoryList}" var="c">
+
+				<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+</li>
+			</c:forEach>
+                
+                
+              </ul>
+            </li>
+            </sec:authorize>
+     			 <sec:authorize access="hasRole('ROLE_ADMIN')">
+       				<li><a href="${pageContext.request.contextPath }/AdminCard">Admin</a></li>
+    			</sec:authorize>
+    			
+    		<sec:authorize access="isAnonymous()">
+          <li class="dropdown">
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+               
+                
+              <c:forEach items ="${categoryList}" var="c">
+
+				 <li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+
+			</c:forEach>
+                
+                
+              </ul>
+            </li>
+</sec:authorize>
+          </ul>
           
-        </div>
-      </div>
-    </div>
-  </div>
+          
+          
+      <ul class="nav navbar-nav navbar-right">
+        <sec:authorize access="isAnonymous()">
+              <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
+                 <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
  
-  <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <i class="glyphicon glyphicon-chevron-left"></i>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <i class="glyphicon glyphicon-chevron-right"></i>
-  </a>  
-</div>
-</div>
-<script>
-var myVar;
+   </sec:authorize>
+   			<sec:authorize access="hasRole('ROLE_USER')"> 
+         
+              	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge badge-pill badge-primary">${numberProducts }</span></a></li>
+         
+         </sec:authorize>
+          <sec:authorize access="isAuthenticated()"> 
+                       <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
+                             <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
+         
+         
+         </sec:authorize>     
+         
+         
+         
+   
+       </ul>
+        </div>
 
-function myFunction() {
-    myVar = setTimeout(showPage,1000);
-}
+    </div>
+  </div><!-- /container -->
+</div>
 
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-  document.getElementById("another").style.display="block";
-}
+<div class="container">
+        <div id="main_area">
+                <!-- Slider -->
+                <div class="row animate-bottom">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row animate-bottom">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="w3-animate-right active item" data-slide-number="0">
+                                        <img src="https://rukminim1.flixcart.com/flap/1400/700/image/a689ee.jpg?q=50"></div>
+
+                                        <div class="w3-animate-right item" data-slide-number="1">
+                                        <img src="https://rukminim1.flixcart.com/flap/1400/700/image/cb6433.jpg?q=50"></div>
+
+                                        <div class="w3-animate-right item" data-slide-number="2">
+                                        <img src="https://rukminim1.flixcart.com/flap/1400/700/image/52cca6.jpg?q=50"></div>
+
+                                        <div class="w3-animate-left item" data-slide-number="3">
+                                        <img src="https://rukminim1.flixcart.com/flap/1400/700/image/8abcba.jpg?q=50"></div>
+                                    </div><!-- Carousel nav -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>                                       
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>                                       
+                                    </a>                                
+                                    </div>
+                            </div>
+
+                           </div>
+                    </div>
+                </div><!--/Slider-->
+
+                <div class="row animate-bottom hidden-xs" id="slider-thumbs">
+                        <!-- Bottom switcher of slider -->
+                        <ul class="hide-bullets">
+                            <li class="col-sm-2">
+                                <a class="thumbnail" id="carousel-selector-0"><img src="https://rukminim1.flixcart.com/flap/500/500/image/a689ee.jpg?q=50"></a>
+                            </li>
+
+                            <li class="col-sm-2">
+                                <a class="thumbnail" id="carousel-selector-1"><img src="https://rukminim1.flixcart.com/flap/300/300/image/cb6433.jpg?q=50"></a>
+                            </li>
+
+                            <li class="col-sm-2">
+                                <a class="thumbnail" id="carousel-selector-2"><img src="https://rukminim1.flixcart.com/flap/300/300/image/52cca6.jpg?q=50"></a>
+                            </li>
+
+                            <li class="col-sm-2">
+                                <a class="thumbnail" id="carousel-selector-3"><img src="https://rukminim1.flixcart.com/flap/500/500/image/8abcba.jpg?q=50"></a>
+                            </li>
+
+                        </ul>                 
+                </div>
+        </div>
+</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+ 
+        $('#myCarousel').carousel({
+                interval: 5000
+        });
+ 
+        $('#carousel-text').html($('#slide-content-0').html());
+ 
+        //Handles the carousel thumbnails
+       $('[id^=carousel-selector-]').click( function(){
+            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+            var id = parseInt(id);
+            $('#myCarousel').carousel(id);
+        });
+ 
+ 
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                 var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+});
 </script>
 <%@include file="trending.jsp" %>
       

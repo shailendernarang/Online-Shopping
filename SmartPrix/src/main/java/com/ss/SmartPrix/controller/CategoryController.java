@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.CategoryDao;
+import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
 
 
@@ -17,18 +19,25 @@ public class CategoryController {
 
 	@Autowired
 	CategoryDao categoryDao;
-	
+
 	@RequestMapping(value="/addCategory",method=RequestMethod.POST)
 
-	public String addCategory(@ModelAttribute("category")Category c)
+	public String addCategory(@ModelAttribute("category")Category c, RedirectAttributes redirect)
 	{
 		if(c.getCategoryID()==0)
 		{
-			categoryDao.addcategory(c);
+			boolean flag=categoryDao.addcategory(c);
+			if (flag) {
+			redirect.addFlashAttribute("success",c.getCategoryName() + " " + "Successfully added to category!");
+			}
+			
 		}
 		else
 		{
-			categoryDao.updateCategory(c);
+			boolean flag=categoryDao.updateCategory(c);
+			if (flag) {
+				redirect.addFlashAttribute("success","Successfully updated ");
+				}
 		}
 		return "redirect:/admin/Category";
 		

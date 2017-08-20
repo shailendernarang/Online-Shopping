@@ -7,123 +7,121 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Bootstrap Navbar and Slider Overlay Text - Bootsnipp.com</title>
+    <title>Add Brand</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-.modal  {
-    /*   display: block;*/
-    padding-right: 0px;
-    background-color: rgba(4, 4, 4, 0.8); 
-    }
-   
-    .modal-dialog {
-            top: 20%;
-                width: 100%;
-    position: absolute;
-        }
-        .modal-content {
-                border-radius: 0px;
-                border: none;
-    top: 40%;
-            }
-            .modal-body {
-                    background-color: #0f8845;
-    color: white;
-                }
-               
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
-   </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    
 </head>
 <body>
 <br>
 <br>
 <br>
-<sp:form action="${pageContext.request.contextPath }/addBrand" method="POST" modelAttribute="brand" enctype="Multipart/form-data">
-<c:if test="${not empty brand.brandName}">
-Brand ID    <sp:input path="brandID" readOnly="true" disabled="true"/>
-<sp:hidden path="brandID"/>
-</c:if>
-Brand Name  <sp:input path="brandName"/>
-Brand Desc  <sp:input path="brandDesc"/>
-Brand Rating <sp:input path="brandRating"/>
-Choose Image <sp:input type="file" path="image" />
-
-<sp:select path="categoryID">
-<sp:option value="select">----SELECT---</sp:option>
-<c:forEach items ="${categoryList}" var="c">
-
-<sp:option value="${ c.categoryID}">${c.categoryName}</sp:option>
-
-</c:forEach>
-</sp:select>
-
-
- <c:if test="${empty brand.brandName}">
-        <sp:button class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg" value="submit">Register</sp:button>
-   
-       
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    
-      <div class="modal-body">
-     
-      <H2>Battery Low!</H2>
-      <h4>Your Laptop battery is less then 10%.Recharge the battery.</h4>
-     
-      </div>
+<div class="container" >
+<div class="row">
+    <div class="form-area">  
+        <sp:form action="${pageContext.request.contextPath }/addBrand" method="POST" modelAttribute="brand" enctype="Multipart/form-data">
+      			  <br style="clear:both">
+        		  <br>
+          
+                  <h3 style="margin-bottom: 25px; text-align: center;">Add Brand</h3>
+    				<div class="form-group">
+    				<c:if test="${not empty brand.brandName}">
+						Brand ID    <sp:input path="brandID" readOnly="true" disabled="true" type="text" class="form-control"/>
+					<sp:hidden path="brandID"/>
+					</c:if>
+					</div>
+					<div class="form-group">
+						<sp:input path="brandName" type="text" class="form-control"  placeholder="Brand Name"/>
+					</div>
+					<div class="form-group">
+						<sp:input type="text" class="form-control" path="brandDesc" placeholder="Brand Description"/>
+					</div>
+					<div class="form-group">
+					<sp:select path="categoryID" class="form-control">
+						<sp:option value="select" class="form-control">----SELECT---</sp:option>
+						<c:forEach items ="${categoryList}" var="c">
+							<sp:option value="${ c.categoryID}">${c.categoryName}</sp:option>
+						</c:forEach>
+					</sp:select>
+					</div>
+					<div class="form-group" >
+						<sp:input class="form-control" type="file" path="image"  placeholder="Choose Image"/>
+					</div>
+					
+					 <c:if test="${empty brand.brandName}">
+       					 <sp:button class="btn btn-primary pull-right " value="submit">Add</sp:button>
+   					
+   					 </c:if>
+  					  <c:if test="${not empty brand.brandName}">
+    						    <sp:button class="btn btn-primary pull-right" value="submit">Update</sp:button>
+ 				      </c:if>
+ 				      
+   	<c:if test="${not empty success }">
+		<div class="alert alert-success">${success}</div>
+	</c:if>
+        </sp:form>
+        
     </div>
-  </div>
-</div>
-
-    </c:if>
-    <c:if test="${not empty brand.brandName}">
-        <sp:button class="btn btn-success"  data-toggle="modal" data-target=".bs-example-modal-lg" value="submit">Update</sp:button>
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    
-      <div class="modal-body">
-     
-      <H2>Added Successfully</H2>
-      <h4>${brand.brandName } successfully added</h4>
-     
-      </div>
+     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
     </div>
-  </div>
-</div>
-    </c:if>
   
-</sp:form>
-<br>
-<br>
-<br>
+ 
+    
+        <div class="col-md-10 col-md-offset-1">
 
-<c:if test="${not empty brandList}">
-<table style="width=50%;" border="1">
-<tr>
-<th>ID</th><th>Brand Name</th><th>Brand Description</th><th>Brand Rating</th><th>CategoryID</th><th>Image</th><th>Action</th>
-</tr>
-<tr>
-<c:forEach items="${brandList}" var="c">
-<tr><td>${c.brandID}</td>
-<td>${c.brandName}</td>
-<td>${c.brandDesc}</td>
-<td>${c.brandRating}</td>
-<td>${c.categoryID}</td>
-<td><img src="${pageContext.request.contextPath}/resources/images/${c.brandID}.jpg" style="height:120px;width:150px;"/></td>
-
-<td><a href="<c:url value='/updateBrand/${c.brandID}'/>">Edit/<a href="<c:url value='/deleteBrand/${c.brandID}'/>">Delete</a></a>
-</tr>
-
-</c:forEach>
-</tr>
-</table>
-</c:if>
-
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col col-xs-6">
+                    <h3 class="panel-title">Brand Table</h3>
+                  </div>
+                  
+                </div>
+              </div>
+          <div class="panel-body">
+              <c:if test="${not empty brandList}">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                        <th><em class="fa fa-cog"></em></th>
+                        <th>Brand ID</th>
+                        <th>Brand Name</th>
+                        <th>Brand Description</th>
+                        <th>Category ID</th>
+						<th>Picture</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                           <c:forEach items="${brandList}" var="c">
+                                           
+                          <tr>
+                            <td align="center">
+                              <a href="<c:url value='/updateBrand/${c.brandID}'/>" class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                              <a href="<c:url value='/deleteBrand/${c.brandID}'/>" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                           
+             	              <td>${c.brandID}</td>
+								<td>${c.brandName}</td>
+								   <td>${c.brandDesc}</td>
+								   	<td>${c.categoryID}</td>
+								   		<td><img src="${pageContext.request.contextPath}/resources/images/${c.brandID}.jpg" style="height:120px;width:150px;"/></td>
+								   			
+								   		
+								       
+						   </tr>
+                            </c:forEach>
+                          
+                        </tbody>
+                </table>
+            </c:if>
+           </div>
+          
+        </div>
+        </div>
+        </div>
 </body>
 </html>
+

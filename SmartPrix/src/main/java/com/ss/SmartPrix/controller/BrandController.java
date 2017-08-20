@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.CategoryDao;
@@ -25,13 +26,14 @@ public class BrandController {
 	BrandDao brandDao;
 	@Autowired
 	CategoryDao categoryDao;
-	@RequestMapping(value="/addBrand",method=RequestMethod.POST)
+	Brand b = new Brand();
 	
-	public String addBrand(@ModelAttribute("brand")Brand p,HttpSession s)
+	@RequestMapping(value="/addBrand",method=RequestMethod.POST)
+	public String addBrand(@ModelAttribute("brand")Brand p,HttpSession s,RedirectAttributes redirect)
 	{ 	MultipartFile m=p.getImage();
 		if(p.getBrandID()==0)
 		{
-			brandDao.addBrand(p);
+			boolean flag=brandDao.addBrand(p);
 			
 			System.out.println(m.getOriginalFilename());
 			ServletContext context=s.getServletContext();
@@ -39,13 +41,18 @@ public class BrandController {
 			System.out.println(filelocation);
 			String filename=filelocation+"\\"+p.getBrandID()+".jpg";
 			System.out.println(filename);
+			
 			try{
 				byte b[]=m.getBytes();
 			FileOutputStream fos=new FileOutputStream(filename);
 			fos.write(b);
 			fos.close();
 			}
+			
 			catch(Exception e){}
+			if (flag) {
+				redirect.addFlashAttribute("success",p.getBrandName() + " " + "Successfully added to brand!");
+				}
 		}
 		else
 		{
@@ -61,7 +68,10 @@ public class BrandController {
 			fos.write(b);
 			fos.close();
 			}catch(Exception e){}
-			brandDao.updateBrand(p);
+			boolean flag=brandDao.updateBrand(p);
+			if (flag) {
+				redirect.addFlashAttribute("success","Successfully updated ");
+				}
 		}
 		return "redirect:/admin/Brand";
 		

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
@@ -30,14 +31,14 @@ public class ProductController {
 	BrandDao brandDao;
 	@RequestMapping(value="/addProduct",method=RequestMethod.POST)
 	
-	public String addProduct(@ModelAttribute("product")Product p,HttpSession s)
+	public String addProduct(@ModelAttribute("product")Product p,HttpSession s,RedirectAttributes redirect)
 	{
 		MultipartFile m=p.getImage();
 
 		if(p.getProductID()==0)
 		{
 		
-			productDao.addProduct(p);
+			boolean flag=productDao.addProduct(p);
 
 			System.out.println(m.getOriginalFilename());
 			ServletContext context=s.getServletContext();
@@ -52,6 +53,9 @@ public class ProductController {
 			fos.close();
 			}
 			catch(Exception e){}
+			if (flag) {
+				redirect.addFlashAttribute("success",p.getProductName() + " " + "Successfully added to product!");
+				}
 		}
 		else
 		{
@@ -68,7 +72,10 @@ public class ProductController {
 			fos.close();
 			}
 			catch(Exception e){}
-			productDao.updateProduct(p);
+			boolean flag  =	productDao.updateProduct(p);
+			if (flag) {
+				redirect.addFlashAttribute("success", "Successfully updated!");
+				}
 		}
 		return "redirect:/admin/Product";
 	

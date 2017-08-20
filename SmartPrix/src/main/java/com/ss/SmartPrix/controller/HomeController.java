@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.CartDao;
@@ -34,7 +35,7 @@ public class HomeController {
 	HttpSession httpSession;
 	@Autowired
 	BrandDao brandDao;
-	
+
 	@RequestMapping("/")
 	public String home(Model model1)
 	{
@@ -136,5 +137,11 @@ public class HomeController {
 		model1.addAttribute("productList",productDao.getProductByBrandID(pro));
 		return "ProductCard";
 	}
+	@RequestMapping("/AdminCard")
 	
+	public String AdminCard(Model model1)
+	{
+	model1.addAttribute("brandList",brandDao.getAllBrands());
+	return "AdminCard";
+	}		
 }

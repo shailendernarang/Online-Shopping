@@ -14,83 +14,73 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-
-  <div class="container-fluid">
-    <div class="navbar-header" >
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-           <img class="navbar-brand" src="https://s3.amazonaws.com/owler-image/logo/smartprix_owler_20160226_213849_original.png" height="50"/>
+<div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       
-    </div>
+        <div class="navbar-header">
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+        <a class="navbar-logo" href="${pageContext.request.contextPath }/"><img style="margin-top:7px;margin-left:0px;" src="https://data3.smartprix.com/img/sprite/logo.png"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="${pageContext.request.contextPath }/">Home</a></li>
+          <sec:authorize access="hasRole('ROLE_USER')">
+            <li class="dropdown">
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <c:forEach items ="${categoryList}" var="c">
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-        <li><a href="${pageContext.request.contextPath }/">Home </a></li>
-        
-        <sec:authorize access="hasRole('ROLE_USER')">
-         <li class="dropdown"><a href="${pageContext.request.contextPath }/BrandCard/" class="dropbtn">Mobiles</a>
-        <div class="dropdown-content"  style="width:500px;">
-   
-			<c:forEach items ="${categoryList}" var="c">
-
-				<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
-
+				<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+</li>
 			</c:forEach>
-    	</div>
-      
- 
-         <!--   <li ><a href="">DSLR</a></li>
-               <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
-                    <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
-               
-        -->
-        </sec:authorize>
-         		<sec:authorize access="hasRole('ROLE_ADMIN')">
-       				 <li><a href="${pageContext.request.contextPath }/admin/Category">Category</a></li>
-            					<li><a href="${pageContext.request.contextPath }/admin/Product"	>Product</a></li>
-               								<li><a href="${pageContext.request.contextPath }/admin/Brand">Brand</a></li>
- 
+                
+                
+              </ul>
+            </li>
+            </sec:authorize>
+     			 <sec:authorize access="hasRole('ROLE_ADMIN')">
+       				<li><a href="${pageContext.request.contextPath }/AdminCard">Admin</a></li>
     			</sec:authorize>
-				<sec:authorize access="isAnonymous()">
-         <li class="dropdown"><a href="${pageContext.request.contextPath }/BrandCard/" class="dropbtn">Mobiles</a>
-        <div class="dropdown-content"  style="width:500px;">
-   
-			<c:forEach items ="${categoryList}" var="c">
+    			
+    		<sec:authorize access="isAnonymous()">
+          <li class="dropdown">
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+               
+                
+              <c:forEach items ="${categoryList}" var="c">
 
-				<a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+				 <li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
-    	</div>
-      
-        				
-           <!--  <li><a href="${pageContext.request.contextPath }/BrandCard"	>DSLR</a></li>
-               <li><a href="${pageContext.request.contextPath }/MobileAccessories">Mobile Accessories</a></li>
-                       <li><a href="${pageContext.request.contextPath }/DSLRAccessories">DSLR Accessories</a></li>
-            -->
+                
+                
+              </ul>
+            </li>
 </sec:authorize>
-      </ul>
-
+          </ul>
+          
+          
+          
       <ul class="nav navbar-nav navbar-right">
         <sec:authorize access="isAnonymous()">
               <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
                  <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
  
    </sec:authorize>
-   <sec:authorize access="hasRole('ROLE_USER')"> 
+   			<sec:authorize access="hasRole('ROLE_USER')"> 
          
-                            	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge badge-pill badge-primary">${numberProducts }</span></a></li>
+              	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge badge-pill badge-primary">${numberProducts }</span></a></li>
          
          </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
                        <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
-                                        <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
+                             <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
          
          
          </sec:authorize>     
@@ -99,37 +89,13 @@
          
    
        </ul>
-    
+        </div>
+
     </div>
-  </div>
-</nav>
-<script type="text/javascript">
-(function() {
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
 
-  'use strict';
 
-  document.querySelector('.material-design-hamburger__icon').addEventListener(
-    'click',
-    function() {      
-      var child;
-      
-      document.body.classList.toggle('background--blur');
-      this.parentNode.nextElementSibling.classList.toggle('menu--on');
-
-      child = this.childNodes[1].classList;
-
-      if (child.contains('material-design-hamburger__icon--to-arrow')) {
-        child.remove('material-design-hamburger__icon--to-arrow');
-        child.add('material-design-hamburger__icon--from-arrow');
-      } else {
-        child.remove('material-design-hamburger__icon--from-arrow');
-        child.add('material-design-hamburger__icon--to-arrow');
-      }
-
-    });
-
-})();
-</script> 
 </body>
 </html>
 

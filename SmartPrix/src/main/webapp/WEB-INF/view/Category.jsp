@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
    
-    <title>Simple Contact Form - Bootsnipp.com</title>
+    <title>Add Category</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
@@ -51,11 +51,16 @@
   					  <c:if test="${not empty category.categoryName}">
     						    <sp:button class="btn btn-primary pull-right" value="submit">Update</sp:button>
  				      </c:if>
+ 				      
+   	<c:if test="${not empty success }">
+		<div class="alert alert-success">${success}</div>
+	</c:if>
         </sp:form>
+        
     </div>
      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
     </div>
- 
+  
  
     
         <div class="col-md-10 col-md-offset-1">
