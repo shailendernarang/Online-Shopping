@@ -37,7 +37,9 @@ public class BrandDaoImpl implements BrandDao {
 
 	public List<Brand> getAllBrands() {
 		Session s=sessionFactory.getCurrentSession();
+		@SuppressWarnings("rawtypes")
 		Query query=s.createQuery("from Brand");
+		@SuppressWarnings("unchecked")
 		List<Brand> list=query.getResultList(); 
 		return list;
 	}
@@ -52,8 +54,10 @@ public class BrandDaoImpl implements BrandDao {
 
 	public List<Brand> getBrandByCategoryID(int categoryID) {
 		Session s1 =sessionFactory.getCurrentSession();
+		@SuppressWarnings("rawtypes")
 		Query query=s1.createQuery("from Brand where categoryID=?");
 		query.setInteger(0,categoryID);
+		@SuppressWarnings("unchecked")
 		List<Brand> listCatBrand=(List<Brand>)query.getResultList();
 		return listCatBrand;
 	    

@@ -12,7 +12,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-
+.modal  {
+    /*   display: block;*/
+    padding-right: 0px;
+    background-color: rgba(4, 4, 4, 0.8); 
+    }
+   
+    .modal-dialog {
+            top: 20%;
+                width: 100%;
+    position: absolute;
+        }
+        .modal-content {
+                border-radius: 0px;
+                border: none;
+    top: 40%;
+            }
+            .modal-body {
+                    background-color: #0f8845;
+    color: white;
+                }
+               
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
    </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -43,10 +63,39 @@ Choose Image <sp:input type="file" path="image" />
 
 
  <c:if test="${empty brand.brandName}">
-        <sp:button class="btn btn-success" value="submit">Register</sp:button>
+        <sp:button class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg" value="submit">Register</sp:button>
+   
+       
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+     
+      <H2>Battery Low!</H2>
+      <h4>Your Laptop battery is less then 10%.Recharge the battery.</h4>
+     
+      </div>
+    </div>
+  </div>
+</div>
+
     </c:if>
     <c:if test="${not empty brand.brandName}">
-        <sp:button class="btn btn-success" value="submit">Update</sp:button>
+        <sp:button class="btn btn-success"  data-toggle="modal" data-target=".bs-example-modal-lg" value="submit">Update</sp:button>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+     
+      <H2>Added Successfully</H2>
+      <h4>${brand.brandName } successfully added</h4>
+     
+      </div>
+    </div>
+  </div>
+</div>
     </c:if>
   
 </sp:form>

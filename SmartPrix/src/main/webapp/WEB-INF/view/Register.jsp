@@ -20,7 +20,7 @@
 <body>
 
  <div class="container">
-    <div class="col-md-10">
+    <div class="col-sm-12">
    		 <div id="logbox">
      		 <sp:form id="signup" method="post" action="${pageContext.request.contextPath }/save" modelAttribute="user">
         <h1>Create An Account</h1>

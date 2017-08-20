@@ -1,11 +1,14 @@
 package com.ss.SmartPrixB.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,10 +23,29 @@ public class User {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int userID;
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	private List<Cart> cartItems;
+	public List<Cart> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(List<Cart> cartItems) {
+		this.cartItems = cartItems;
+	}
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
 	private ShippingDetails shippingDetails;
+	
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "usr", cascade = CascadeType.ALL)
 	private BillingDetails billingDetails;
+	
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "userr", cascade = CascadeType.ALL)
+	private UserOrder order;
+	
+	public UserOrder getOrder() {
+		return order;
+	}
+	public void setOrder(UserOrder order) {
+		this.order = order;
+	}
 	public BillingDetails getBillingDetails() {
 		return billingDetails;
 	}

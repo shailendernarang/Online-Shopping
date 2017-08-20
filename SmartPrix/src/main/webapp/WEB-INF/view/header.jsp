@@ -83,9 +83,16 @@
                  <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
  
    </sec:authorize>
+   <sec:authorize access="hasRole('ROLE_USER')"> 
+         
+                            	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge badge-pill badge-primary">${numberProducts }</span></a></li>
+         
+         </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
                        <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
                                         <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
+         
+         
          </sec:authorize>     
          
          

@@ -1,9 +1,6 @@
 package com.ss.SmartPrix.controller;
 
 
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
-import com.ss.SmartPrixB.Dao.CartDao;
 import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
 import com.ss.SmartPrixB.Dao.UserDao;
@@ -30,11 +26,9 @@ public class HomeController {
 	CategoryDao categoryDao;
 	@Autowired
 	ProductDao productDao;
-	@Autowired
-	HttpSession httpSession;
+	
 	@Autowired
 	BrandDao brandDao;
-	
 	@RequestMapping("/")
 	public String home(Model model1)
 	{
@@ -125,7 +119,6 @@ public class HomeController {
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 
 		model1.addAttribute("productList",productDao.getProductByID(pro));
-		model1.addAttribute("pro",productDao.getAllProducts());
 		return "ProductDetail";
 	}
 	@RequestMapping("/ProductCard/{proID}")
@@ -136,5 +129,4 @@ public class HomeController {
 		model1.addAttribute("productList",productDao.getProductByBrandID(pro));
 		return "ProductCard";
 	}
-	
 }

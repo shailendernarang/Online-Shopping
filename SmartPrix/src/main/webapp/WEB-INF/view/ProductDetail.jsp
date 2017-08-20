@@ -61,7 +61,7 @@
 							<span class="color blue"></span>
 						</h5>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<a class="add-to-cart btn btn-default" href="${pageContext.request.contextPath}/myCart/addToCart/${productList.productID}">add to cart</a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>

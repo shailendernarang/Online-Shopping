@@ -1,6 +1,8 @@
 package com.ss.SmartPrixB.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,7 @@ public class ShippingDetails {
 	@OneToOne
 	@JoinColumn
 	private User user;
+
 	public User getUser() {
 		return user;
 	}
