@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -34,19 +35,12 @@
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
               <ul class="dropdown-menu">
               <c:forEach items ="${categoryList}" var="c">
-
-				<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
-</li>
-			</c:forEach>
-                
-                
+					<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;" class="dropdown-toggle" data-toggle="dropdown">&nbsp;${c.categoryName}&nbsp;</a></li>
+			</c:forEach>        
               </ul>
             </li>
             </sec:authorize>
-     			 <sec:authorize access="hasRole('ROLE_ADMIN')">
-       				<li><a href="${pageContext.request.contextPath }/AdminCard">Admin</a></li>
-    			</sec:authorize>
-    			
+     			 
     		<sec:authorize access="isAnonymous()">
           <li class="dropdown">
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
@@ -55,7 +49,7 @@
                 
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li><a class="dropdown-toggle" data-toggle="dropdown" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
                 

@@ -4,23 +4,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>SmartPrix</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <br>
 <br>
 <br>
 
-<body>
+<body background="https://www.ashercharles.com/wp-content/themes/v3/images/banner-main-large4.jpg">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+     			 <jsp:forward page="/admin/AdminCard"></jsp:forward>
+</sec:authorize>
+    			
 <div class="navbar-wrapper animate-top">
   <div class="container">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -33,16 +35,16 @@
 	    </a>
         <a class="navbar-logo" href="${pageContext.request.contextPath }/"><img style="margin-top:7px;margin-left:0px;" src="https://data3.smartprix.com/img/sprite/logo.png"/></a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse ">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${pageContext.request.contextPath }/">Home</a></li>
+            <li><a  href="${pageContext.request.contextPath }/">Home</a></li>
           <sec:authorize access="hasRole('ROLE_USER')">
             <li class="dropdown">
-              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="glyphicon glyphicon-hand-down"></b></a>
+              <ul class="dropdown-menu w3-hoverable" >
               <c:forEach items ="${categoryList}" var="c">
-
-				<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
+				
+				<li> <a class="btn btn-default btn-xs" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
 </li>
 			</c:forEach>
                 
@@ -50,19 +52,15 @@
               </ul>
             </li>
             </sec:authorize>
-     			 <sec:authorize access="hasRole('ROLE_ADMIN')">
-       				<li><a href="${pageContext.request.contextPath }/AdminCard">Admin</a></li>
-    			</sec:authorize>
-    			
+     			
     		<sec:authorize access="isAnonymous()">
           <li class="dropdown">
-              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-               
-                
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles<b class="glyphicon glyphicon-menu-down"></b> </a>
+              <ul class="dropdown-menu" >
+             
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li style="margin-top:0px;margin-bottom: 3px;"> <a class="btn btn-default " href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 
 			</c:forEach>
                 
@@ -76,8 +74,8 @@
           
       <ul class="nav navbar-nav navbar-right">
         <sec:authorize access="isAnonymous()">
-              <li><a href="${pageContext.request.contextPath }/Login">Login <span class="sr-only">(current)</span></a></li>
-                 <li><a href="${pageContext.request.contextPath }/Register">Register <span class="sr-only">(current)</span></a></li>
+              <li><a href="${pageContext.request.contextPath }/Login">Login <span class="glyphicon glyphicon-user"></span></a></li>
+                 <li><a href="${pageContext.request.contextPath }/Register">Register <span class="glyphicon glyphicon-plus"></span></a></li>
  
    </sec:authorize>
    			<sec:authorize access="hasRole('ROLE_USER')"> 
@@ -186,6 +184,6 @@
 });
 </script>
 <%@include file="trending.jsp" %>
-      
+
    </body>
 </html>

@@ -130,46 +130,12 @@ h5 {
 .meta a:hover {
     color: rgba(0, 0, 0, .87);
 }
-progress {
-  /* Positioning */
-  position:fixed;
-  left: 0;
-  top: 50px;
 
-  /* Dimensions */
-  width: 100%;
-  height: 5px;
-
-  /* Reset the appearance */
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-
-  /* Get rid of the default border in Firefox/Opera. */
-  border: none;
-
-  /* Progress bar container for Firefox/IE10+ */
-  background-color: transparent;
-
-  /* Progress bar value for IE10+ */
-  color: red;
-}
-progress::-webkit-progress-bar {
-  background-color: transparent;
-}
-
-progress::-webkit-progress-value {
-  background-color: red;
-}
-
-progress::-moz-progress-bar {
-  background-color: red;
-}
     </style>
 <title>Insert title here</title>
 </head>
 <body>
-<progress value="0" id="progressBar"></progress>
+
 <%@include file="/WEB-INF/view/header.jsp"%>
 
 <div class="container">
@@ -190,131 +156,7 @@ progress::-moz-progress-bar {
        </div>
 </div>
 </body>
-<script>
-
-$(document).ready(function(){
-    
-    var getMax = function(){
-        return $(document).height() - $(window).height();
-    }
-    
-    var getValue = function(){
-        return $(window).scrollTop();
-    }
-    
-    if('max' in document.createElement('progress')){
-        // Browser supports progress element
-        var progressBar = $('progress');
-        
-        // Set the Max attr for the first time
-        progressBar.attr({ max: getMax() });
-
-        $(document).on('scroll', function(){
-            // On scroll only Value attr needs to be calculated
-            progressBar.attr({ value: getValue() });
-        });
-      
-        $(window).resize(function(){
-            // On resize, both Max/Value attr needs to be calculated
-            progressBar.attr({ max: getMax(), value: getValue() });
-        });   
-    }
-    else {
-        var progressBar = $('.progress-bar'), 
-            max = getMax(), 
-            value, width;
-        
-        var getWidth = function(){
-            // Calculate width in percentage
-            value = getValue();            
-            width = (value/max) * 100;
-            width = width + '%';
-            return width;
-        }
-        
-        var setWidth = function(){
-            progressBar.css({ width: getWidth() });
-        }
-        
-        $(document).on('scroll', setWidth);
-        $(window).on('resize', function(){
-            // Need to reset the Max attr
-            max = getMax();
-            setWidth();
-        });
-    }
-});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function(){
-  
-  $('#flat').addClass("active");
-  $('#progressBar').addClass('flat');
-    
-  $('#flat').on('click', function(){
-    $('#progressBar').removeClass().addClass('flat');
-    $('a').removeClass();
-    $(this).addClass('active');
-    $(this).preventDefault();
-  });
-
-  $('#single').on('click', function(){
-    $('#progressBar').removeClass().addClass('single');
-    $('a').removeClass();    
-    $(this).addClass('active');
-    $(this).preventDefault();    
-  });
-
-  $('#multiple').on('click', function(){
-    $('#progressBar').removeClass().addClass('multiple');
-    $('a').removeClass();    
-    $(this).addClass('active');
-    $(this).preventDefault();    
-  });
-
-  $('#semantic').on('click', function(){
-    $('#progressBar').removeClass().addClass('semantic');
-    $('a').removeClass();    
-    $(this).addClass('active');
-    $(this).preventDefault();
-    alert('hello');
-  });
-
-  $(document).on('scroll', function(){
-
-      maxAttr = $('#progressBar').attr('max');
-      valueAttr = $('#progressBar').attr('value');
-      percentage = (valueAttr/maxAttr) * 100;
-      
-      if(percentage<49){
-        document.styleSheets[0].addRule('.semantic', 'color: red');
-        document.styleSheets[0].addRule('.semantic::-webkit-progress-value', 'background-color: red');
-        document.styleSheets[0].addRule('.semantic::-moz-progress-bar', 'background-color: red');
-      }
-      else if(percentage<98){
-        document.styleSheets[0].addRule('.semantic', 'color: orange');
-        document.styleSheets[0].addRule('.semantic::-webkit-progress-value', 'background-color: orange');
-        document.styleSheets[0].addRule('.semantic::-moz-progress-bar', 'background-color: orange');
-      }
-      else {
-        document.styleSheets[0].addRule('.semantic', 'color: green');
-        document.styleSheets[0].addRule('.semantic::-webkit-progress-value', 'background-color: green');
-        document.styleSheets[0].addRule('.semantic::-moz-progress-bar', 'background-color: green');
-      }      
-  });
-  
-});</script>
 </html>

@@ -9,16 +9,11 @@
 
 	<http auto-config="true">
 
-		<intercept-url pattern="/Cart/**"
+		
+			<intercept-url pattern="/myCart/**"
 			access="hasRole('ROLE_USER')" />
+	
 			
-	<intercept-url pattern="/addToCart/*"
-			access="hasRole('ROLE_USER')" />
-	<!-- <intercept-url pattern="/0/*"
-			access="hasRole('ROLE_USER')" />-->
-				<!-- 	<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/index" access="permitAll" />
-	 -->	
 	 <intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/Login"
 		 username-parameter="name" password-parameter="password" 

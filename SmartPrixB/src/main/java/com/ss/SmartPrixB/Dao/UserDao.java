@@ -4,8 +4,6 @@ import com.ss.SmartPrixB.model.User;
 
 public interface UserDao {
 
-	public boolean addUser(User u);
-
 	public boolean save(User u);
 	
 	public User getUserById(int id);

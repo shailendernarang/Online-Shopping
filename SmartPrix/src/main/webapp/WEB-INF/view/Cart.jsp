@@ -12,6 +12,9 @@
 <title>Cart</title>
 </head>
 <body>
+<br>
+<br>
+<br>
 
 		 <div class="space"></div>
 <div class="container">
@@ -29,6 +32,7 @@
 	<c:if test="${not empty cartList}">
 		<table class="table table-bordered">
 			<tr>
+				
 				<th>Product Name</th>
 				<th>Price</th>
 				<th>Quantity</th>

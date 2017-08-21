@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ss.SmartPrixB.Dao.BrandDao;
 import com.ss.SmartPrixB.Dao.CartDao;
+import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
 import com.ss.SmartPrixB.Dao.UserDao;
 import com.ss.SmartPrixB.model.Cart;
@@ -29,6 +31,9 @@ public class CartController {
 	
 	@Autowired
 	private CartDao cartDAO;
+
+	@Autowired
+	private BrandDao brandDao;
 	
 	@Autowired
 	private UserDao userDao;
@@ -37,10 +42,13 @@ public class CartController {
 	private ProductDao productDao;
 	
 	@Autowired
+	private CategoryDao categoryDao;
+	
+	@Autowired
 	private HttpSession session;
 
 	@RequestMapping("/all")
-	public String getCart() {
+	public String getCart(Model model) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -48,6 +56,8 @@ public class CartController {
 		session.setAttribute("numberProducts", cartDAO.getNumberOfProducts(loggedInUsername));
 		session.setAttribute("cartList", cartDAO.getCartList(loggedInUsername));
 		session.setAttribute("totalAmount", cartDAO.getTotalAmount(loggedInUsername));
+		model.addAttribute("categoryList",categoryDao.getAllCategory());
+		model.addAttribute("brandList", brandDao.getAllBrands());
 		return "Cart";
 	}
 
@@ -64,7 +74,7 @@ public class CartController {
 			cart.setPrice(Long.parseLong(s));
 			cart.setDate(new Date());
 			
-		String username=p.getName();
+			String username=p.getName();
 			cart.setUsername(username);
 			cart.setStatus("NEW");
 			User user =userDao.getUserByUserName(username);

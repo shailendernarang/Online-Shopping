@@ -7,16 +7,18 @@
 <html>
 <head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/trending.css">
-
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 
- <div class="container">
+ <!-- <div class="container">
     <div class="row animate-bottom">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 lg-9 sm-9">
                 <h3>
                    Trending Android Products</h3>
             </div>
@@ -24,8 +26,7 @@
              
             </div>
         </div>
-        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-            <div class="carousel-inner">
+       
       
                 <div class="item active">
                     <div class="row">
@@ -67,8 +68,7 @@
                    
                   </div>
                </div>
-             </div>
-        </div>
+        
         
  <div class="container">
     <div class="row animate-bottom">
@@ -81,8 +81,7 @@
              
             </div>
         </div>
-        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-            <div class="carousel-inner">
+        
       
                 <div class="item active">
                     <div class="row">
@@ -123,9 +122,33 @@
                       </div>
                    
                   </div>
-               </div>
-             </div>
+               </div>-->
+<section>
+    <div class="container">
+        <div class="row">
+         <h3 class="text-center">Trending Android Products</h3>
+         <c:forEach items="${productList}" var="c" begin="0" end="3">
+        <div class="col-md-3">
+             
+         
+      
+          <div class="card card-01">
+          
+          <img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg"  alt="${c.productName}" align="middle" style="display: block;margin: 0 auto;width:max-width;height:150px">
+          <div class="card-block">
+            <span class="badge-box"><a href="${pageContext.request.contextPath }/myCart/addtocart/${c.productID}"><i class="fa fa-shopping-cart"></i></a></span>
+            <h4 class="card-title"> ${c.productName }</h4>
+            <p class="card-text"> ${c.productDesc }.</p>
+            <a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="btn btn-default text-uppercase">More Details</a>
+          </div>
+            
         </div>
+  
+        </div>
+         </c:forEach>
+        </div>
+        </div>
+        </section>
 </body>
 </html>
 

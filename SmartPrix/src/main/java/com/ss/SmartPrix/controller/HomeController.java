@@ -1,7 +1,5 @@
 package com.ss.SmartPrix.controller;
 
-
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,6 +113,7 @@ public class HomeController {
 		
 		public String BrandCardAgain(Model model1)
 		{
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 		return "BrandCard";
 		}		
@@ -124,7 +123,7 @@ public class HomeController {
 	{
 		model1.addAttribute("brand",brandDao.getAllBrands());
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
-
+		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getProductByID(pro));
 		model1.addAttribute("pro",productDao.getAllProducts());
 		return "ProductDetail";
@@ -134,14 +133,17 @@ public class HomeController {
 	{
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getAllProducts());
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("productList",productDao.getProductByBrandID(pro));
+		
 		return "ProductCard";
 	}
-	@RequestMapping("/AdminCard")
+	@RequestMapping("/admin/AdminCard")
 	
 	public String AdminCard(Model model1)
 	{
-	model1.addAttribute("brandList",brandDao.getAllBrands());
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+		model1.addAttribute("brandList",brandDao.getAllBrands());
 	return "AdminCard";
 	}		
 }
