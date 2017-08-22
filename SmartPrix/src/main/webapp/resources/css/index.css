@@ -20,13 +20,6 @@
 
 
 
-
-
-
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
 @media (min-width: 768px) {
 
   /* Navbar positioning foo */
@@ -42,7 +35,7 @@
   /* Bump up size of carousel content */
  
 .badge {
-  background: #b20c0c;
+  background: #004040;
   position: absolute;
   height: 40px;
   width: 40px;

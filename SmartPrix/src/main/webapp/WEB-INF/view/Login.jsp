@@ -8,9 +8,12 @@
 <html>
 <head>
 <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
-
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 <br>
@@ -23,32 +26,27 @@ Password<input name="password"/>
 </form>
 -->
 <script src="https://use.fontawesome.com/1dec14be15.js"></script>
+    
+   
+    
     <div class="container-fluid stylish-form">
+    
       <h2 class="text-center">Login</h2>
       <div class="row mar20" >
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="inner-section">
+          
             <form method="POST" action="logg">
               <div class="mar20 inside-form">
                 <h2 class="font_white text-center">SIGN In</h2>
-                <ul>
-                  <li class="icon-holder dsp-flex">
-                    <i class="fa fa-facebook "></i>
-                  </li>
-                  <li class="icon-holder dsp-flex">
-                    <i class="fa fa-twitter "></i>
-                  </li>
-                  <li class="icon-holder dsp-flex">
-                    <i class="fa fa-instagram "></i>
-                  </li>
-                </ul>
+                
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-pencil "></i></span>
                   <input type="text" class="form-control" name="name" placeholder="Username..."/>
-   
+  
                 </div>
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope "></i></span>
+                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
                   <input type="password" class="form-control" name="password" placeholder="Password..."/>
                 </div>
       <div class="footer text-center">
@@ -56,6 +54,9 @@ Password<input name="password"/>
                  
                 </div>
               </div>
+             <c:if test="${not empty loggedInUserName }">
+				<div class="alert alert-danger">Enter Correct Details</div>
+			</c:if>
             </form>
           </div>
         </div>

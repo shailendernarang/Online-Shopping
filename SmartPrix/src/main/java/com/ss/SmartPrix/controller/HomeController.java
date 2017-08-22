@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
@@ -37,6 +38,8 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Model model1)
 	{
+		
+		
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getAllProducts());
@@ -90,6 +93,7 @@ public class HomeController {
 	@RequestMapping("/Login")
 	public String Login(Model model)
 	{
+		
 		model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList",brandDao.getAllBrands());
 		return "Login";
@@ -145,5 +149,19 @@ public class HomeController {
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 	return "AdminCard";
+	}		
+	@RequestMapping("/UserProfile/{userName}")
+	
+	public String UserProfile(@PathVariable("userName")String UID,Model model1)
+	{
+		ShippingDetails shippingDetails = new ShippingDetails();
+		User user = new User();
+		user.getBillingDetails();
+		user.getShippingDetails();
+		
+		model1.addAttribute("user",userDao.getUserByUserName(UID));
+		model1.addAttribute("categoryList",categoryDao.getAllCategory());
+		model1.addAttribute("brandList",brandDao.getAllBrands());
+	return "UserProfile";
 	}		
 }

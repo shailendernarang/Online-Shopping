@@ -8,10 +8,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -137,16 +136,19 @@ h5 {
 <body>
 
 <%@include file="/WEB-INF/view/header.jsp"%>
-
+<br>
+<br>
+<br>
 <div class="container">
        
-       <div class="row" style="margin:50px;">
+       <div class="row">
             
            <c:forEach items="${brandList}" var="c">
            
-       			     <div class=" col-md-3" style="margin:20px;">
+       			     <div class=" col-sm-4">
                     		<div class="card w3-animate-opacity" >
-                    			<a href="${pageContext.request.contextPath }/ProductCard/${c.brandID }" value="${ c.categoryID}" style="display:block;"><img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg"></a>
+                    			<a href="${pageContext.request.contextPath }/ProductCard/${c.brandID }" value="${ c.categoryID}" style="display:block;">
+                    			<img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg"></a>
                     				<div class="card-block">
                         				<h5 class="text-bold w3-animate-opacity">${c.brandName}</h5>
                 					</div>

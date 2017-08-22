@@ -6,13 +6,17 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap Navbar Cart Dropdown - Bootsnipp.com</title>
+   
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -43,13 +47,11 @@
      			 
     		<sec:authorize access="isAnonymous()">
           <li class="dropdown">
-              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-               
-                
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mobiles <b class="caret"></b></a>
+              <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li><a class="dropdown-toggle" data-toggle="dropdown" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li><a class="btn btn-default dropdown-item" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
                 
@@ -58,7 +60,11 @@
             </li>
 </sec:authorize>
           </ul>
-          
+            <ul class="nav navbar-nav">
+               <li class=" nav-item navbar-text">
+            <span>&nbsp;Always Free Delivery</span>
+        </li>
+            </ul>
           
           
       <ul class="nav navbar-nav navbar-right">
@@ -73,7 +79,14 @@
          
          </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
-                       <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
+           
+                       <li class="dropdown">
+                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}</a>
+                       		<ul class="dropdown-menu">
+                       			<a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>"><li>My Profile</li></a>
+                       		</ul>
+          				 </li>
+          				 </li>
                              <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
          
          

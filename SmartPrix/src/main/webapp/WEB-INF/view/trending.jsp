@@ -15,120 +15,13 @@
 </head>
 <body>
 
- <!-- <div class="container">
-    <div class="row animate-bottom">
-        <div class="row">
-            <div class="col-md-9 lg-9 sm-9">
-                <h3>
-                   Trending Android Products</h3>
-            </div>
-            <div class="col-md-3">
-             
-            </div>
-        </div>
-       
-      
-                <div class="item active">
-                    <div class="row">
-                      <c:forEach items="${productList}" var="c" end="3">
-                        <div class="col-sm-3">
-                        
-                            <div class="col-item">
-                                <div class="photo"  style="width:auto;height:200px">
-                                    <img src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg" class="img-responsive" alt="${c.productName}" style="width:auto;height:150px" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-9">
-                                            <h5>
-                                               ${c.productName }</h5>
-                                            <h5 class="price-text-color">
-                                              &#8377;  ${c.productCost }</h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="separator clear-left">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="${pageContext.request.contextPath}/myCart/addToCart/${c.productID}" class="hidden-sm" >Add to cart</a></p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="hidden-sm">More details</a></p>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                              </c:forEach>
-                         </div>
-                      </div>
-                   
-                  </div>
-               </div>
-        
-        
- <div class="container">
-    <div class="row animate-bottom">
-        <div class="row">
-            <div class="col-md-9">
-                <h3>
-                   Trending Windows Products</h3>
-            </div>
-            <div class="col-md-3">
-             
-            </div>
-        </div>
-        
-      
-                <div class="item active">
-                    <div class="row">
-                      <c:forEach items="${productList}" var="c" begin="5">
-                        <div class="col-sm-3">
-                        
-                            <div class="col-item">
-                                <div class="photo"  style="width:auto;height:200px">
-                                    <img src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg" class="img-responsive" alt="${c.productName}" style="width:auto;height:150px" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-9">
-                                            <h5>
-                                               ${c.productName }</h5>
-                                            <h5 class="price-text-color">
-                                              &#8377;  ${c.productCost }</h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="separator clear-left">
-                                        <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="${pageContext.request.contextPath }/mycart/addtocart" class="hidden-sm">Add to cart</a></p>
-                                        <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="hidden-sm">More details</a></p>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                              </c:forEach>
-                         </div>
-                      </div>
-                   
-                  </div>
-               </div>-->
+ 
 <section>
     <div class="container">
         <div class="row">
          <h3 class="text-center">Trending Android Products</h3>
          <c:forEach items="${productList}" var="c" begin="0" end="3">
-        <div class="col-md-3">
+        <div class="col-sm-4">
              
          
       
@@ -136,10 +29,12 @@
           
           <img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${c.productID}.jpg"  alt="${c.productName}" align="middle" style="display: block;margin: 0 auto;width:max-width;height:150px">
           <div class="card-block">
-            <span class="badge-box"><a href="${pageContext.request.contextPath }/myCart/addtocart/${c.productID}"><i class="fa fa-shopping-cart"></i></a></span>
+            <span class="badge-box"><a href="${pageContext.request.contextPath }/myCart/addToCart/${c.productID}"><i class="fa fa-shopping-cart"></i></a></span>
             <h4 class="card-title"> ${c.productName }</h4>
             <p class="card-text"> ${c.productDesc }.</p>
             <a href="${pageContext.request.contextPath }/ProductDetail/${c.productID}" class="btn btn-default text-uppercase">More Details</a>
+          
+          
           </div>
             
         </div>
@@ -148,7 +43,64 @@
          </c:forEach>
         </div>
         </div>
+        
         </section>
+        
+       <div class="container">
+        <div class="row">
+         
+        <div class="col-md-4">
+             
+         
+      
+          <div style="background:linear-gradient(to bottom, #33ccff 0%, #006666 100%);" class="card card-01">
+          
+         
+           <div class="mar20 inside-form">
+            <h5 class="font_white text-center">SIGN IN</h5>
+              <form method="POST" action="logg">
+            <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-pencil "></i></span>
+               <input type="text" class="form-control" name="name" placeholder="Username..."/>
+               </div>
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-pencil "></i></span>
+  				<input type="password" class="form-control" name="password" placeholder="Password..."/>
+  				 </div>
+                                 <input type="submit" value="Let Me In!"class="btn btn-default btn-round btn-lg">
+              
+             </form>
+          
+         
+            
+        </div>
+  
+        </div>
+        </div>
+      <div class="col-sm-4">
+             
+         
+      
+          <div style="background: linear-gradient(to bottom, #33ccff 0%, #cc0066 103%);"class="card card-01">
+        	<div class="project project-default"> 	<div class="shape"> <div class="shape-text">
+						top								
+					</div>
+					</div>
+					</div>
+          <img class="card-img-top" src="http://www.pngall.com/wp-content/uploads/2016/04/Discount-PNG-Clipart.png"  alt="${c.productName}" align="middle" style="display: block;margin: 0 auto;width:max-width;height:150px">
+          <div class="card-block">
+            <h4 class="card-title">40% discount On Samsung Galaxy S8</h4>
+            <p class="card-text">Use Coupon Code SMARTPRIX40</p>
+            <a href="${pageContext.request.contextPath }/ProductDetail/612" class="btn btn-default text-uppercase">More Details</a>
+          
+          
+          </div>
+            
+        </div>
+  
+        </div>
+        </div>
+        </div>
 </body>
 </html>
 

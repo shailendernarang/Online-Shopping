@@ -4,24 +4,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
 <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerr.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+     <link href="http://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<!--footer start from here-->
+
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-6 footer-col">
-        <div class="logofooter"> Logo</div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-        <p><i class="fa fa-map-pin"></i> #228, Tiruvannamalai, Tamilnadu, India</p>
-        <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 999 999</p>
-        <p><i class="fa fa-envelope"></i> E-mail : info@prabuuideveloper.com</p>
-        
+          <div class="card card-01">
+          <div class="profile-box">
+              <img class="card-img-center rounded-circle " src="https://www.facebook.com/photo/download/?fbid=10209422522909564&ext=1503690803&hash=AeTQbCekJz8-cm9U" alt="Shailender Narang">
+          </div>
+          <div class="card-block text-center">
+            <h4 class="card-title">Shailender Narang</h4>
+            <span class="social-box">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+         
+            </span>
+          </div>
+        </div>
       </div>
       <div class="col-md-3 col-sm-6 footer-col">
         <h6 class="heading7">GENERAL LINKS</h6>
@@ -59,11 +69,11 @@
 <div class="copyright">
   <div class="container">
     <div class="col-md-6">
-      <p>© 2016 - All Rights with prabuuideveloper</p>
+      <p>© 2016 - All Rights with Shailender</p>
     </div>
     <div class="col-md-6">
       <ul class="bottom_uli uli">
-        <li class="lii"><a href="#">prabuuideveloper.com</a></li>
+        <li class="lii"><a href="#">lastminutetutorials.com</a></li>
         <li class="lii"><a href="#">About us</a></li>
         <li class="lii"><a href="#">Blog</a></li>
         <li class="lii"><a href="#">Faq's</a></li>

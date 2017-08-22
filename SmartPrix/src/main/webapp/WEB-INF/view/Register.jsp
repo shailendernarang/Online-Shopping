@@ -14,13 +14,14 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     
 </head>
 <body>
 
  <div class="container">
-    <div class="col-lg-12 sm-12 md-12 ">
+    <div class="col-lg-12 col-sm-4 col-md-12 col-xs-12">
    		 <div id="logbox">
      		 <sp:form id="signup" method="post" action="${pageContext.request.contextPath }/save" modelAttribute="user">
         <h1>Create An Account</h1>

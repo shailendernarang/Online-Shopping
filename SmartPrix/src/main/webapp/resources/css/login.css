@@ -29,17 +29,7 @@
     .inside-form h2 {
       font-weight:700;
     }
-    .inside-form ul {
-      list-style-type:none;
-      text-align:center;
-      margin-top:30px;
-    }
-    .inside-form ul >li {
-      display:inline-block;
-    }
-    .inside-form ul >li > i {
-      margin-top:18px;
-    }
+    
     .icon-holder {
       background: #fff;
       border-radius: 50%;

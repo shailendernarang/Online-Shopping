@@ -114,6 +114,12 @@ UserDao userDao;
 			
 		}
 	}
+	public boolean update(User u) {
+		Session s1 =sessionFactory.getCurrentSession();
+		
+		s1.update(u);
+		return true;
+	}
 
 }
 	

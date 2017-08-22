@@ -8,10 +8,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ss.SmartPrixB.Dao.CartDao;
 import com.ss.SmartPrixB.Dao.UserDao;
@@ -31,25 +34,29 @@ public class UserController {
 	
 	public String addUser(@Valid @ModelAttribute("user")User c,BindingResult br)
 	{
+		if(c.getUserID()==0)
+		{
 	if(br.hasErrors()) {
 		
 		return "Register";
 	}else {
-	//	if(c.getUserID()==0) {
 		
 		userDao.save(c);
-		//}
-		//else 
-		/*{
-			userDao.updateUser(c);
-		}*/
+		
 	}
+		}else
+		{
+			userDao.update(c);
+		}
 		return "redirect:/";
 	}
 	@RequestMapping(value="/logg",method=RequestMethod.POST)
-	public String validate(HttpServletRequest httpServletRequest,Principal p)
+	public String validate(HttpServletRequest httpServletRequest,Principal p,Model model)
 	{
-		 	httpSession=	httpServletRequest.getSession(true);
+		
+			
+		
+		 	httpSession=httpServletRequest.getSession(true);
 			httpSession.setAttribute("loggedInUser", true);
 			httpSession.setAttribute("loggedInUsername",userDao.getUserByUserName(p.getName()));
 			httpSession.setAttribute("loggedInName",p.getName());
@@ -60,28 +67,14 @@ public class UserController {
 		return "/";
 		
 	}
-
-
-/*@RequestMapping(value="/updateUser/{userID}")
-	
-	public String updateUser(@PathVariable("userID")Integer userID,Model model)
+	@RequestMapping(value="/updateUser/{userName}")
+	public String updateUser(@PathVariable("userName")String username,Model model)
 	{
-	    
-		model.addAttribute("user",userDao.getUserByID(userID));
-		model.addAttribute("userList", userDao.getAllUser());
-		
-		return "Register";
+		model.addAttribute("user",userDao.getUserByUserName(username));
+		return "UserProfile";
 	}
-@RequestMapping(value="/deleteUser/{userID}")
 
-public String deleteUser(@PathVariable("userID")Integer userID,Model model)
-{
-    
-	model.addAttribute("user",userDao.getUserByID(userID));
-	userDao.deleteUser(u);
-	model.addAttribute("userList", userDao.getAllUser());
-	return "Register";
-}*/
+
 
 
 }

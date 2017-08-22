@@ -4,12 +4,15 @@
     <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
        <%@ include file="header.jsp" %>
- <c:url value="/resources/image/" var="image"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cart</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 <body>
 <br>
@@ -54,18 +57,19 @@
 		<hr>
 		<div class="pull-right">
 		
-			Total Amount: <em><b class="text-success">&#8377 ${totalAmount }</b></em>
-			&nbsp;
-			 <a href="<c:url value="/order"/>">CheckOut</a>
+			
+			 <a href="<c:url value="/order"/>" class="btn btn-primary">Checkout</a>
 		</div>
 		<a href="<c:url value="/myCart/clearCart" />"
-			class="btn btn-outline-danger">Clear Cart</a>
-	
-			 
-		</div>
+			class="btn btn-danger">Clear Cart</a>
+			<div style="text-align:center">
+		<a href="<c:url value="/" />"
+			class="btn btn-success btn-lg">Continue Shopping</a><br>
+				<h4>Total Amount: <em><b class="text-success">&#8377 ${totalAmount }</b></em>
+			&nbsp;</h4>
+			</div>
+			
 		
-			
-			
-
+		</div>
 </body>
 </html>

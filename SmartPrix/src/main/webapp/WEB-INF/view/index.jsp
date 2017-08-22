@@ -9,6 +9,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerr.css">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,9 +44,7 @@
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="glyphicon glyphicon-hand-down"></b></a>
               <ul class="dropdown-menu w3-hoverable" >
               <c:forEach items ="${categoryList}" var="c">
-				
-				<li> <a class="btn btn-default btn-xs" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a>
-</li>
+				<li> <a class="btn btn-default" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 			</c:forEach>
                 
                 
@@ -60,12 +59,10 @@
              
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li style="margin-top:0px;margin-bottom: 3px;"> <a class="btn btn-default " href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
+				 <li style="margin-top:0px;margin-bottom: 3px;"> <a class="btn" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 
 			</c:forEach>
-                
-                
-              </ul>
+                </ul>
             </li>
 </sec:authorize>
           </ul>
@@ -84,7 +81,12 @@
          
          </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
-                       <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
+                        <li class="dropdown">
+                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}</a>
+                       		<ul class="dropdown-menu">
+                       			<a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>"><li>My Profile</li></a>
+                       		</ul>
+          				 </li>
                              <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
          
          
@@ -139,19 +141,19 @@
                 <div class="row animate-bottom hidden-xs" id="slider-thumbs">
                         <!-- Bottom switcher of slider -->
                         <ul class="hide-bullets">
-                            <li class="col-sm-2">
+                            <li class="col-xs-3">
                                 <a class="thumbnail" id="carousel-selector-0"><img src="https://rukminim1.flixcart.com/flap/500/500/image/a689ee.jpg?q=50"></a>
                             </li>
 
-                            <li class="col-sm-2">
+                            <li class="col-xs-3">
                                 <a class="thumbnail" id="carousel-selector-1"><img src="https://rukminim1.flixcart.com/flap/300/300/image/cb6433.jpg?q=50"></a>
                             </li>
 
-                            <li class="col-sm-2">
+                            <li class="col-xs-3">
                                 <a class="thumbnail" id="carousel-selector-2"><img src="https://rukminim1.flixcart.com/flap/300/300/image/52cca6.jpg?q=50"></a>
                             </li>
 
-                            <li class="col-sm-2">
+                            <li class="col-xs-3">
                                 <a class="thumbnail" id="carousel-selector-3"><img src="https://rukminim1.flixcart.com/flap/500/500/image/8abcba.jpg?q=50"></a>
                             </li>
 
@@ -184,6 +186,66 @@
 });
 </script>
 <%@include file="trending.jsp" %>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 footer-col">
+        <div class="logofooter"> Logo</div>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+        <p><i class="fa fa-map-pin"></i> #228, Tiruvannamalai, Tamilnadu, India</p>
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 999 999</p>
+        <p><i class="fa fa-envelope"></i> E-mail : info@prabuuideveloper.com</p>
+        
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">GENERAL LINKS</h6>
+        <ul class="footer-uli uli" >
+          <li  class="lii"><a href="#"> Career</a></li>
+          <li  class="lii"><a href="#"> Privacy Policy</a></li>
+          <li  class="lii"><a href="#"> Terms & Conditions</a></li>
+          <li  class="lii"><a href="#"> Client Gateway</a></li>
+          <li  class="lii"><a href="#"> Ranking</a></li>
+          <li  class="lii"><a href="#"> Case Studies</a></li>
+          <li  class="lii"><a href="#"> Frequently Ask Questions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">LATEST POST</h6>
+        <div class="post">
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">Social Media</h6>
+        <ul class="footer-social uli">
+          <li class="lii"><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></li>
+          <li class="lii"><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></li>
+          <li class="lii"><i class="fa fa-twitter social-icon twitter" aria-hidden="true"></i></li>
+          <li class="lii"><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
+<div class="copyright">
+  <div class="container">
+    <div class="col-md-6">
+      <p>© 2016 - All Rights with prabuuideveloper</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_uli uli">
+        <li class="lii"><a href="#">prabuuideveloper.com</a></li>
+        <li class="lii"><a href="#">About us</a></li>
+        <li class="lii"><a href="#">Blog</a></li>
+        <li class="lii"><a href="#">Faq's</a></li>
+        <li class="lii"><a href="#">Contact us</a></li>
+        <li class="lii"><a href="#">Site Map</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
    </body>
 </html>

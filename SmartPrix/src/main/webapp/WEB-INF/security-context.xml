@@ -18,7 +18,7 @@
 		<form-login login-page="/Login"
 		 username-parameter="name" password-parameter="password" 
 		 login-processing-url="/logg"
-			authentication-failure-url="/Login" />
+			authentication-failure-url="/Login?loginMsg" />
 		<logout logout-url="/LogOut" delete-cookies="true"
 		 logout-success-url="/Login?LogOut" />
 		<csrf disabled="true" />

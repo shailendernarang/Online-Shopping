@@ -8,7 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="resources/css/admincard.css"/>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<%@ page isELIgnored="false" %>
+         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+     
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <%@ page isELIgnored="false" %>
 <title>Admin Panel</title>
 </head>
 <body>
@@ -17,7 +20,7 @@
 <div class="container">
     <div class="row">
    
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="card">
                 <div class="card-image">
                     <img class="img-responsive" src="http://www.euro-mat.com/wp-content/uploads/2017/01/products.jpg">
