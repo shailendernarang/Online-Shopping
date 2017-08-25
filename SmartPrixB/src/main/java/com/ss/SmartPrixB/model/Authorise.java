@@ -1,5 +1,7 @@
 package com.ss.SmartPrixB.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class Authorise {
+public class Authorise implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

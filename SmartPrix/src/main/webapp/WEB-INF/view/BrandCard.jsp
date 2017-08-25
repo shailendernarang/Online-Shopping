@@ -48,69 +48,27 @@ h5 {
 
 .card-img-top {
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
+    margin:0 auto;
 }
 
 .card-title {
     font-size: 1.28571429em;
     font-weight: 700;
     line-height: 1.2857em;
+    align-content: middle;
 }
 
 .card-text {
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
+     align-content: middle;
 }
 
-.card-footer {
-    font-size: 1em;
-    position: static;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    padding: .75em 1em;
-    color: rgba(0, 0, 0, .4);
-    border-top: 1px solid rgba(0, 0, 0, .05) !important;
-    background: #fff;
-}
 
-.card-inverse .btn {
-    border: 1px solid rgba(0, 0, 0, .05);
-}
 
-.profile {
-    position: absolute;
-    top: -12px;
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 25px;
-    height: 25px;
-    margin: 0;
-    border: 1px solid #fff;
-    border-radius: 50%;
-}
-
-.profile-avatar {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-}
-
-.profile-inline {
-    position: relative;
-    top: 0;
-    display: inline-block;
-}
-
-.profile-inline ~ .card-title {
-    display: inline-block;
-    margin-left: 4px;
-    vertical-align: top;
-}
 
 .text-bold {
     font-weight: 700;
@@ -131,7 +89,7 @@ h5 {
 }
 
     </style>
-<title>Insert title here</title>
+<title>Brands With Us</title>
 </head>
 <body>
 
@@ -145,12 +103,12 @@ h5 {
             
            <c:forEach items="${brandList}" var="c">
            
-       			     <div class=" col-sm-4">
-                    		<div class="card w3-animate-opacity" >
+       			     <div class=" col-sm-4" style="align-content:middle, margin-left: 10px;margin-bottom: 10px;">
+                    		<div class="card w3-animate-bottom" >
                     			<a href="${pageContext.request.contextPath }/ProductCard/${c.brandID }" value="${ c.categoryID}" style="display:block;">
-                    			<img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg"></a>
+                    			<img class="card-img-top w3-animate-opacity" style="align-items:center;300px;height:200px;" src="${pageContext.request.contextPath }/resources/images/${c.brandID}.jpg" alt="${c.brandName }"></a>
                     				<div class="card-block">
-                        				<h5 class="text-bold w3-animate-opacity">${c.brandName}</h5>
+                        				<h5 align="center" class="text-bold w3-animate-opacity">${c.brandName}</h5>
                 					</div>
                             </div>
                      </div>

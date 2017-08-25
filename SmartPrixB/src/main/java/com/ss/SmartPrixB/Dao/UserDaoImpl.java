@@ -116,8 +116,10 @@ UserDao userDao;
 	}
 	public boolean update(User u) {
 		Session s1 =sessionFactory.getCurrentSession();
-		
+		u.setActive(true);
 		s1.update(u);
+		u.setUserName(u.getUserName());
+		
 		return true;
 	}
 

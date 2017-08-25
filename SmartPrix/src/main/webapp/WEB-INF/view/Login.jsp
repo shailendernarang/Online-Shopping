@@ -19,6 +19,7 @@
 <br>
 <br>
 <br>
+${msg}
 <!-- <form action="logg" method="POST" >
 Username<input name="name"/>
 Password<input name="password"/>

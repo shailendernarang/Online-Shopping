@@ -1,5 +1,7 @@
 package com.ss.SmartPrixB.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class ShippingDetails {
+public class ShippingDetails implements Serializable {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int shippingID;

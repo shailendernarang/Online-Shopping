@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,19 +91,25 @@ public class HomeController {
 		return "Brand";
 		
 	}
+	
+	
 	@RequestMapping("/Login")
 	public String Login(Model model)
 	{
-		
+	
 		model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList",brandDao.getAllBrands());
 		return "Login";
 	}
+	
+	
 	@RequestMapping("/LogOut")
 	public String Logout()
 	{
 		return "redirect:/index";
 	}
+	
+	
 	@RequestMapping("/BrandCard/{catID}")
 	public String BrandCard(@PathVariable("catID")Integer cat,Model model1)
 	{System.out.println("is going to reterieve brands corresponding to categoryid");
@@ -142,6 +149,8 @@ public class HomeController {
 		
 		return "ProductCard";
 	}
+	
+	
 	@RequestMapping("/admin/AdminCard")
 	
 	public String AdminCard(Model model1)
@@ -149,7 +158,10 @@ public class HomeController {
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 	return "AdminCard";
-	}		
+	}	
+	
+	
+	
 	@RequestMapping("/UserProfile/{userName}")
 	
 	public String UserProfile(@PathVariable("userName")String UID,Model model1)

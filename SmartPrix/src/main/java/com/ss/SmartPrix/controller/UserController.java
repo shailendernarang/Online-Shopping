@@ -32,22 +32,19 @@ public class UserController {
 	CartDao cartDAO;
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	
-	public String addUser(@Valid @ModelAttribute("user")User c,BindingResult br)
+	public String addUser(@Valid @ModelAttribute("user")User c,BindingResult br,Model model)
 	{
-		if(c.getUserID()==0)
-		{
-	if(br.hasErrors()) {
 		
+	if(br.hasErrors()) {
+		model.addAttribute("msg","Please fill details properly");
+	
 		return "Register";
 	}else {
 		
 		userDao.save(c);
 		
 	}
-		}else
-		{
-			userDao.update(c);
-		}
+		
 		return "redirect:/";
 	}
 	@RequestMapping(value="/logg",method=RequestMethod.POST)
@@ -68,13 +65,17 @@ public class UserController {
 		
 	}
 	@RequestMapping(value="/updateUser/{userName}")
-	public String updateUser(@PathVariable("userName")String username,Model model)
-	{
-		model.addAttribute("user",userDao.getUserByUserName(username));
+	public String updateUser(@ModelAttribute("user")User user,Model model)
+	{	
+		userDao.update(user);
 		return "UserProfile";
 	}
 
-
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+    public String loginerror(Model model) {
+        model.addAttribute("error", "true");
+        return "denied";
+    }
 
 
 }

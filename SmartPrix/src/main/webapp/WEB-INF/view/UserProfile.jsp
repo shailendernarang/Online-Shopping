@@ -18,17 +18,18 @@
 <body>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <sp:form class="form-horizontal" role="form" method="post"  action="${pageContext.request.contextPath }/updateUser/${user.userName}" modelAttribute="user">
+      <sp:form class="form-horizontal" role="form" method="post"  action="${pageContext.request.contextPath }/updateUser/${user.userName }" modelAttribute="user">
         <fieldset>
 		 <legend>User Profile</legend>
-					 <c:if test="${not empty user.userName}">
-						User ID    <sp:input path="userID" readOnly="true" disabled="true" type="text" class="form-control"/>
+			 <c:if test="${not empty user.userName}">
+					
 					<sp:hidden path="userID"/>
 					</c:if>
+		
 		  <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">UserName</label>
             <div class="col-sm-10">
-              <sp:input type="text" path="userName" placeholder="Address Line 1" class="form-control"></sp:input>
+              <sp:input type="text" path="userName"  disabled="true" placeholder="Address Line 1" class="form-control"></sp:input>
             </div>
           </div>
            <div class="form-group">
@@ -81,6 +82,8 @@
             <div class="col-sm-offset-2 col-sm-10">
               <div class="pull-right">
                 <sp:button type="submit" class="btn btn-primary">Update</sp:button>
+                 <a href="${pageContext.request.contextPath }/" class="btn btn-danger">Go Back</a>
+                
               </div>
             </div>
           </div>

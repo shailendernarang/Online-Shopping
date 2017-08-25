@@ -31,7 +31,7 @@ h5 {
 .card-01 .badge-box i{background:#DFC717; color:#fff; border-radius:50%;  width:50px; height:50px; line-height:50px; text-align:center; font-size:20px;}
   .btn-default{background:#DFC717; color:#fff; font-weight:700; text-shadow:1px 1px 0 rgba(0,0,0,0.2); font-size:14px;}
     </style>
-<title>Insert title here</title>
+<title>Our Products</title>
 </head>
 <body>
     <%@include file="/WEB-INF/view/header.jsp"%>

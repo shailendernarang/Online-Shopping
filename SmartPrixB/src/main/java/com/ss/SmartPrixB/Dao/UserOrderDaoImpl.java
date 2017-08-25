@@ -18,6 +18,7 @@ public class UserOrderDaoImpl implements UserOrderDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 	public boolean addUserOrder(UserOrder userOrder) {
 		Session session = sessionFactory.getCurrentSession();
 

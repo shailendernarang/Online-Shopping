@@ -37,9 +37,9 @@
           <sec:authorize access="hasRole('ROLE_USER')">
             <li class="dropdown">
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
-					<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;" class="dropdown-toggle" data-toggle="dropdown">&nbsp;${c.categoryName}&nbsp;</a></li>
+					<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;" class="dropdown-toggle btn" data-toggle="dropdown">&nbsp;${c.categoryName}&nbsp;</a></li>
 			</c:forEach>        
               </ul>
             </li>
@@ -51,7 +51,7 @@
               <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li><a class="btn btn-default dropdown-item" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li style="margin-top:0px;margin-bottom: 3px;"><a class=" btn dropdown-item" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
                 
@@ -86,7 +86,7 @@
                        			<a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>"><li>My Profile</li></a>
                        		</ul>
           				 </li>
-          				 </li>
+          			
                              <li><a href="${pageContext.request.contextPath }/LogOut">Logout <span class="sr-only">(current)</span></a></li>
          
          

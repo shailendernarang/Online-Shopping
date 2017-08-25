@@ -1,6 +1,7 @@
 package com.ss.SmartPrixB.model;
 
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.TreeSet;
 
@@ -20,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
-public class Brand {
+public class Brand implements Serializable {
 	
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)

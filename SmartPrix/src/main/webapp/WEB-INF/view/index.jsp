@@ -19,13 +19,58 @@
 <br>
 <br>
 
-<body background="https://www.ashercharles.com/wp-content/themes/v3/images/banner-main-large4.jpg">
+<body background="https://wallpaperscraft.com/image/minimalism_sky_clouds_sun_mountains_lake_landscape_95458_602x339.jpg">
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Us</h4>
+        </div>
+        <div class="modal-body">
+          <p>Our Details Are Provided UnderNeath!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">About us</h4>
+        </div>
+        <div class="modal-body">
+          <p>We Are The Leading E Commerce In Electronics Specialised In Mobiles ! We care About Your opinions</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
 <sec:authorize access="hasRole('ROLE_ADMIN')">
      			 <jsp:forward page="/admin/AdminCard"></jsp:forward>
 </sec:authorize>
     			
-<div class="navbar-wrapper animate-top">
-  <div class="container">
+<div class="navbar-wrapper animate-bottom" >
+  <div class="container" >
     <div class="navbar navbar-inverse navbar-fixed-top">
       
         <div class="navbar-header">
@@ -44,7 +89,7 @@
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="glyphicon glyphicon-hand-down"></b></a>
               <ul class="dropdown-menu w3-hoverable" >
               <c:forEach items ="${categoryList}" var="c">
-				<li> <a class="btn btn-default" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
+				<li> <a class="btn" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 			</c:forEach>
                 
                 
@@ -66,7 +111,11 @@
             </li>
 </sec:authorize>
           </ul>
-          
+           <ul class="nav navbar-nav">
+               <li class=" nav-item navbar-text">
+            <span>&nbsp;Always Free Delivery</span>
+        </li>
+            </ul>
           
           
       <ul class="nav navbar-nav navbar-right">
@@ -82,7 +131,7 @@
          </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
                         <li class="dropdown">
-                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}</a>
+                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}<b class="glyphicon glyphicon-hand-down"></b></a>
                        		<ul class="dropdown-menu">
                        			<a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>"><li>My Profile</li></a>
                        		</ul>
@@ -105,7 +154,7 @@
 <div class="container">
         <div id="main_area">
                 <!-- Slider -->
-                <div class="row animate-bottom">
+                <div class="row w3-animate-bottom">
                     <div class="col-xs-12" id="slider">
                         <!-- Top part of the slider -->
                         <div class="row animate-bottom">
@@ -138,7 +187,7 @@
                     </div>
                 </div><!--/Slider-->
 
-                <div class="row animate-bottom hidden-xs" id="slider-thumbs">
+                <div class="row w3-animate-bottom hidden-xs" id="slider-thumbs">
                         <!-- Bottom switcher of slider -->
                         <ul class="hide-bullets">
                             <li class="col-xs-3">
@@ -186,30 +235,20 @@
 });
 </script>
 <%@include file="trending.jsp" %>
+<section>
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-6 footer-col">
-        <div class="logofooter"> Logo</div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-        <p><i class="fa fa-map-pin"></i> #228, Tiruvannamalai, Tamilnadu, India</p>
-        <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 999 999</p>
-        <p><i class="fa fa-envelope"></i> E-mail : info@prabuuideveloper.com</p>
+      <div class="col-md-4 col-sm-6 footer-col">
+        <div class="logofooter">SmartPrix</div>
+        <p>Smart Prix is an Ecommerce Organisation.It Inculcates Every Aspects Of Your Choice And Deals In Electronics</p>
+        <p><i class="fa fa-map-pin"></i> NIIT Connaught Place</p>
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9650064979</p>
+        <p><i class="fa fa-envelope"></i> E-mail : shailendernarang2@gmail.com</p>
         
       </div>
-      <div class="col-md-3 col-sm-6 footer-col">
-        <h6 class="heading7">GENERAL LINKS</h6>
-        <ul class="footer-uli uli" >
-          <li  class="lii"><a href="#"> Career</a></li>
-          <li  class="lii"><a href="#"> Privacy Policy</a></li>
-          <li  class="lii"><a href="#"> Terms & Conditions</a></li>
-          <li  class="lii"><a href="#"> Client Gateway</a></li>
-          <li  class="lii"><a href="#"> Ranking</a></li>
-          <li  class="lii"><a href="#"> Case Studies</a></li>
-          <li  class="lii"><a href="#"> Frequently Ask Questions</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-6 footer-col">
+      
+      <div class="col-md-4 col-sm-6 footer-col">
         <h6 class="heading7">LATEST POST</h6>
         <div class="post">
           <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
@@ -217,13 +256,12 @@
           <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 footer-col">
+      <div class="col-md-4 col-sm-6 footer-col">
         <h6 class="heading7">Social Media</h6>
         <ul class="footer-social uli">
-          <li class="lii"><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></li>
-          <li class="lii"><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></li>
-          <li class="lii"><i class="fa fa-twitter social-icon twitter" aria-hidden="true"></i></li>
-          <li class="lii"><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></li>
+              <li class="lii"><a href="https://www.linkedin.com/in/shailender-narang-aaa618a8/" target="new_blank"><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></a></li>
+           <li class="lii"><a href="https://www.facebook.com/shailender.narang" target="new_blank"><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></a></li>
+           <li class="lii">  <a href="https://plus.google.com/u/0/112927653592812375007" target="new_blank" > <i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </div>
@@ -233,19 +271,17 @@
 <div class="copyright">
   <div class="container">
     <div class="col-md-6">
-      <p>© 2016 - All Rights with prabuuideveloper</p>
+      <p>© 2016 - All Rights with Shailender Narang</p>
     </div>
     <div class="col-md-6">
       <ul class="bottom_uli uli">
-        <li class="lii"><a href="#">prabuuideveloper.com</a></li>
-        <li class="lii"><a href="#">About us</a></li>
-        <li class="lii"><a href="#">Blog</a></li>
-        <li class="lii"><a href="#">Faq's</a></li>
-        <li class="lii"><a href="#">Contact us</a></li>
-        <li class="lii"><a href="#">Site Map</a></li>
+        <li class="lii"><a href="www.lastminutetutorials.com">lastminutetutorials.com</a></li>
+        <li class="lii"> <a data-toggle="modal" data-target="#myModal1">About Us</a></li>
+        <li class="lii"> <a data-toggle="modal" data-target="#myModal">Contact Us</a></li>
       </ul>
     </div>
   </div>
 </div>
+</section>
    </body>
 </html>

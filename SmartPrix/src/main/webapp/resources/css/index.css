@@ -13,13 +13,14 @@
   z-index: 10;
 }
 .navbar{
- background-color: transparent;
-   background: transparent;
+   background:  linear-gradient(to bottom, #33ccff 0%, #ffff99 100%);
    border-color: transparent;
+   color:black;
 }
 
-
-
+..navbar-inverse .navbar-nav > li > a {
+  color : black;
+}
 @media (min-width: 768px) {
 
   /* Navbar positioning foo */

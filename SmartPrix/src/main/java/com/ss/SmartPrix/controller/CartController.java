@@ -58,6 +58,7 @@ public class CartController {
 		session.setAttribute("totalAmount", cartDAO.getTotalAmount(loggedInUsername));
 		model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList", brandDao.getAllBrands());
+		model.addAttribute("productList",productDao.getAllProducts());
 		return "Cart";
 	}
 

@@ -1,5 +1,6 @@
 package com.ss.SmartPrixB.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,14 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class User {
+public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -67,8 +70,9 @@ public class User {
 		this.userID = userID;
 	}
 	@Email(message="Enter Correct Email")
-	@NotNull
+	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
 	private String userEmail;
+	@NotEmpty(message="password can not be empty")
 	private String userPass;
 	private long userPhone;
 	private boolean active;
