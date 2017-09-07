@@ -2,8 +2,9 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page isELIgnored="false" %>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/trending.css">
@@ -17,7 +18,7 @@
 <body>
 <div class="container">
 
-  <!-- Modal -->
+ 
   <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
     
@@ -42,7 +43,7 @@
 
  
 <section>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
          <h3 class="text-center">Trending Android Products</h3>
          <c:forEach items="${productList}" var="c" begin="0" end="2">
@@ -71,16 +72,17 @@
         
        
         
-       <div class="container">
+       <div class="container-fluid">
         <div class="row">
          
         <div class=" col-sm-4">
              
-         
-      
+        
           <div style="background:linear-gradient(to bottom, #33ccff 0%, #006666 100%);" class="card card-01">
-          
-         
+            
+       <br>
+       <br>
+         <br>
            <div class="inside-form">
             <h5 class="font_white text-center">SIGN IN</h5>
               <form method="POST" action="logg">
@@ -95,9 +97,7 @@
                                  <input type="submit" value="Let Me In!"class="btn btn-default btn-round btn-lg">
               
              </form>
-          
-         
-            
+            <br>
         </div>
   
         </div>
@@ -105,7 +105,7 @@
       <div class=" col-sm-4" style="color:white">
              
          
-      
+     
           <div style="background: linear-gradient(to bottom, #33ccff 0%, #cc0066 103%);"class="card card-01">
         	<div class="project project-default"> 	<div class="shape"> <div class="shape-text">
 						top								
@@ -116,7 +116,7 @@
           <div class="card-block">
             <h4 align="center" class="card-title">40% discount On Samsung Galaxy S8</h4>
             <p align="center "class="card-text">Use Coupon Code SMARTPRIX40</p>
-            <a href="${pageContext.request.contextPath }/ProductDetail/612" class="btn btn-default text-uppercase">More Details</a>
+            <a href="${pageContext.request.contextPath }/ProductDetail/810" class="btn btn-default text-uppercase">More Details</a>
           
           
           </div>
@@ -130,24 +130,28 @@
          
       
           <div style="background:linear-gradient(to bottom, #33ccff 0%, #006666 100%);" class="card card-01">
-          
+             <br>
+       <br>
+         <br>
          
            <div class="mar20 inside-form">
             <h5 class="font_white text-center">Check Delivery Pincode</h5>
                   <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-pencil "></i></span>
-  				<input type="text" class="form-control" name="" placeholder="Enter PinCode"/>
+  				<input type="text" class="form-control" name="" required="required" placeholder="Enter PinCode"/>
   				 </div>
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Check</button>
   
         </div>
-  
+     <br>
+       
+         <br>
         </div>
         </div>
         </div>
         </div>
         
-        <div class="container">
+        <div class="container-fluid">
         <div class="row">
          <h3 class="text-center">Related Products</h3>
          <c:forEach items="${productList}" var="c" begin="4" end="7">

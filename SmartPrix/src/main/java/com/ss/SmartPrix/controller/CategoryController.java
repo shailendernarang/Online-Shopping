@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.CategoryDao;
-import com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
 
 

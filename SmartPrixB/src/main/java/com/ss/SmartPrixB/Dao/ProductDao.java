@@ -13,6 +13,7 @@ public interface ProductDao {
 	List<Product> getAllProducts();
 	Product getProductByID(int productID);
 	List<Product> getProductByBrandID(int brID);
+	List<Product> getAllProductsOther(int pid);
 	
 
 }

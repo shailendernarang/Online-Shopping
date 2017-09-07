@@ -5,7 +5,6 @@
     <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +21,9 @@
 
   <body>
 	
-	<div class="container" >
+	<div class="container-fluid" >
 		<div class="card"style="background:white" >
-			<div class="container-fliud">
+			<div class="container-fluid">
 							<img src="${pageContext.request.contextPath }/resources/images/${productList.productID}.jpg" style="width:400px;height:400px;"/>
 
 
@@ -52,11 +51,11 @@
 				</div>
 			</div>
 		</div>
-<div class="container" >
+<div class="container-fluid" >
 		<div class="row" >
 		<h3 class="text-center">Users Also Bought</h3>
 		
-         <c:forEach items="${pro}" var="c" begin="${ c}+4" end="${ c}+6">
+         <c:forEach items="${pro}" var="c" begin="4" end="6">
          
         
         <div class="col-md-4" style="color:black">
@@ -83,6 +82,7 @@
         </div>
         </div>
   </body>
+   <%@include file="footer.jsp" %>
 </html>
 
 

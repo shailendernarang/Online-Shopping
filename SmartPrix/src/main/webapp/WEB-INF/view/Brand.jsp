@@ -3,16 +3,18 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>
+<!DOCTYPE html>  
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Add Brand</title>
+    <title>Admin Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+  		 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+   		 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/2.ico"/>
+  		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   
+    	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     
 </head>
 <body>
@@ -38,6 +40,9 @@
 					</div>
 					<div class="form-group">
 						<sp:input type="text" class="form-control" path="brandDesc" placeholder="Brand Description"/>
+					</div>
+					<div class="form-group">
+						<sp:input type="text" class="form-control" path="brandRating" placeholder="Brand Rating (0 to 10)"/>
 					</div>
 					<div class="form-group">
 					<sp:select path="categoryID" class="form-control">
@@ -70,9 +75,9 @@
   
  
     
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 table-responsive">
 
-            <div class="panel panel-default panel-table">
+            <div class="panel panel-primary panel-table">
               <div class="panel-heading">
                 <div class="row">
                   <div class="col col-xs-6">
@@ -81,15 +86,16 @@
                   
                 </div>
               </div>
-          <div class="panel-body">
+          <div class="panel-body table-responsive">
               <c:if test="${not empty brandList}">
-                <table class="table table-striped table-bordered table-list">
+                <table class="table table-striped table-bordered table-hover table-responsive">
                   <thead>
-                    <tr>
+                    <tr class="warning">
                         <th><em class="fa fa-cog"></em></th>
                         <th>Brand ID</th>
                         <th>Brand Name</th>
                         <th>Brand Description</th>
+                        <th>Brand Rating</th>
                         <th>Category ID</th>
 						<th>Picture</th>
                     </tr> 
@@ -97,7 +103,7 @@
                   <tbody>
                            <c:forEach items="${brandList}" var="c">
                                            
-                          <tr>
+                          <tr class="danger">
                             <td align="center">
                               <a href="<c:url value='/updateBrand/${c.brandID}'/>" class="btn btn-default"><em class="fa fa-pencil"></em></a>
                               <a href="<c:url value='/deleteBrand/${c.brandID}'/>" class="btn btn-danger"><em class="fa fa-trash"></em></a>
@@ -106,6 +112,7 @@
              	              <td>${c.brandID}</td>
 								<td>${c.brandName}</td>
 								   <td>${c.brandDesc}</td>
+								   <td>${c.brandRating}</td>
 								   	<td>${c.categoryID}</td>
 								   		<td><img src="${pageContext.request.contextPath}/resources/images/${c.brandID}.jpg" style="height:120px;width:150px;"/></td>
 								   			
@@ -123,5 +130,6 @@
         </div>
         </div>
 </body>
+<%@include file="footer.jsp" %>
 </html>
 

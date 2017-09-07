@@ -26,6 +26,7 @@ import com.ss.SmartPrixB.model.User;
 @RequestMapping("/myCart")
 @Controller
 public class CartController {
+	@SuppressWarnings("unused")
 	@Autowired(required=true)
 	private Cart cart;
 	
@@ -49,7 +50,7 @@ public class CartController {
 
 	@RequestMapping("/all")
 	public String getCart(Model model) {
-		
+		try {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		String loggedInUsername = username;
@@ -59,6 +60,9 @@ public class CartController {
 		model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList", brandDao.getAllBrands());
 		model.addAttribute("productList",productDao.getAllProducts());
+		
+		}
+		catch(Exception e) {}
 		return "Cart";
 	}
 
@@ -98,7 +102,7 @@ public class CartController {
 					return "redirect:/CatProduct";
 				}
 			} else {
-				System.out.println("first time product is going to add");
+				
 				cart.setQuantity(1);
 				boolean flag = cartDAO.save(cart);
 

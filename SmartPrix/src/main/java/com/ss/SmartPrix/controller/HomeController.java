@@ -5,23 +5,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ss.SmartPrixB.Dao.BrandDao;
-import com.ss.SmartPrixB.Dao.CartDao;
 import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
 import com.ss.SmartPrixB.Dao.UserDao;
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.BillingDetails;
+import  com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
 import  com.ss.SmartPrixB.model.Product;
 import com.ss.SmartPrixB.model.ShippingDetails;
-import com.ss.SmartPrixB.model.BillingDetails;
-import  com.ss.SmartPrixB.model.Brand;
+import com.ss.SmartPrixB.model.User;
 
 @Controller
 public class HomeController {
@@ -35,15 +31,14 @@ public class HomeController {
 	HttpSession httpSession;
 	@Autowired
 	BrandDao brandDao;
-
 	@RequestMapping("/")
 	public String home(Model model1)
 	{
 		
 		
-		model1.addAttribute("categoryList",categoryDao.getAllCategory());
-		model1.addAttribute("brandList",brandDao.getAllBrands());
-		model1.addAttribute("productList",productDao.getAllProducts());
+		httpSession.setAttribute("categoryList",categoryDao.getAllCategory());
+		httpSession.setAttribute("brandList",brandDao.getAllBrands());
+		httpSession.setAttribute("productList",productDao.getAllProducts());
 		return "index";
 		
 	}
@@ -136,7 +131,7 @@ public class HomeController {
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getProductByID(pro));
-		model1.addAttribute("pro",productDao.getAllProducts());
+		model1.addAttribute("pro",productDao.getAllProductsOther(pro));
 		return "ProductDetail";
 	}
 	@RequestMapping("/ProductCard/{proID}")
@@ -166,6 +161,7 @@ public class HomeController {
 	
 	public String UserProfile(@PathVariable("userName")String UID,Model model1)
 	{
+		@SuppressWarnings("unused")
 		ShippingDetails shippingDetails = new ShippingDetails();
 		User user = new User();
 		user.getBillingDetails();

@@ -19,8 +19,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <div class="navbar-wrapper">
-  <div class="container">
+  <div class="container-fluid">
+ 
     <div class="navbar navbar-inverse navbar-fixed-top">
       
         <div class="navbar-header">
@@ -39,7 +41,7 @@
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
               <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
-					<li><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;" class="dropdown-toggle btn" data-toggle="dropdown">&nbsp;${c.categoryName}&nbsp;</a></li>
+					<li  style="margin-top:0px;margin-bottom: 3px;"><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 			</c:forEach>        
               </ul>
             </li>
@@ -47,11 +49,11 @@
      			 
     		<sec:authorize access="isAnonymous()">
           <li class="dropdown">
-              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mobiles <b class="caret"></b></a>
+              <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
               <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li style="margin-top:0px;margin-bottom: 3px;"><a class=" btn dropdown-item" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li style="margin-top:0px;margin-bottom: 3px;"><a class="btn" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
                 
@@ -75,15 +77,15 @@
    </sec:authorize>
    			<sec:authorize access="hasRole('ROLE_USER')"> 
          
-              	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge badge-pill badge-primary">${numberProducts }</span></a></li>
+              	<li> <a href="${pageContext.request.contextPath}/myCart/all"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge-box badge-pill badge-info">${numberProducts }</span></a></li>
          
          </sec:authorize>
           <sec:authorize access="isAuthenticated()"> 
            
                        <li class="dropdown">
-                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}</a>
+                       <a class="dropdown-toggle" data-toggle="dropdown">Hey ${pageContext.request.userPrincipal.name}<b class="caret"></b></a>
                        		<ul class="dropdown-menu">
-                       			<a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>"><li>My Profile</li></a>
+                       			<li><a href="<c:url value='/UserProfile/${pageContext.request.userPrincipal.name}'/>">My Profile</a></li>
                        		</ul>
           				 </li>
           			
@@ -97,10 +99,9 @@
    
        </ul>
         </div>
-
     </div>
-  </div><!-- /container -->
-</div><!-- /navbar wrapper -->
+  </div>
+</div>
 
 
 </body>

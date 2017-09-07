@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,32 +18,60 @@ import com.ss.SmartPrixB.model.Brand;
 public class BrandDaoImpl implements BrandDao {
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	private final Logger log = (Logger) LoggerFactory.getLogger(BrandDaoImpl.class); 
+
 	public boolean addBrand(Brand b) {
+		try {
 		Session s1=sessionFactory.getCurrentSession();
 		s1.persist(b);
+		log.info("home Working");
+		}
+		catch(Exception e) {
+			log.error("");
+		
+		}
 		return true;
 	}
 
 	public boolean deleteBrand(int brandID) {
+		try {
 		Session s1= sessionFactory.getCurrentSession();
 		Brand b =(Brand)s1.load(Brand.class, brandID);
 		s1.delete(b);
+	
+		log.info("home Working");
+		}
+		catch(Exception e) {
+			log.error("");
+		
+		}
 		return true;
 	}
 
 	public boolean updateBrand(Brand b) {
+		try {
 		Session s1 =sessionFactory.getCurrentSession();
 		s1.update(b);
+		log.info("home Working");
+		}
+		catch(Exception e) {
+			log.error("");
+		
+		}
 		return true;
 	}
 
 	public List<Brand> getAllBrands() {
+		
 		Session s=sessionFactory.getCurrentSession();
 		@SuppressWarnings("rawtypes")
 		Query query=s.createQuery("from Brand");
 		@SuppressWarnings("unchecked")
 		List<Brand> list=query.getResultList(); 
 		return list;
+		
+		
 	}
 
 	public Brand getBrandByID(int brandID) {

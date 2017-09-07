@@ -1,10 +1,6 @@
 
 
 
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
   top: 0;
@@ -13,7 +9,7 @@
   z-index: 10;
 }
 .navbar{
-   background:  linear-gradient(to bottom, #33ccff 0%, #ffff99 100%);
+   background:  #d2691e
    border-color: transparent;
    color:black;
 }

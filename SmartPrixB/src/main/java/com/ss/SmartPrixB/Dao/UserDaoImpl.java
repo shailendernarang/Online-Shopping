@@ -2,8 +2,6 @@ package com.ss.SmartPrixB.Dao;
 
 
 
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,18 +14,14 @@ import com.ss.SmartPrixB.model.Authorise;
 import com.ss.SmartPrixB.model.User;
 @Repository("userDao")
 @Transactional
+@SuppressWarnings({ "rawtypes" ,"deprecation" })
 public class UserDaoImpl implements UserDao {
 @Autowired
 SessionFactory sessionFactory;
 User user = new User();
 @Autowired
 UserDao userDao;
-	public boolean addUser(User u) {
-	/*	Session s1=sessionFactory.getCurrentSession();
-		s1.persist(u);
-		return true;*/
-		return false;
-	}
+	
 	public boolean save(User u) {
 		Session session=sessionFactory.getCurrentSession();
 		u.getBillingDetails().setUsr(u);
@@ -59,7 +53,6 @@ UserDao userDao;
 	public User getUserByUserName(String username) {
 		
 		try {
-			@SuppressWarnings("rawtypes")
 			Query query = sessionFactory.getCurrentSession().createQuery("from User where userName= '" + username + "'");
 			User user = (User) query.uniqueResult();
 
@@ -75,7 +68,6 @@ UserDao userDao;
 	
 	public User getUsersById(int id) {
 		try {
-			@SuppressWarnings("rawtypes")
 			Query query = sessionFactory.getCurrentSession().createQuery("FROM User where userID=" + id);
 			return (User) query.uniqueResult();
 		} catch (HibernateException e) {
@@ -97,12 +89,10 @@ UserDao userDao;
 			boolean isEnable = users.isActive();
 
 			if (isEnable) {
-				@SuppressWarnings("rawtypes")
 				Query query = sessionFactory.getCurrentSession()
 						.createQuery("UPDATE User SET enabled = " + false + " WHERE userID = " + id);
 				return query.executeUpdate();
 			} else {
-				@SuppressWarnings("rawtypes")
 				Query query = sessionFactory.getCurrentSession()
 						.createQuery("UPDATE User SET enabled = " + true + " WHERE userID = " + id);
 				return query.executeUpdate();

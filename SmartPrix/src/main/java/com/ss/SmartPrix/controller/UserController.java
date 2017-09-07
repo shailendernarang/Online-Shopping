@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ss.SmartPrixB.Dao.CartDao;
 import com.ss.SmartPrixB.Dao.UserDao;
@@ -57,6 +55,7 @@ public class UserController {
 			httpSession.setAttribute("loggedInUser", true);
 			httpSession.setAttribute("loggedInUsername",userDao.getUserByUserName(p.getName()));
 			httpSession.setAttribute("loggedInName",p.getName());
+			@SuppressWarnings("unused")
 			Cart cart=new Cart();
 			httpSession.setAttribute("numberProducts", cartDAO.getNumberOfProducts(p.getName()));
 			httpSession.setAttribute("cartList", cartDAO.getCartList(p.getName()));

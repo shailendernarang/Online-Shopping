@@ -40,7 +40,6 @@ public class CheckoutController {
 
 		User user = userDAO.getUserByUserName(loggedInUsername);
 	
-		System.out.println("hey");
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());
 		model1.addAttribute("productList",productDao.getAllProducts());

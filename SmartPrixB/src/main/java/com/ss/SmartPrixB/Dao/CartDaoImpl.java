@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ss.SmartPrixB.model.Cart;
 @Repository("cartDao")
 @Transactional
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class CartDaoImpl implements CartDao {
 	@Autowired(required=true)
 	SessionFactory sessionFactory;
+	
 	
 	
 	public List<Cart> getCartList(String username) {

@@ -2,9 +2,7 @@ package com.ss.SmartPrixB.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Entity
 
 public class BillingDetails implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	
@@ -51,14 +54,14 @@ public class BillingDetails implements Serializable {
 	public void setBillingStreet(String billingStreet) {
 		this.billingStreet = billingStreet;
 	}
-	public int getBillingPinCode() {
+	public String getBillingPinCode() {
 		return billingPinCode;
 	}
-	public void setBillingPinCode(int billingPinCode) {
+	public void setBillingPinCode(String billingPinCode) {
 		this.billingPinCode = billingPinCode;
 	}
 	private String billingAddress;
 	private String billingStreet;
-	private int billingPinCode;
+	private String billingPinCode;
 
 }

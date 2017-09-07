@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+   <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
+	<%@include file="header.jsp"%>
+	<%@ page isELIgnored="false" %>
+<!DOCTYPE html >
 <html>
 
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
-<%@include file="header.jsp"%>
-<%@ page isELIgnored="false" %>
 <head>
     <meta charset="utf-8">
     <title>Register to SmartPrix</title>
@@ -15,12 +15,11 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     
 </head>
 <body>
 
- <div class="container">
+ <div class="container-fluid">
     <div class="col-lg-12 col-sm-4 col-md-12 col-xs-12">
    		 <div id="logbox">
      		 <sp:form id="signup" method="post" action="${pageContext.request.contextPath }/save" modelAttribute="user">
@@ -50,6 +49,8 @@
     </div>
    </div>
    </div>
+   
+   <%@include file="footer.jsp" %>
    <script>
 $(function(){
 

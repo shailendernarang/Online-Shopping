@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -23,6 +22,10 @@ import org.springframework.stereotype.Component;
 @Entity
 public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int userID;
@@ -74,7 +77,7 @@ public class User implements Serializable {
 	private String userEmail;
 	@NotEmpty(message="password can not be empty")
 	private String userPass;
-	private long userPhone;
+	private Long userPhone;
 	private boolean active;
 	
 	public boolean isActive() {
@@ -83,10 +86,10 @@ public class User implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public long getUserPhone() {
+	public Long getUserPhone() {
 		return userPhone;
 	}
-	public void setUserPhone(long userPhone) {
+	public void setUserPhone(Long userPhone) {
 		this.userPhone = userPhone;
 	}
 	public String getUserName() {

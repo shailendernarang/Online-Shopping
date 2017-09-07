@@ -9,20 +9,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap Navbar and Slider Overlay Text - Bootsnipp.com</title>
+    <title>Admin Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/2.ico"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="resources/css/category.css"> 
         
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    
-    <style type="text/css">
-
-  
-   </style>
+   
 </head>
 <body>
 <br>
@@ -54,7 +50,9 @@
 							 <sp:input type="file" path="image" class="form-control" placeholder="Choose Image"/>
 						</div>
 								<sp:select path="brandID" class="form-control"> 
+								<sp:option value="select" class="form-control">----SELECT---</sp:option>
 						<c:forEach items ="${brandList}" var="c">
+						
 							<sp:option value="${ c.brandID}">${c.brandName}</sp:option>
 
 						</c:forEach>
@@ -80,12 +78,12 @@
 <br>
 <br>
 <br>
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
 
-            <div class="panel panel-default panel-table">
+            <div class="panel panel-primary panel-table">
               <div class="panel-heading">
                 <div class="row">
-                  <div class="col col-xs-6">
+                  <div class="col col-xs-8">
                     <h3 class="panel-title">Product Table</h3>
                   </div>
                   
@@ -127,4 +125,5 @@
 
 
 </body>
+<%@include file="footer.jsp" %>
 </html>

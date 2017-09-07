@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.SmartPrixB.model.Category;
-@SuppressWarnings("deprecation")
 @Repository("categoryDao")
 @Transactional
+@SuppressWarnings({ "rawtypes", "unchecked" ,"deprecation" })
 public class CategoryDaoImpl implements CategoryDao {
 	@Autowired
 	SessionFactory sessionFactory;	
@@ -22,7 +22,12 @@ public class CategoryDaoImpl implements CategoryDao {
 		s1.persist(c);
 		return true;
 	}
-
+	public boolean updateCategory(Category c) {
+		Session s1 =sessionFactory.getCurrentSession();
+		
+		s1.update(c);
+		return true;
+	}
 	public boolean deleteCategory(int categoryID) {
 	Session s1= sessionFactory.getCurrentSession();
 	Category c =(Category)s1.load(Category.class, categoryID);
@@ -30,12 +35,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	return true;
 	}
 
-	public boolean updateCategory(Category c) {
-		Session s1 =sessionFactory.getCurrentSession();
-		
-		s1.update(c);
-		return true;
-	}
+	
 
 	public List<Category> getAllCategory() {
 		

@@ -14,6 +14,7 @@ import com.ss.SmartPrixB.model.User;
 import com.ss.SmartPrixB.model.UserOrder;
 @Transactional
 @Repository("userOrderDAO")
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class UserOrderDaoImpl implements UserOrderDao {
 
 	@Autowired
