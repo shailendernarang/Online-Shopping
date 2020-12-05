@@ -115,7 +115,7 @@
           <img class="card-img-top img-responsive" src="http://www.pngall.com/wp-content/uploads/2016/04/Discount-PNG-Clipart.png"  alt="${c.productName}" align="middle" style="display: block;margin: 0 auto;width:max-width;height:150px">
           <div class="card-block">
             <h4 align="center" class="card-title">40% discount On Samsung Galaxy S8</h4>
-            <p align="center "class="card-text">Use Coupon Code SMARTPRIX40</p>
+            <p align="center" class="card-text">Use Coupon Code SMARTPRIX40</p>
             <a href="${pageContext.request.contextPath }/ProductDetail/810" class="btn btn-default text-uppercase">More Details</a>
           
           

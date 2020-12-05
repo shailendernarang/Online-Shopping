@@ -20,12 +20,11 @@ import org.springframework.context.annotation.Bean;
 public class HibernateConfig {
 	
 	@Bean(name="dataSource")
-	
 	public DataSource geth2data(){
 		BasicDataSource db =new BasicDataSource();
 		db.setDriverClassName("org.h2.Driver");
-		db.setUrl("jdbc:h2:tcp://localhost/~/SmartPrix");
-		db.setUsername("sunny");
+		db.setUrl("jdbc:h2:mem:SmartPrix");
+		db.setUsername("sa");
 		db.setPassword("");
 		return db;		
 	}

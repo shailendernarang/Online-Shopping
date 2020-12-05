@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>  
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
@@ -41,7 +42,7 @@
               <a href="${pageContext.request.contextPath }/BrandCard/" class="dropdown-toggle" data-toggle="dropdown">Mobiles <b class="caret"></b></a>
               <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
-					<li  style="margin-top:0px;margin-bottom: 3px;"><a href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
+					<li  style="margin-top:0px;margin-bottom: 3px;"><a href="${pageContext.request.contextPath }/BrandCard/${c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a></li>
 			</c:forEach>        
               </ul>
             </li>
@@ -53,7 +54,7 @@
               <ul class="dropdown-menu  w3-hoverable">
               <c:forEach items ="${categoryList}" var="c">
 
-				 <li style="margin-top:0px;margin-bottom: 3px;"><a class="btn" href="${pageContext.request.contextPath }/BrandCard/${ c.categoryID}" value="${ c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
+				 <li style="margin-top:0px;margin-bottom: 3px;"><a class="btn" href="${pageContext.request.contextPath }/BrandCard/${c.categoryID}" value="${c.categoryID}" style="display:block;">&nbsp;${c.categoryName}&nbsp;</a> </li>
 
 			</c:forEach>
                 
