@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
@@ -21,11 +22,12 @@ public class Cart implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
 	private int cartID;
 	private Long price;
 	private int quantity;
-	private Date date;
+	private Date date_time;
 	private String productName;
 	private String status;
 	private int userID;
@@ -45,7 +47,7 @@ public class Cart implements Serializable {
 	}
 	@ManyToOne
 	@JoinColumn(name = "userID", nullable = false, updatable = false, insertable = false)
-	private User user;
+	private UserTable user;
 	public int getCartID() {
 		return cartID;
 	}
@@ -58,11 +60,12 @@ public class Cart implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public Date getDate() {
-		return date;
+	
+	public Date getDate_time() {
+		return date_time;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate_time(Date date_time) {
+		this.date_time = date_time;
 	}
 	public String getProductName() {
 		return productName;
@@ -82,10 +85,10 @@ public class Cart implements Serializable {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	public User getUser() {
+	public UserTable getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(UserTable user) {
 		this.user = user;
 	}
 	

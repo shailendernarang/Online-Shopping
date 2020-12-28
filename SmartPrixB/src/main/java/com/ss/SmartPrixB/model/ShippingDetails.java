@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,8 @@ public class ShippingDetails implements Serializable {
 
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
 	private int shippingID;
 
 
@@ -31,12 +33,13 @@ public class ShippingDetails implements Serializable {
 
 	@OneToOne
 	@JoinColumn
-	private User user;
+	private UserTable user;
 
-	public User getUser() {
+	
+	public UserTable getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(UserTable user) {
 		this.user = user;
 	}
 	public int getShippingID() {

@@ -10,7 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 import com.ss.SmartPrixB.model.UserOrder;
 @Transactional
 @Repository("userOrderDAO")
@@ -23,7 +23,7 @@ public class UserOrderDaoImpl implements UserOrderDao {
 	public boolean addUserOrder(UserOrder userOrder) {
 		Session session = sessionFactory.getCurrentSession();
 
-		User user = userOrder.getUserr();
+		UserTable user = userOrder.getUserr();
 		userOrder.setBillingDetails(user.getBillingDetails());
 		userOrder.setShippingDetails(user.getShippingDetails());
 		userOrder.setOrderStatus("Placed");

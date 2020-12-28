@@ -15,7 +15,7 @@ import com.ss.SmartPrixB.Dao.CategoryDao;
 import com.ss.SmartPrixB.Dao.ProductDao;
 import com.ss.SmartPrixB.Dao.UserDao;
 
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 
 @Controller
 public class CheckoutController {
@@ -38,7 +38,7 @@ public class CheckoutController {
 		String username = auth.getName();
 		String loggedInUsername = username;
 
-		User user = userDAO.getUserByUserName(loggedInUsername);
+		UserTable user = userDAO.getUserByUserName(loggedInUsername);
 	
 		model1.addAttribute("categoryList",categoryDao.getAllCategory());
 		model1.addAttribute("brandList",brandDao.getAllBrands());

@@ -17,7 +17,7 @@ import  com.ss.SmartPrixB.model.Brand;
 import com.ss.SmartPrixB.model.Category;
 import  com.ss.SmartPrixB.model.Product;
 import com.ss.SmartPrixB.model.ShippingDetails;
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 
 @Controller
 public class HomeController {
@@ -49,12 +49,12 @@ public class HomeController {
 	{
 		ShippingDetails shippingDetails = new ShippingDetails();
 		BillingDetails billingDetails = new BillingDetails();
-		User user=new User();
+		UserTable user=new UserTable();
 		user.setShippingDetails(shippingDetails);
 		user.setBillingDetails(billingDetails);
 		model.addAttribute("categoryList",categoryDao.getAllCategory());
 		model.addAttribute("brandList",brandDao.getAllBrands());	 
-		model.addAttribute("user",new User());
+		model.addAttribute("user",new UserTable());
 		return "Register";
 		
 	}
@@ -163,7 +163,7 @@ public class HomeController {
 	{
 		@SuppressWarnings("unused")
 		ShippingDetails shippingDetails = new ShippingDetails();
-		User user = new User();
+		UserTable user = new UserTable();
 		user.getBillingDetails();
 		user.getShippingDetails();
 		

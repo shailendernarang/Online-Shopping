@@ -21,7 +21,7 @@ import com.ss.SmartPrixB.Dao.ProductDao;
 import com.ss.SmartPrixB.Dao.UserDao;
 import com.ss.SmartPrixB.model.Cart;
 import com.ss.SmartPrixB.model.Product;
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 
 @RequestMapping("/myCart")
 @Controller
@@ -77,12 +77,12 @@ public class CartController {
 			cart.setProductName(product.getProductName());
 			String s =product.getProductCost();
 			cart.setPrice(Long.parseLong(s));
-			cart.setDate(new Date());
+			cart.setDate_time(new Date());
 			
 			String username=p.getName();
 			cart.setUsername(username);
 			cart.setStatus("NEW");
-			User user =userDao.getUserByUserName(username);
+			UserTable user =userDao.getUserByUserName(username);
 			cart.setUserID(user.getUserID());
 			Cart existCart = cartDAO.getCartByUsername(username, cart.getProductName());
 			if (existCart != null) {

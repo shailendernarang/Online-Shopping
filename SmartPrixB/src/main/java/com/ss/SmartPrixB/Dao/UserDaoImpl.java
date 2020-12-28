@@ -11,18 +11,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.SmartPrixB.model.Authorise;
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 @Repository("userDao")
 @Transactional
 @SuppressWarnings({ "rawtypes" ,"deprecation" })
 public class UserDaoImpl implements UserDao {
 @Autowired
 SessionFactory sessionFactory;
-User user = new User();
+UserTable user = new UserTable();
 @Autowired
 UserDao userDao;
 	
-	public boolean save(User u) {
+	public boolean save(UserTable u) {
 		Session session=sessionFactory.getCurrentSession();
 		u.getBillingDetails().setUsr(u);
 		u.getShippingDetails().setUser(u);
@@ -37,10 +37,10 @@ UserDao userDao;
 		session.persist(auth);
 		return true;
 	}
-	public User getUserById(int id) {
+	public UserTable getUserById(int id) {
 		
 		try {
-			return (User) sessionFactory.getCurrentSession().get(User.class, id);
+			return (UserTable) sessionFactory.getCurrentSession().get(UserTable.class, id);
 		} catch (HibernateException e) {
 			
 			e.printStackTrace();
@@ -50,11 +50,11 @@ UserDao userDao;
 	}
 
 	
-	public User getUserByUserName(String username) {
+	public UserTable getUserByUserName(String username) {
 		
 		try {
-			Query query = sessionFactory.getCurrentSession().createQuery("from User where userName= '" + username + "'");
-			User user = (User) query.uniqueResult();
+			Query query = sessionFactory.getCurrentSession().createQuery("from UserTable where userName= '" + username + "'");
+			UserTable user = (UserTable) query.uniqueResult();
 
 			return user;
 		} catch (HibernateException e) {
@@ -66,10 +66,10 @@ UserDao userDao;
 
 
 	
-	public User getUsersById(int id) {
+	public UserTable getUsersById(int id) {
 		try {
-			Query query = sessionFactory.getCurrentSession().createQuery("FROM User where userID=" + id);
-			return (User) query.uniqueResult();
+			Query query = sessionFactory.getCurrentSession().createQuery("FROM UserTable where userID=" + id);
+			return (UserTable) query.uniqueResult();
 		} catch (HibernateException e) {
 			
 			e.printStackTrace();
@@ -78,23 +78,23 @@ UserDao userDao;
 	}
 
 	public boolean getStatus(int id) {
-		User users = getUsersById(id);
+		UserTable users = getUsersById(id);
 		return users.isActive();
 	}
 
 	
 	public int changeStatus(int id)  {
 		try {
-			User users = getUsersById(id);
+			UserTable users = getUsersById(id);
 			boolean isEnable = users.isActive();
 
 			if (isEnable) {
 				Query query = sessionFactory.getCurrentSession()
-						.createQuery("UPDATE User SET enabled = " + false + " WHERE userID = " + id);
+						.createQuery("UPDATE UserTable SET enabled = " + false + " WHERE userID = " + id);
 				return query.executeUpdate();
 			} else {
 				Query query = sessionFactory.getCurrentSession()
-						.createQuery("UPDATE User SET enabled = " + true + " WHERE userID = " + id);
+						.createQuery("UPDATE UserTable SET enabled = " + true + " WHERE userID = " + id);
 				return query.executeUpdate();
 			}
 		} catch (HibernateException e) {
@@ -104,7 +104,7 @@ UserDao userDao;
 			
 		}
 	}
-	public boolean update(User u) {
+	public boolean update(UserTable u) {
 		Session s1 =sessionFactory.getCurrentSession();
 		u.setActive(true);
 		s1.update(u);

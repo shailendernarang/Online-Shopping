@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ss.SmartPrixB.Dao.CartDao;
 import com.ss.SmartPrixB.Dao.UserDao;
 import com.ss.SmartPrixB.model.Cart;
-import com.ss.SmartPrixB.model.User;
+import com.ss.SmartPrixB.model.UserTable;
 
 @Controller
 public class UserController {
@@ -25,12 +25,12 @@ public class UserController {
 	HttpSession httpSession;
 	@Autowired
 	UserDao userDao;
-	User u=new User();
+	UserTable u=new UserTable();
 	@Autowired
 	CartDao cartDAO;
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	
-	public String addUser(@Valid @ModelAttribute("user")User c,BindingResult br,Model model)
+	public String addUser(@Valid @ModelAttribute("user")UserTable c,BindingResult br,Model model)
 	{
 		
 	if(br.hasErrors()) {
@@ -64,7 +64,7 @@ public class UserController {
 		
 	}
 	@RequestMapping(value="/updateUser/{userName}")
-	public String updateUser(@ModelAttribute("user")User user,Model model)
+	public String updateUser(@ModelAttribute("user")UserTable user,Model model)
 	{	
 		userDao.update(user);
 		return "UserProfile";

@@ -22,10 +22,10 @@ public class HibernateConfig {
 	@Bean(name="dataSource")
 	public DataSource geth2data(){
 		BasicDataSource db =new BasicDataSource();
-		db.setDriverClassName("org.h2.Driver");
-		db.setUrl("jdbc:h2:mem:SmartPrix");
-		db.setUsername("sa");
-		db.setPassword("");
+		db.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		db.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		db.setUsername("system");
+		db.setPassword("941996");
 		return db;		
 	}
 	
@@ -42,7 +42,7 @@ public class HibernateConfig {
 
 	public Properties getHibernateProperties() {
 		Properties properties=new Properties();
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto","update");
 		return properties;

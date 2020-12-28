@@ -50,10 +50,10 @@
 							 <sp:input type="file" path="image" class="form-control" placeholder="Choose Image"/>
 						</div>
 								<sp:select path="brandID" class="form-control"> 
-								<sp:option value="select" class="form-control">----SELECT---</sp:option>
+								<sp:option value="1" class="form-control">----SELECT---</sp:option>
 						<c:forEach items ="${brandList}" var="c">
 						
-							<sp:option value="${ c.brandID}">${c.brandName}</sp:option>
+							<sp:option value="${c.brandID}">${c.brandName}</sp:option>
 
 						</c:forEach>
 					</sp:select>

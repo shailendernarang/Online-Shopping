@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -24,12 +25,13 @@ public class Product implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
 	private int productID;
 	private String productName;
 	private String productDesc;
 	private String productCost;
-	private String brandID;
+	private int brandID;
 	public MultipartFile getImage() {
 		return image;
 	}
@@ -63,10 +65,10 @@ public class Product implements Serializable {
 	
 	
 	
-	public String getBrandID() {
+	public int getBrandID() {
 		return brandID;
 	}
-	public void setBrandID(String brandID) {
+	public void setBrandID(int brandID) {
 		this.brandID = brandID;
 	}
 	public void setProductName(String productName) {
