@@ -30,16 +30,23 @@ public class UserController {
 	CartDao cartDAO;
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	
-	public String addUser(@Valid @ModelAttribute("user")UserTable c,BindingResult br,Model model)
+	public String addUser(@Valid @ModelAttribute("user")UserTable c,BindingResult br,Model model,Principal p )
 	{
-		
 	if(br.hasErrors()) {
-		model.addAttribute("msg","Please fill details properly");
+		model.addAttribute("msg","Username is already taken");
 	
 		return "Register";
-	}else {
+		}
+	else {
 		
 		userDao.save(c);
+		httpSession.setAttribute("loggedInUser", true);
+		httpSession.setAttribute("loggedInUsername",userDao.getUserByUserName(p.getName()));
+		httpSession.setAttribute("loggedInName",p.getName());
+		@SuppressWarnings("unused")
+		Cart cart=new Cart();
+		httpSession.setAttribute("numberProducts", cartDAO.getNumberOfProducts(p.getName()));
+		httpSession.setAttribute("cartList", cartDAO.getCartList(p.getName()));
 		
 	}
 		

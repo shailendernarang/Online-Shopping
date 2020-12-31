@@ -12,7 +12,7 @@
       <div class="col-md-4 col-sm-4 footer-col">
         <div class="logofooter">SmartPrix</div>
         <p>Smart Prix is an Ecommerce Organisation.It Inculcates Every Aspects Of Your Choice And Deals In Electronics</p>
-        <p><i class="fa fa-map-pin"></i> NIIT Connaught Place</p>
+        <p><i class="fa fa-map-pin"></i>IGNOU</p>
         <p><i class="fa fa-phone"></i> Phone (India) : +91 9650064979</p>
         <p><i class="fa fa-envelope"></i> E-mail : shailendernarang2@gmail.com</p>
         
@@ -21,7 +21,7 @@
       <div class="col-md-4 col-sm-4 footer-col">
         <h6 class="heading7">LATEST POST</h6>
         <div class="post">
-          <p>SmartPrix Just Extended Its Website For Budget Phones <span>August 23,2017</span></p>
+          <p>SmartPrix Just Extended Its Website For Budget Phones <span>August 23,2020</span></p>
         </div>
       </div>
       <div class="col-md-4 col-sm-4 footer-col">

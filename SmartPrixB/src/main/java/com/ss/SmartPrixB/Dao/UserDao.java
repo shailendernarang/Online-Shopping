@@ -17,7 +17,6 @@ public interface UserDao {
 	public int changeStatus(int id)  ;
 	
 	public boolean update(UserTable u);
-
-
+	
 
 }

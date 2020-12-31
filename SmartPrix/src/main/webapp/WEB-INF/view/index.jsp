@@ -108,53 +108,7 @@
 </div>
 
 <%@include file="trending.jsp" %>
-<section>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 col-sm-6 footer-col">
-        <div class="logofooter">SmartPrix</div>
-        <p>Smart Prix is an Ecommerce Organisation.It Inculcates Every Aspects Of Your Choice And Deals In Electronics</p>
-        <p><i class="fa fa-map-pin"></i> NIIT Connaught Place</p>
-        <p><i class="fa fa-phone"></i> Phone (India) : +91 9650064979</p>
-        <p><i class="fa fa-envelope"></i> E-mail : shailendernarang2@gmail.com</p>
-        
-      </div>
-      
-      <div class="col-md-4 col-sm-6 footer-col">
-        <h6 class="heading7">LATEST POST</h6>
-        <div class="post">
-          <p>SmartPrix Just Extended Its Website For Budget Phones <span>August 23,2017</span></p>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 footer-col">
-        
-        <ul class="footer-social uli">
-               <li class="lii"><a href="http://www.youtube.com/thetechbrat/" target="new_blank"><i class="fa fa-youtube social-icon youtube" aria-hidden="true"></i></a></li>
-        
-              <li class="lii"><a href="https://www.linkedin.com/in/shailender-narang-aaa618a8/" target="new_blank"><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></a></li>
-           <li class="lii"><a href="https://www.facebook.com/shailender.narang" target="new_blank"><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></a></li>
-           <li class="lii">  <a href="https://plus.google.com/u/0/112927653592812375007" target="new_blank" > <i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></a></li>
-         </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+<%@include file="footer.jsp" %>
 
-<div class="copyright">
-  <div class="container-fluid">
-    <div class="col-md-6">
-      <p><a  target="new_blank" href="http://www.youtube.com/thetechbrat/">© Subscribe to My Youtube Channel: THE TECH BRAT</a></p>
-    </div>
-    <div class="col-md-6">
-      <ul class="bottom_uli uli">
-        <li class="lii"><a href="http://www.lastminutetutorials.com">lastminutetutorials.com</a></li>
-        <li class="lii"> <a data-toggle="modal" data-target="#myModal1">About Us</a></li>
-        <li class="lii"> <a data-toggle="modal" data-target="#myModal">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section>
    </body>
 </html>

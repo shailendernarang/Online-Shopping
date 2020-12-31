@@ -12,7 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productdetail.css">
-
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  	    <script src="http://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
     <title>eCommerce Product Detail</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
@@ -45,7 +49,7 @@
 						
 						
 						<div class="action">
-							<a class="add-to-cart btn btn-default" href="${pageContext.request.contextPath}/myCart/addToCart/${productList.productID}">add to cart</a>
+							<a class="add-to-cart btn btn-default" href="${pageContext.request.contextPath}/myCart/addToCart/${productList.productID}">Add to cart</a>
 						</div>
 					</div>
 				</div>
@@ -55,7 +59,7 @@
 		<div class="row" >
 		<h3 class="text-center">Users Also Bought</h3>
 		
-         <c:forEach items="${pro}" var="c" begin="4" end="6">
+         <c:forEach items="${pro}" var="c" begin="2" end="6">
          
         
         <div class="col-md-4" style="color:black">

@@ -14,6 +14,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -42,7 +53,8 @@
 </div>
 
  
-<section>
+<section style="width: fit-content;
+block-size: fit-content">
     <div class="container-fluid">
         <div class="row">
          <h3 class="text-center">Trending Android Products</h3>
@@ -71,7 +83,7 @@
         </div>
         
        
-        
+   
        <div class="container-fluid">
         <div class="row">
          
@@ -116,7 +128,7 @@
           <div class="card-block">
             <h4 align="center" class="card-title">40% discount On Samsung Galaxy S8</h4>
             <p align="center" class="card-text">Use Coupon Code SMARTPRIX40</p>
-            <a href="${pageContext.request.contextPath }/ProductDetail/810" class="btn btn-default text-uppercase">More Details</a>
+            <a href="${pageContext.request.contextPath }/ProductDetail/1004" class="btn btn-default text-uppercase">More Details</a>
           
           
           </div>
@@ -154,7 +166,7 @@
         <div class="container-fluid">
         <div class="row">
          <h3 class="text-center">Related Products</h3>
-         <c:forEach items="${productList}" var="c" begin="4" end="7">
+         <c:forEach items="${productList}" var="c" begin="2" end="7">
         <div class="col-md-3" style="color:white">
              
          

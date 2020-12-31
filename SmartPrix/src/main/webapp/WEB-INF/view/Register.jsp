@@ -28,7 +28,8 @@
        	<sp:errors path="userName"/>
         <sp:input path="userPass" type="password" placeholder="Choose a password" required="required" class="input pass"/>
         <sp:input path="userEmail" type="email" placeholder="Email address" required="required" class="input pass"/>
-        <sp:input path="userPhone" type="phone" placeholder="Phone Number" required="required"  class="input pass"/>
+        <sp:input path="userPhone" type="phone" placeholder="Phone Number" required="required" pattern="[7-9]{1}[0-9]{9}" 
+       title="Phone number with 7-9 and remaing 9 digit with 0-9" class="input pass"/>
         <sp:input path="shippingDetails.shippingAddress" id="orangeForm-location" type="text" placeholder="Address" required="required"  class="input pass"/>
         <sp:input path="shippingDetails.shippingStreet"  id="orangeForm-location1" type="text" placeholder="Street" required="required"  class="input pass"/>
         <sp:input path="shippingDetails.shippingPinCode" id="orangeForm-location2" type="text" placeholder="Pin Code" required="required" class="input pass"/>
